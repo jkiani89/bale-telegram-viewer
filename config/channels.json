@@ -71,6 +71,12 @@
       "title": "نقال‌باشی",
       "enabled": true,
       "description": "پادکست‌ها، فایل‌های صوتی و روایت‌های نقال‌باشی"
+    },
+    {
+      "id": "tabzlive",
+      "title": "Tabz - Live News",
+      "enabled": true,
+      "description": "Geopolitics | OSINT | Conflict Monitor | Independenttwitter.com/TabzLIVEtabzlive.substack.comContact/Inquiries:@TabzSupp"
     }
   ]
 }
