@@ -255,6 +255,40 @@ function renderChannelsList() {
   });
 
   if (filtered.length === 0) {
+    if (!query) {
+      // لیست بدون جستجو خالی است (کاربر تمام کانال‌ها را حذف کرده)
+      container.innerHTML = `
+        <div class="empty-state">
+          <div style="font-size: 2.4rem; margin-bottom: 8px;">📭</div>
+          <h3 style="margin-bottom: 6px; font-size: 1.05rem;">لیست کانال‌های شما خالی است</h3>
+          <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 16px;">
+            ${hiddenList.length > 0 ? 'شما کانال‌های پیش‌فرض را حذف کرده‌اید.' : 'هنوز کانالی به لیست اضافه نشده است.'}
+          </p>
+          <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" id="btnEmptyAddChannel">➕ افزودن کانال جدید</button>
+            ${hiddenList.length > 0 ? `<button class="btn btn-secondary" id="btnRestoreAllHidden">🔄 بازگردانی کانال‌های پیش‌فرض</button>` : ''}
+          </div>
+        </div>
+      `;
+
+      const addBtn = document.getElementById('btnEmptyAddChannel');
+      if (addBtn) {
+        addBtn.addEventListener('click', () => {
+          const mainAddBtn = document.getElementById('addChannelBtn');
+          if (mainAddBtn) mainAddBtn.click();
+        });
+      }
+
+      const restoreAllBtn = document.getElementById('btnRestoreAllHidden');
+      if (restoreAllBtn) {
+        restoreAllBtn.addEventListener('click', () => {
+          localStorage.removeItem(HIDDEN_CHANNELS_KEY);
+          renderChannelsList();
+        });
+      }
+      return;
+    }
+
     const cleanQ = query.replace(/^@/, '').replace(/[^a-zA-Z0-9_]/g, '');
     const isPotentialId = cleanQ.length >= 4;
 

@@ -19,6 +19,12 @@
   },
   "channels": [
     {
+      "id": "durov",
+      "title": "Pavel Durov",
+      "enabled": true,
+      "description": "پست‌های رسمی پاول دورف (بنیان‌گذار تلگرام)"
+    },
+    {
       "id": "varzesh3",
       "title": "ورزش سه",
       "enabled": true,
@@ -59,6 +65,18 @@
       "title": "خبر فوری",
       "enabled": true,
       "description": "اخبار فوری و لحظه‌ای ایران و جهان"
+    },
+    {
+      "id": "naghal_bashi",
+      "title": "نقال‌باشی",
+      "enabled": true,
+      "description": "پادکست‌ها، فایل‌های صوتی و روایت‌های نقال‌باشی"
+    },
+    {
+      "id": "levi_athan",
+      "title": "«لویاتان» Leviathan",
+      "enabled": true,
+      "description": "کانال تلگرام لویاتان"
     }
   ]
 }
