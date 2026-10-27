@@ -71,12 +71,6 @@
       "title": "نقال‌باشی",
       "enabled": true,
       "description": "پادکست‌ها، فایل‌های صوتی و روایت‌های نقال‌باشی"
-    },
-    {
-      "id": "levi_athan",
-      "title": "«لویاتان» Leviathan",
-      "enabled": true,
-      "description": "کانال تلگرام لویاتان"
     }
   ]
 }
