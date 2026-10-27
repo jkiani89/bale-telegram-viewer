@@ -19,12 +19,6 @@
   },
   "channels": [
     {
-      "id": "durov",
-      "title": "Pavel Durov",
-      "enabled": true,
-      "description": "پست‌های رسمی پاول دورف (بنیان‌گذار تلگرام)"
-    },
-    {
       "id": "varzesh3",
       "title": "ورزش سه",
       "enabled": true,
