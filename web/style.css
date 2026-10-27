@@ -4,7 +4,6 @@
    ========================================================================== */
 
 :root {
-  /* پالت رنگی پیش‌فرض تلگرام */
   --bg-color: #f0f2f5;
   --header-bg: #2481cc;
   --header-text: #ffffff;
@@ -26,12 +25,10 @@
   --reply-border: #2481cc;
   --reply-bg: rgba(36, 129, 204, 0.08);
 
-  /* ابعاد و فواصل */
   --header-height: 56px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* اعمال تم تاریک بله */
 body.theme-dark {
   --bg-color: #0e1621;
   --header-bg: #17212b;
@@ -80,7 +77,7 @@ body {
 }
 
 /* ==========================================================================
-   Header & Search Bar
+   Header & Actions
    ========================================================================== */
 
 .app-header {
@@ -356,7 +353,6 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Reply & Forward headers */
 .message-reply-preview {
   border-right: 3px solid var(--reply-border);
   background: var(--reply-bg);
@@ -380,7 +376,6 @@ body {
   margin-bottom: 4px;
 }
 
-/* Media Cards */
 .message-media-wrap {
   margin: -8px -12px 6px -12px;
   border-radius: 16px 16px 4px 4px;
@@ -396,7 +391,6 @@ body {
   display: block;
 }
 
-/* Video Card Placeholder */
 .video-card-wrap {
   position: relative;
   background-color: #000;
@@ -453,7 +447,6 @@ body {
   margin-top: 6px;
 }
 
-/* Message Text & Typography */
 .message-text {
   font-size: 0.92rem;
   line-height: 1.55;
@@ -471,31 +464,6 @@ body {
   text-decoration: underline;
 }
 
-.message-text code {
-  background: rgba(0, 0, 0, 0.06);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 0.86rem;
-}
-
-body.theme-dark .message-text code {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.message-text pre {
-  background: rgba(0, 0, 0, 0.06);
-  padding: 8px;
-  border-radius: 6px;
-  overflow-x: auto;
-  margin: 6px 0;
-  font-family: monospace;
-  font-size: 0.84rem;
-  direction: ltr;
-  text-align: left;
-}
-
-/* Message Footer (Views & Time) */
 .message-meta {
   display: flex;
   align-items: center;
@@ -513,7 +481,147 @@ body.theme-dark .message-text code {
 }
 
 /* ==========================================================================
-   Lightbox (نمایش تمام‌صفحه تصویر)
+   Modal (افزودن کانال تلگرام)
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-card {
+  background: var(--surface-color);
+  color: var(--text-primary);
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 16px;
+}
+
+.modal-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.modal-input-wrap {
+  display: flex;
+  align-items: center;
+  background: var(--surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 8px 12px;
+  gap: 6px;
+}
+
+.input-prefix {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.modal-input-wrap input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  direction: ltr;
+  text-align: left;
+}
+
+.modal-feedback {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.modal-feedback.success {
+  background: rgba(34, 197, 94, 0.15);
+  color: #16a34a;
+}
+
+.modal-feedback.error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+}
+
+.modal-footer {
+  padding: 12px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: opacity 0.15s ease;
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Lightbox
    ========================================================================== */
 
 .lightbox-modal {
@@ -571,10 +679,6 @@ body.theme-dark .message-text code {
   object-fit: contain;
   border-radius: 8px;
 }
-
-/* ==========================================================================
-   States & Spinner
-   ========================================================================== */
 
 .loading-state, .empty-state {
   display: flex;

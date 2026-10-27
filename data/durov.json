@@ -7,7 +7,7 @@
     "avatar": "media/durov/avatar.webp",
     "subscribers": "10.2M",
     "verified": true,
-    "last_updated": 1793089230
+    "last_updated": 1793092143
   },
   "messages": [
     {
@@ -176,7 +176,7 @@
         "photos": [
           {
             "url": "media/durov/540_0.webp",
-            "remote_url": "https://cdn4.telesco.pe/file/vweEIZeIss4RbuvhVL1HrEn7pb36TaIjIz9hu4b7WWDuHbwRj2fp_tgvnQB_soljzBwnI9C4T8XVIvFfKu7JVP8vq9had0FtpgJ5Q8eDJdGHuCpkYksHBW5WYkD3HEEFhaEanCvDJlWNI6QZy3fXg10D47FWjyF1rkWlkyItO9ATzaEf1LBBC0Pp3EgwO5w01a6GiQ_XmQZUoZ_0klBSou4pwjQjiA2kbhALyv0Q6_chUEN70unUpTO2uv8tQeQlxGwtYOkaYUV3uepQEzLde7G-8x-CV5jQ9sm-GQuL2Zfsf6HpmhtZ_x7RFbvlf6fA9EOjEO0Yc4W37EJ9h2Sb2A.jpg"
+            "remote_url": "https://cdn4.telesco.pe/file/e66AoQZqGbpEI1ZbqYvlOyiDOs5FMKFnQaztVSpSY53t0V5RFsqhcy-tS1lSol30o4mUF0uySGFR1zPoiwy1PmCHgqOIaGdY6wdV4i3Wn8NIfM8owjoXXj6FxqR2Z70w7VAnkkyMJrrXyCfW_yWId9r90rePDbI3uhOXwdF7N3ZoUdLKJoBEgC-ixiw9Fwd69Yow0BelMU-ncg6PV1M7jvE1MYua2nenNn4jFY8YirNUKW28eZUc-GSvnUc6ZzZfyqnalWiNlsRfaLJtp4Vktn8a3ABaJpmaJfOoIkGke10A_ihijr6uoRHtHsDpS2LzCGYDCcmDI5O7sGrV5Tws4g.jpg"
           }
         ],
         "video": null
@@ -300,7 +300,7 @@
       "date": "2026-09-11T16:04:02+00:00",
       "timestamp": 1789142642,
       "text_html": "<i><b>🤝</b></i> Telegram has become the sponsor of <a href=\"https://codeforces.com/blog/entry/156620\" target=\"_blank\" rel=\"noopener noreferrer\">Codeforces</a> — the largest competitive programming platform in the world. <br><br> <i><b>⚡</b></i>CodeForces organizes over <b>100</b> coding contests every year and has <b>4 million</b> contestants signed up.<br><br><i><b>🌱</b></i> Since 2010, I've supported Codeforces through the companies I started.<br><br><i><b>🆙</b></i> But this year will be special. Its founder Mike wants to bring Codeforces to the next level — and we'll be happy to help him do that <i><b>🤝</b></i>",
-      "views": "3.74M",
+      "views": "3.75M",
       "media_type": "none",
       "media": {
         "photos": [],

@@ -2,10 +2,16 @@ name: Telegram Collector & Deploy
 
 on:
   schedule:
-    # اجرا هر 10 دقیقه یک‌بار به صورت کاملاً خودکار
+    # اجرای دوره‌ای هر ۱۰ دقیقه
     - cron: '*/10 * * * *'
   workflow_dispatch:
-    # دکمه اجرای دستی از داخل داشبورد گیت‌هاب
+    inputs:
+      channel_id:
+        description: 'شناسه کانال تلگرام برای افزودن و استخراج فوری (اختیاری)'
+        required: false
+        default: ''
+  issues:
+    types: [opened]
   push:
     branches:
       - main
@@ -14,7 +20,6 @@ on:
       - 'collector/**'
       - 'web/**'
 
-# جلوگیری از تداخل اجراهای هم‌زمان
 concurrency:
   group: telegram-collector
   cancel-in-progress: false
@@ -24,36 +29,72 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
 
     steps:
       - name: دریافت کد مخزن (Checkout)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
 
-      - name: راه‌اندازی مفسر پایتون
+      - name: راه‌اندازی پایتون
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: نصب وابستگی‌های پایتون
+      - name: نصب وابستگی‌ها
         run: |
           python -m pip install --upgrade pip
           pip install -r collector/requirements.txt
 
-      - name: اجرای اسکریپت جمع‌آوری پست‌ها و فشرده‌سازی مدیا
+      - name: پردازش درخواست افزودن کانال از Issue
+        if: github.event_name == 'issues'
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "عنوان ایشو: $ISSUE_TITLE"
+          # استخراج آیدی کانال از عباراتی مثل "add:isna94" یا "/add isna94" یا "isna94"
+          CHANNEL=$(echo "$ISSUE_TITLE" | sed -E 's/^(add:|add|\/add|کانال:)[[:space:]]*//i' | tr -d ' @' | tr -cd '[:alnum:]_')
+          echo "شناسه استخراج‌شده: $CHANNEL"
+
+          if [ -n "$CHANNEL" ]; then
+            python collector/add_channel.py --channel "$CHANNEL"
+            
+            # ثبت کامیت در شاخه main جهت ذخیره کانال جدید در config
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git add config/channels.json
+            git commit -m "feat(channels): add @$CHANNEL via Issue #$ISSUE_NUMBER" || echo "کانال از قبل موجود بود."
+            git push origin main || echo "بدون تغییر جدید در main."
+            
+            gh issue comment "$ISSUE_NUMBER" --body "✅ کانال **@$CHANNEL** با موفقیت بررسی، تایید و به مینی‌اپ تلگرام ریدر اضافه شد!"
+            gh issue close "$ISSUE_NUMBER"
+          else
+            gh issue comment "$ISSUE_NUMBER" --body "❌ شناسه کانال در عنوان ایشو پیدا نشد. لطفاً در عنوان بنویسید: add:channel_name"
+          fi
+
+      - name: پردازش ورودی دستی دستی (Workflow Dispatch Input)
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.channel_id != ''
+        run: |
+          python collector/add_channel.py --channel "${{ github.event.inputs.channel_id }}"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add config/channels.json
+          git commit -m "feat(channels): add @${{ github.event.inputs.channel_id }} via workflow_dispatch" || echo "کانال از قبل موجود بود."
+          git push origin main || echo "بدون تغییر جدید در main."
+
+      - name: اجرای چرخه کامل اسکرپ و فشرده‌سازی برای تمام کانال‌ها
         run: |
           python collector/main.py
 
       - name: آماده‌سازی پوشه استقرار (Dist)
         run: |
           mkdir -p dist
-          # کپی فایل‌های فرانت‌اند مینی‌اپ
           cp -r web/* dist/
-          # کپی داده‌های استخراج شده
           cp -r data dist/
-          # کپی عکس‌های بهینه‌شده
           if [ -d "media" ]; then
             cp -r media dist/
           fi

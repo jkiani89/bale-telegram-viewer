@@ -501,6 +501,70 @@ function escapeHtml(str) {
 }
 
 // ==========================================================================
+// مدیریت مودال افزودن کانال تلگرام
+// ==========================================================================
+
+function initAddChannelModal() {
+  const modal = document.getElementById('addChannelModal');
+  const addBtn = document.getElementById('addChannelBtn');
+  const closeBtn = document.getElementById('closeAddChannelModal');
+  const submitBtn = document.getElementById('submitAddChannelBtn');
+  const input = document.getElementById('newChannelInput');
+  const feedback = document.getElementById('addChannelFeedback');
+
+  const openModal = () => {
+    modal.style.display = 'flex';
+    input.value = '';
+    feedback.style.display = 'none';
+    input.focus();
+  };
+
+  const closeModal = () => {
+    modal.style.display = 'none';
+  };
+
+  addBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  submitBtn.addEventListener('click', () => {
+    let channelId = input.value.trim();
+    if (!channelId) {
+      showFeedback('لطفاً شناسه کانال را وارد کنید.', 'error');
+      return;
+    }
+
+    // پاکسازی ورودی
+    channelId = channelId.replace(/^https?:\/\/t\.me\/(s\/)?/i, '').replace(/^@/, '').trim();
+    channelId = channelId.replace(/[^a-zA-Z0-9_]/g, '');
+
+    if (channelId.length < 4) {
+      showFeedback('شناسه کانال نامعتبر است (حداقل ۴ کاراکتر).', 'error');
+      return;
+    }
+
+    // هدایت به ساخت Issue در گیت‌هاب (جهت فعال‌سازی خودکار اکشن)
+    const issueUrl = `https://github.com/jkiani89/bale-telegram-viewer/issues/new?title=add:${encodeURIComponent(channelId)}&body=Add+Telegram+Channel+@${encodeURIComponent(channelId)}`;
+    
+    showFeedback(`در حال انتقال... لطفاً در صفحه گیت‌هاب دکمه "Submit new issue" را بزنید تا کانال ظرف ۱ دقیقه خودکار اسکرپ و اضافه شود.`, 'success');
+    
+    setTimeout(() => {
+      window.open(issueUrl, '_blank');
+      closeModal();
+    }, 1200);
+  });
+
+  function showFeedback(text, type) {
+    feedback.textContent = text;
+    feedback.className = `modal-feedback ${type}`;
+    feedback.style.display = 'block';
+  }
+}
+
+// ==========================================================================
 // مدیریت رویدادهای جستجو و تازه‌سازی
 // ==========================================================================
 
@@ -568,6 +632,7 @@ async function bootstrap() {
   initBaleSDK();
   loadReadState();
   initLightbox();
+  initAddChannelModal();
   initEvents();
 
   const data = await fetchIndexData();

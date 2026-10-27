@@ -87,10 +87,11 @@ def parse_channel_page(html_content, channel_id):
 
     # بررسی محدودیت یا مسدود بودن پیش‌نمایش کانال
     error_wrap = soup.select_one(".tgme_page_error, .tgme_channel_info_error")
-    if error_wrap and "can't be displayed" in error_wrap.get_text():
+    page_title = soup.title.string if soup.title else ""
+    if (error_wrap and "can't be displayed" in error_wrap.get_text()) or "Contact @" in page_title:
         return {
             "status": "restricted",
-            "error": "این کانال اجازه پیش‌نمایش وب عمومی را نمی‌دهد.",
+            "error": "این شناسه یک کانال عمومی دارای پیش‌نمایش وب نیست (ممکن است حساب کاربری یا گروه خصوصی باشد).",
             "channel": None,
             "messages": []
         }

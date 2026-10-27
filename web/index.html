@@ -14,7 +14,7 @@
   <div id="app">
     <!-- هدر عمومی مینی‌اپ -->
     <header class="app-header" id="appHeader">
-      <!-- بخش کنترل برگشت در نمای کانال -->
+      <!-- دکمه برگشت در نمای کانال -->
       <button class="icon-btn back-btn" id="backBtn" aria-label="بازگشت" style="display: none;">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="9 18 15 12 9 6"></polyline>
@@ -27,12 +27,21 @@
       </div>
 
       <div class="header-actions">
+        <!-- دکمه افزودن کانال -->
+        <button class="icon-btn" id="addChannelBtn" aria-label="افزودن کانال">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+        <!-- دکمه جستجو -->
         <button class="icon-btn" id="searchToggleBtn" aria-label="جستجو">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
         </button>
+        <!-- دکمه تازه‌سازی -->
         <button class="icon-btn" id="refreshBtn" aria-label="تازه‌سازی">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
@@ -56,7 +65,6 @@
     <!-- نمای ۱: لیست کانال‌ها (صفحه اصلی) -->
     <main class="view-container active" id="channelsView">
       <div class="channels-list" id="channelsList">
-        <!-- کانال‌ها به صورت پویا رندر می‌شوند -->
         <div class="loading-state">
           <div class="spinner"></div>
           <p>در حال بارگذاری کانال‌ها...</p>
@@ -68,10 +76,33 @@
     <main class="view-container" id="feedView" style="display: none;">
       <div class="feed-content" id="feedContent">
         <div class="feed-messages" id="messagesList">
-          <!-- پیام‌های کانال به سبک تلگرام رندر می‌شوند -->
+          <!-- پیام‌ها -->
         </div>
       </div>
     </main>
+
+    <!-- مودال افزودن کانال تلگرام -->
+    <div class="modal-backdrop" id="addChannelModal" style="display: none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>➕ افزودن کانال تلگرام</h3>
+          <button class="modal-close-btn" id="closeAddChannelModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-desc">
+            شناسه هر کانال عمومی تلگرام را وارد کنید. پس از ثبت، سامانه به صورت خودکار کانال را بررسی کرده و پست‌های آن را ظرف ۱ الی ۲ دقیقه به مینی‌اپ اضافه می‌کند.
+          </p>
+          <div class="modal-input-wrap">
+            <span class="input-prefix">@</span>
+            <input type="text" id="newChannelInput" placeholder="مثال: isna94 یا varzesh3" autocomplete="off" autocorrect="off" autocapitalize="none">
+          </div>
+          <div id="addChannelFeedback" class="modal-feedback" style="display: none;"></div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="submitAddChannelBtn">تایید و افزودن کانال</button>
+        </div>
+      </div>
+    </div>
 
     <!-- لایت‌باکس نمایش تمام‌صفحه عکس -->
     <div class="lightbox-modal" id="lightboxModal" style="display: none;">
