@@ -581,14 +581,63 @@ function renderFeedMessages(previousLastReadId = 0) {
       }
     }
 
-    // صوت و ویس (Voice & Audio Player)
+    // صوت و ویس (Voice & Audio Player / Card)
     let audioHtml = '';
-    if (msg.media && msg.media.audio && msg.media.audio.local_audio_url) {
+    if (msg.media && msg.media.audio) {
       const a = msg.media.audio;
-      audioHtml = `
-        <div class="chat-audio-wrap">
-          <span class="chat-audio-title">🎵 ${escapeHtml(a.title || 'پیام صوتی')} ${a.duration ? `(${escapeHtml(a.duration)})` : ''}</span>
-          <audio src="${a.local_audio_url}" controls class="chat-audio-player" preload="metadata"></audio>
+      if (a.local_audio_url) {
+        audioHtml = `
+          <div class="chat-audio-wrap">
+            <span class="chat-audio-title">🎵 ${escapeHtml(a.title || 'پیام صوتی')} ${a.duration ? `(${escapeHtml(a.duration)})` : ''}</span>
+            <audio src="${a.local_audio_url}" controls class="chat-audio-player" preload="metadata"></audio>
+          </div>
+        `;
+      } else {
+        audioHtml = `
+          <div class="chat-audio-card">
+            <div class="audio-card-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+              </svg>
+            </div>
+            <div class="audio-card-info">
+              <div class="audio-card-title">${escapeHtml(a.title || 'فایل صوتی')}</div>
+              ${a.duration ? `<div class="audio-card-meta-text">${escapeHtml(a.duration)}</div>` : ''}
+            </div>
+            <a href="${a.original_url || msg.original_url}" target="_blank" rel="noopener noreferrer" class="audio-card-action">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              شنیدن در تلگرام
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    // فایل ضمیمه و اسناد (Document Card)
+    let docHtml = '';
+    if (msg.media && msg.media.document) {
+      const d = msg.media.document;
+      docHtml = `
+        <div class="chat-doc-card">
+          <div class="doc-card-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+            </svg>
+          </div>
+          <div class="doc-card-info">
+            <div class="doc-card-title">${escapeHtml(d.title || 'سند ضمیمه')}</div>
+            ${d.extra ? `<div class="doc-card-meta-text">${escapeHtml(d.extra)}</div>` : ''}
+          </div>
+          <a href="${d.original_url || msg.original_url}" target="_blank" rel="noopener noreferrer" class="doc-card-action">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            دانلود
+          </a>
         </div>
       `;
     }
@@ -624,6 +673,7 @@ function renderFeedMessages(previousLastReadId = 0) {
         ${mediaHtml}
         ${videoHtml}
         ${audioHtml}
+        ${docHtml}
         ${msg.text_html ? `<div class="message-text">${msg.text_html}</div>` : ''}
         <div class="message-meta">
           ${msg.views ? `

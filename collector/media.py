@@ -1,10 +1,12 @@
 """
-ماژول دانلود، بهینه‌سازی، تبدیل به WebP و پاکسازی رسانه‌های منقضی‌شده.
+ماژول دانلود، بهینه‌سازی، تبدیل به WebP، فشرده‌سازی صوتی و پاکسازی رسانه‌های منقضی‌شده.
 """
 
 import io
 import os
 import logging
+import subprocess
+import shutil
 from PIL import Image
 import requests
 
@@ -116,6 +118,11 @@ def download_media_file(url, output_path, max_size_mb=12, session=None):
                         f.write(chunk)
 
             os.replace(temp_path, output_path)
+
+            # در صورت صوتی بودن فایل، فشرده‌سازی با ffmpeg (بیت‌ریت 48k مونو جهت کاهش ۸۰٪ حجم)
+            if output_path.lower().endswith((".mp3", ".ogg", ".m4a", ".wav")):
+                compress_audio_file(output_path, target_bitrate="48k")
+
             size_kb = os.path.getsize(output_path) // 1024
             logger.info(f"مدیا با موفقیت ذخیره شد ({size_kb} KB): {output_path}")
             return True
@@ -123,6 +130,45 @@ def download_media_file(url, output_path, max_size_mb=12, session=None):
     except Exception as e:
         logger.warning(f"خطا در دانلود مدیا {url}: {e}")
         return False
+
+
+def compress_audio_file(file_path, target_bitrate="48k"):
+    """
+    فشرده‌سازی فایل صوتی با استفاده از ffmpeg (در صورت در دسترس بودن در سیستم مانند سرورهای GitHub Actions).
+    بیت‌ریت پیش‌فرض 48k همراه با تبدیل به مونو، حجم پادکست‌ها و فایل‌های صوتی را تا ۸۰-۹۰٪ کاهش می‌دهد.
+    """
+    ffmpeg_bin = shutil.which("ffmpeg")
+    if not ffmpeg_bin:
+        return False
+
+    tmp_out = file_path + ".compressed.mp3"
+    try:
+        cmd = [
+            ffmpeg_bin, "-y",
+            "-i", file_path,
+            "-b:a", target_bitrate,
+            "-ac", "1",
+            tmp_out
+        ]
+        res = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=90)
+        if res.returncode == 0 and os.path.exists(tmp_out):
+            orig_size = os.path.getsize(file_path)
+            new_size = os.path.getsize(tmp_out)
+            if new_size < orig_size:
+                os.replace(tmp_out, file_path)
+                logger.info(f"فایل صوتی با ffmpeg بهینه‌سازی شد: {orig_size // 1024}KB -> {new_size // 1024}KB")
+                return True
+            else:
+                if os.path.exists(tmp_out):
+                    os.remove(tmp_out)
+    except Exception as e:
+        logger.warning(f"خطا در بهینه‌سازی ffmpeg برای {file_path}: {e}")
+        if os.path.exists(tmp_out):
+            try:
+                os.remove(tmp_out)
+            except Exception:
+                pass
+    return False
 
 
 def cleanup_orphaned_media(channel_id, active_local_paths, base_media_dir="media"):

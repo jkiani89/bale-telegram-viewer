@@ -227,27 +227,62 @@ def parse_channel_page(html_content, channel_id):
                 "original_url": f"https://t.me/{channel_id}/{post_id}"
             }
 
-        # صوت و ویس (Voice & Audio)
+        # صوت، ویس و اسناد (Audio, Voice & Documents)
         audio_info = None
-        audio_el = msg_el.select_one("audio, .tgme_widget_message_voice, .tgme_widget_message_document")
+        document_info = None
+
+        # الف) ویس یا صوت با پلیر وب مستقیم
+        audio_el = msg_el.select_one("audio, .tgme_widget_message_voice")
         if audio_el:
-            media_type = "audio"
             actual_audio_tag = audio_el if audio_el.name == "audio" else audio_el.select_one("audio")
             audio_src = actual_audio_tag.get("src") if actual_audio_tag else None
-            
             dur_el = msg_el.select_one(".tgme_widget_message_voice_duration, .audio_duration")
             audio_duration = dur_el.get_text(strip=True) if dur_el else None
-            
             title_el = msg_el.select_one(".tgme_widget_message_document_title")
             audio_title = title_el.get_text(strip=True) if title_el else "پیام صوتی"
 
             if audio_src:
+                media_type = "audio"
                 audio_info = {
                     "title": audio_title,
                     "duration": audio_duration,
                     "remote_audio_url": audio_src,
                     "local_audio_path": f"media/{channel_id}/{post_id}.mp3",
-                    "original_url": f"https://t.me/{channel_id}/{post_id}"
+                    "original_url": f"https://t.me/{channel_id}/{post_id}",
+                    "is_streamable": True
+                }
+
+        # ب) فایل ضمیمه یا موزیک/پادکست (Document Wrap)
+        doc_wrap = msg_el.select_one(".tgme_widget_message_document_wrap")
+        if doc_wrap:
+            doc_icon = doc_wrap.select_one(".tgme_widget_message_document_icon")
+            is_audio_doc = bool(doc_icon and "audio" in doc_icon.get("class", []))
+            
+            title_el = doc_wrap.select_one(".tgme_widget_message_document_title")
+            extra_el = doc_wrap.select_one(".tgme_widget_message_document_extra")
+            
+            doc_title = title_el.get_text(strip=True) if title_el else ("فایل صوتی" if is_audio_doc else "سند ضمیمه")
+            doc_extra = extra_el.get_text(strip=True) if extra_el else ""
+            doc_url = doc_wrap.get("href") or f"https://t.me/{channel_id}/{post_id}"
+
+            if is_audio_doc:
+                if not audio_info:
+                    media_type = "audio"
+                    audio_info = {
+                        "title": doc_title,
+                        "duration": doc_extra,
+                        "remote_audio_url": None,
+                        "local_audio_path": None,
+                        "original_url": doc_url,
+                        "is_streamable": False
+                    }
+            else:
+                if media_type == "none":
+                    media_type = "document"
+                document_info = {
+                    "title": doc_title,
+                    "extra": doc_extra,
+                    "original_url": doc_url
                 }
 
         # ایجاد شیء نهایی پیام
@@ -264,7 +299,8 @@ def parse_channel_page(html_content, channel_id):
                     for rp in remote_photos
                 ],
                 "video": video_info,
-                "audio": audio_info
+                "audio": audio_info,
+                "document": document_info
             },
             "forward_from": forward_from,
             "reply_to": reply_to,
