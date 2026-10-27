@@ -863,16 +863,19 @@ async function triggerDirectChannelAdd(channelId, onProgress, onSuccess, onError
 
       // پایش خودکار بروزرسانی ایندکس هر ۸ ثانیه
       let attempts = 0;
+      const targetIds = channelId.split(',').map(s => s.trim().toLowerCase());
       const interval = setInterval(async () => {
         attempts++;
         const indexData = await fetchIndexData();
-        const found = (indexData.channels || []).some(c => c.id.toLowerCase() === channelId.toLowerCase());
+        const found = targetIds.some(tid => (indexData.channels || []).some(c => c.id.toLowerCase() === tid));
 
         if (found) {
           clearInterval(interval);
           state.channels = indexData.channels;
           renderChannelsList();
-          onSuccess(`کانال @${channelId} با موفقیت به مینی‌اپ اضافه شد!`);
+          onSuccess(targetIds.length > 1
+            ? `کانال‌های درخواستی با موفقیت به مینی‌اپ اضافه شدند!`
+            : `کانال @${targetIds[0]} با موفقیت به مینی‌اپ اضافه شد!`);
         } else if (attempts >= 15) {
           clearInterval(interval);
           onProgress(`پردازش ممکن است کمی بیشتر طول بکشد. صفحه را تا یک دقیقه دیگر تازه کنید.`);
@@ -940,25 +943,29 @@ function initAddChannelModal() {
   });
 
   submitBtn.addEventListener('click', () => {
-    let channelId = input.value.trim();
-    if (!channelId) {
+    let rawInput = input.value.trim();
+    if (!rawInput) {
       showFeedback('لطفاً شناسه کانال را وارد کنید.', 'error');
       return;
     }
 
-    channelId = channelId.replace(/^https?:\/\/t\.me\/(s\/)?/i, '').replace(/^@/, '').trim();
-    channelId = channelId.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();
+    // پشتیبانی از افزودن تکی یا چندتایی (گروهی) با کاما، فاصله یا خط جدید
+    const tokens = rawInput.split(/[,;\s\n]+/);
+    const validChannels = tokens
+      .map(t => t.replace(/^https?:\/\/t\.me\/(s\/)?/i, '').replace(/^@/, '').replace(/[^a-zA-Z0-9_]/g, '').toLowerCase())
+      .filter(t => t.length >= 4);
 
-    if (channelId.length < 4) {
-      showFeedback('شناسه کانال نامعتبر است (حداقل ۴ کاراکتر).', 'error');
+    if (validChannels.length === 0) {
+      showFeedback('شناسه کانال نامعتبر است (حداقل ۴ کاراکتر انگلیسی).', 'error');
       return;
     }
 
+    const payloadChannel = validChannels.join(',');
     submitBtn.disabled = true;
     submitBtn.textContent = 'در حال پردازش...';
 
     triggerDirectChannelAdd(
-      channelId,
+      payloadChannel,
       (progressText) => {
         showFeedback(progressText, 'info');
       },
@@ -968,7 +975,7 @@ function initAddChannelModal() {
         submitBtn.textContent = 'تایید و افزودن کانال';
         setTimeout(() => {
           closeModal();
-          openChannelFeed(channelId);
+          openChannelFeed(validChannels[0]);
         }, 1500);
       },
       (errorText) => {

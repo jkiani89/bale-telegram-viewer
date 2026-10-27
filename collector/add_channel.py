@@ -12,8 +12,17 @@ import sys
 import requests
 from bs4 import BeautifulSoup
 
-from parser import parse_channel_page
-from main import run_collector
+# اطمینان از قرار گرفتن پوشه collector در مسیر ایمپورت‌ها
+collector_dir = os.path.dirname(os.path.abspath(__file__))
+if collector_dir not in sys.path:
+    sys.path.insert(0, collector_dir)
+
+try:
+    from parser import parse_channel_page
+    from main import run_collector
+except ImportError:
+    from collector.parser import parse_channel_page
+    from collector.main import run_collector
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("AddChannel")
@@ -95,9 +104,32 @@ def verify_and_add_channel(channel_id, config_path="config/channels.json"):
         return False, f"خطای سیستمی در ارتباط با تلگرام: {str(e)}"
 
 
+def add_channels_bulk(channel_inputs, config_path="config/channels.json"):
+    """پشتیبانی از افزودن یک یا چند کانال تلگرام به صورت همزمان (تکی یا گروهی)."""
+    raw_list = re.split(r"[,;\s\n\r]+", channel_inputs.strip())
+    cleaned_ids = []
+    for raw in raw_list:
+        cid = clean_channel_id(raw)
+        if cid and len(cid) >= 4 and cid not in cleaned_ids:
+            cleaned_ids.append(cid)
+
+    if not cleaned_ids:
+        return False, "شناسه کانال نامعتبر است (حداقل ۴ کاراکتر)."
+
+    results = []
+    overall_success = False
+    for cid in cleaned_ids:
+        ok, msg = verify_and_add_channel(cid, config_path=config_path)
+        if ok:
+            overall_success = True
+        results.append(f"@{cid}: {msg}")
+
+    return overall_success, "\n".join(results)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="افزودن کانال تلگرام به Bale Telegram Viewer")
-    parser.add_argument("--channel", required=True, help="شناسه کانال تلگرام (مثال: isna یا @isna)")
+    parser.add_argument("--channel", required=True, help="شناسه یک یا چند کانال تلگرام (مثال: isna یا @isna,zoomit)")
     parser.add_argument("--config", default="config/channels.json", help="مسیر فایل کانفیگ")
     args = parser.parse_args()
 
@@ -105,6 +137,6 @@ if __name__ == "__main__":
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     os.chdir(root_dir)
 
-    success, msg = verify_and_add_channel(args.channel, config_path=args.config)
+    success, msg = add_channels_bulk(args.channel, config_path=args.config)
     print(msg)
     sys.exit(0 if success else 1)
