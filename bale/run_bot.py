@@ -16,7 +16,7 @@ def send_welcome_message(chat_id):
     url = f"{BALE_API}/bot{TOKEN}/sendMessage"
     payload = {
         "chat_id": chat_id,
-        "text": "سلام! 👋\nبه تلگرام ریدر در بله خوش آمدید.\nبرای مطالعه پست‌های کانال‌های عمومی تلگرام بدون نیاز به فیلترشکن، روی دکمه زیر کلیک کنید:",
+        "text": "سلام! 👋\nبرای ورود کلیک کنید.",
         "reply_markup": {
             "inline_keyboard": [
                 [
