@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 import requests
 
 from parser import parse_channel_page
-from media import download_and_optimize_image, cleanup_orphaned_media
+from media import download_and_optimize_image, download_media_file, cleanup_orphaned_media
 
 logging.basicConfig(
     level=logging.INFO,
@@ -70,6 +70,12 @@ def run_collector(config_path="config/channels.json", data_dir="data", media_dir
     img_conf = settings.get("image_compression", {})
     max_img_width = img_conf.get("max_width", 1080)
     img_quality = img_conf.get("quality", 75)
+
+    media_limits = settings.get("media_limits", {})
+    download_videos = media_limits.get("download_short_videos", True)
+    max_video_size_mb = media_limits.get("max_video_size_mb", 12)
+    download_audios = media_limits.get("download_audio", True)
+    max_audio_size_mb = media_limits.get("max_audio_size_mb", 15)
 
     os.makedirs(data_dir, exist_ok=True)
     os.makedirs(media_dir, exist_ok=True)
@@ -157,19 +163,47 @@ def run_collector(config_path="config/channels.json", data_dir="data", media_dir
                     ):
                         active_media_files.add(full_path)
 
-                # تامبنیل ویدیو
+                # تامبنیل ویدیو و خود فایل ویدیو
                 v_info = msg.get("_video_info")
-                if v_info and v_info.get("remote_thumb_url"):
-                    thumb_rel_path = v_info["local_thumb_path"]
-                    thumb_full_path = os.path.join(os.getcwd(), thumb_rel_path)
-                    if download_and_optimize_image(
-                        v_info["remote_thumb_url"],
-                        thumb_full_path,
-                        max_width=max_img_width,
-                        quality=img_quality,
+                if v_info:
+                    if v_info.get("remote_thumb_url"):
+                        thumb_rel_path = v_info["local_thumb_path"]
+                        thumb_full_path = os.path.join(os.getcwd(), thumb_rel_path)
+                        if download_and_optimize_image(
+                            v_info["remote_thumb_url"],
+                            thumb_full_path,
+                            max_width=max_img_width,
+                            quality=img_quality,
+                            session=session
+                        ):
+                            active_media_files.add(thumb_full_path)
+
+                    # دانلود ویدیوی کوتاه در صورت وجود
+                    if download_videos and v_info.get("remote_video_url"):
+                        video_rel_path = v_info["local_video_path"]
+                        video_full_path = os.path.join(os.getcwd(), video_rel_path)
+                        if download_media_file(
+                            v_info["remote_video_url"],
+                            video_full_path,
+                            max_size_mb=max_video_size_mb,
+                            session=session
+                        ):
+                            active_media_files.add(video_full_path)
+                            msg["media"]["video"]["local_video_url"] = video_rel_path
+
+                # صوت و ویس (Voice & Audio)
+                a_info = msg.get("_audio_info")
+                if a_info and download_audios and a_info.get("remote_audio_url"):
+                    audio_rel_path = a_info["local_audio_path"]
+                    audio_full_path = os.path.join(os.getcwd(), audio_rel_path)
+                    if download_media_file(
+                        a_info["remote_audio_url"],
+                        audio_full_path,
+                        max_size_mb=max_audio_size_mb,
                         session=session
                     ):
-                        active_media_files.add(thumb_full_path)
+                        active_media_files.add(audio_full_path)
+                        msg["media"]["audio"]["local_audio_url"] = audio_rel_path
 
             # ۳. پاکسازی مدیاهای منقضی‌شده کانال
             cleanup_orphaned_media(channel_id, active_media_files, base_media_dir=media_dir)
@@ -180,6 +214,7 @@ def run_collector(config_path="config/channels.json", data_dir="data", media_dir
                 m_copy = dict(msg)
                 m_copy.pop("_remote_photos", None)
                 m_copy.pop("_video_info", None)
+                m_copy.pop("_audio_info", None)
                 clean_messages.append(m_copy)
 
             # ۵. ذخیره فایل فید کانال: data/<channel_id>.json

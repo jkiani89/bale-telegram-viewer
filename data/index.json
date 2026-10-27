@@ -1,107 +1,16 @@
 {
-  "updated_at": 1793094654,
+  "updated_at": 1793105787,
   "channels": [
-    {
-      "id": "durov",
-      "title": "Pavel Durov",
-      "avatar": "media/durov/avatar.webp",
-      "description": "پست‌های رسمی پاول دورف (بنیان‌گذار تلگرام)",
-      "last_post": {
-        "id": 552,
-        "date": "2026-10-11T14:52:40+00:00",
-        "timestamp": 1791730360,
-        "snippet": "✨ Designers × AI  🆕 The mockup era is over. Today’s AI tools give every designer a superpo..."
-      },
-      "total_posts": 20
-    },
     {
       "id": "varzesh3",
       "title": "ورزش سه",
       "avatar": "media/varzesh3/avatar.webp",
       "description": "اخبار ورزشی ایران و جهان",
       "last_post": {
-        "id": 305315,
-        "date": "2026-10-27T09:43:04+00:00",
-        "timestamp": 1793094184,
-        "snippet": "#لژیونرها | 🇲🇾 شهاب زاهدی در ترکیب جوهور دارالتعظیم برابر پورت ام آی تی  ⏰ ساعت 13:30 🌏 #ل..."
-      },
-      "total_posts": 20
-    },
-    {
-      "id": "isna94",
-      "title": "خبرگزاری ایسنا",
-      "avatar": "media/isna94/avatar.webp",
-      "description": "کانال رسمی خبرگزاری دانشجویان ایران (ایسنا)",
-      "last_post": {
-        "id": 410589,
-        "date": "2026-10-27T09:49:24+00:00",
-        "timestamp": 1793094564,
-        "snippet": "🎥 طوفان شدید در آنتالیای ترکیه چهار کشته و یک زخمی بر جا گذاشت 🔹گردباد در منطقه کپز آنتالی..."
-      },
-      "total_posts": 15
-    },
-    {
-      "id": "zoomit",
-      "title": "زومیت",
-      "avatar": "media/zoomit/avatar.webp",
-      "description": "اخبار فناوری، موبایل، بررسی گجت‌ها و هوش مصنوعی",
-      "last_post": {
-        "id": 9,
-        "date": "2025-12-27T17:51:12+00:00",
-        "timestamp": 1766857872,
-        "snippet": "🔥Did you like any usernames?   📲Follow the link below and pick one you like!  https://t.me..."
-      },
-      "total_posts": 2
-    },
-    {
-      "id": "digiato",
-      "title": "دیجیاتو",
-      "avatar": "media/digiato/avatar.webp",
-      "description": "زندگی با تکنولوژی، اخبار فناوری و بررسی خودرو",
-      "last_post": {
-        "id": 114671,
-        "date": "2026-10-27T09:45:18+00:00",
-        "timestamp": 1793094318,
-        "snippet": "🔄وب‌سایت دیکشنری دات‌کام واژه سال ۲۰۲۶ را انتخاب کرد: «مکسینگ»  🔸«مکسینگ» (Maxxing) بیشتر ..."
-      },
-      "total_posts": 20
-    },
-    {
-      "id": "farsna",
-      "title": "خبرگزاری فارس",
-      "avatar": "media/farsna/avatar.webp",
-      "description": "اخبار سیاسی، اقتصادی، اجتماعی و بین‌المللی",
-      "last_post": {
-        "id": 471017,
-        "date": "2026-10-27T09:44:01+00:00",
-        "timestamp": 1793094241,
-        "snippet": "🖼 رأی‌گیری در انتخابات اسرائیل چگونه انجام می‌شود؟ @Farsna"
-      },
-      "total_posts": 20
-    },
-    {
-      "id": "akharinkhabar",
-      "title": "آخرین خبر",
-      "avatar": "media/akharinkhabar/avatar.webp",
-      "description": "سریع‌ترین و داغ‌ترین اخبار روز ایران و جهان",
-      "last_post": {
-        "id": 640906,
-        "date": "2026-10-27T09:46:21+00:00",
-        "timestamp": 1793094381,
-        "snippet": "🔺🔻 وزیر خارجه عمان: حل موضوع هسته‌ای ایران و تنگه هرمز ناممکن شده‌، زیرا قدرت‌های خارجی هم..."
-      },
-      "total_posts": 20
-    },
-    {
-      "id": "khabar_fouri",
-      "title": "خبر فوری",
-      "avatar": "media/khabar_fouri/avatar.webp",
-      "description": "اخبار فوری و لحظه‌ای ایران و جهان",
-      "last_post": {
-        "id": 553613,
-        "date": "2026-10-27T09:46:32+00:00",
-        "timestamp": 1793094392,
-        "snippet": "بیانیه ۲۹ کشور از جمله بریتانیا و ایالات متحده: واقعه فیرفورد آمادگی سپاه پاسداران را برای..."
+        "id": 305329,
+        "date": "2026-10-27T12:48:01+00:00",
+        "timestamp": 1793105281,
+        "snippet": "بزرگ ازبکستان را زمین‌گیر کردند؛ در حضور کامل پورعلی‌گنجی بازنده بودند  🔈 پایان مسابقه - پ..."
       },
       "total_posts": 20
     }

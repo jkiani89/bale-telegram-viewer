@@ -9,6 +9,12 @@
       "quality": 75,
       "max_width": 1080
     },
+    "media_limits": {
+      "download_short_videos": true,
+      "max_video_size_mb": 12,
+      "download_audio": true,
+      "max_audio_size_mb": 15
+    },
     "telegram_base_url": "https://t.me/s"
   },
   "channels": [
@@ -59,18 +65,6 @@
       "title": "خبر فوری",
       "enabled": true,
       "description": "اخبار فوری و لحظه‌ای ایران و جهان"
-    },
-    {
-      "id": "naghalbashi",
-      "title": "نقال باشی",
-      "enabled": true,
-      "description": "اینجا فقط خوانده‌های من است، دفترچه‌ای صوتی از نقلی میان روایت‌های تاریخ.کنارم باش؛ به صرف شنیدن خوانشی شخصی از آنچه می‌"
-    },
-    {
-      "id": "naghal_bashi",
-      "title": "نقال باشی",
-      "enabled": true,
-      "description": "برخی از نوشته‌ها و داشته‌هایم را با شما به اشتراک می‌گذارم😊برای اطلاعات بیشتر به صفحه اینستای من، Naghal.bashi سر بزنید."
     }
   ]
 }

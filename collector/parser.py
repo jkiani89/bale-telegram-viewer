@@ -202,24 +202,53 @@ def parse_channel_page(html_content, channel_id):
             media_type = "photo"
 
         # ویدیو
-        video_el = msg_el.select_one(".tgme_widget_message_video_player, .tgme_widget_message_video")
+        video_el = msg_el.select_one(".tgme_widget_message_video_player, .tgme_widget_message_video, video")
         if video_el:
-            media_type = "video_link"
-            duration_el = video_el.select_one(".message_video_duration, .tgme_widget_message_video_duration")
+            media_type = "video"
+            duration_el = msg_el.select_one(".message_video_duration, .tgme_widget_message_video_duration")
             duration = duration_el.get_text(strip=True) if duration_el else None
+
+            # استخراج آدرس مستقیم ویدیو (mp4)
+            actual_video_tag = video_el if video_el.name == "video" else video_el.select_one("video")
+            video_src = actual_video_tag.get("src") if actual_video_tag else None
 
             # تامبنیل ویدیو
             thumb_url = None
-            thumb_wrap = video_el.select_one(".tgme_widget_message_video_thumb")
+            thumb_wrap = msg_el.select_one(".tgme_widget_message_video_thumb")
             if thumb_wrap:
                 thumb_url = extract_background_image_url(thumb_wrap.get("style", ""))
 
             video_info = {
                 "duration": duration,
+                "remote_video_url": video_src,
+                "local_video_path": f"media/{channel_id}/{post_id}.mp4" if video_src else None,
                 "remote_thumb_url": thumb_url,
                 "local_thumb_path": f"media/{channel_id}/{post_id}_thumb.webp" if thumb_url else None,
                 "original_url": f"https://t.me/{channel_id}/{post_id}"
             }
+
+        # صوت و ویس (Voice & Audio)
+        audio_info = None
+        audio_el = msg_el.select_one("audio, .tgme_widget_message_voice, .tgme_widget_message_document")
+        if audio_el:
+            media_type = "audio"
+            actual_audio_tag = audio_el if audio_el.name == "audio" else audio_el.select_one("audio")
+            audio_src = actual_audio_tag.get("src") if actual_audio_tag else None
+            
+            dur_el = msg_el.select_one(".tgme_widget_message_voice_duration, .audio_duration")
+            audio_duration = dur_el.get_text(strip=True) if dur_el else None
+            
+            title_el = msg_el.select_one(".tgme_widget_message_document_title")
+            audio_title = title_el.get_text(strip=True) if title_el else "پیام صوتی"
+
+            if audio_src:
+                audio_info = {
+                    "title": audio_title,
+                    "duration": audio_duration,
+                    "remote_audio_url": audio_src,
+                    "local_audio_path": f"media/{channel_id}/{post_id}.mp3",
+                    "original_url": f"https://t.me/{channel_id}/{post_id}"
+                }
 
         # ایجاد شیء نهایی پیام
         msg_obj = {
@@ -234,13 +263,15 @@ def parse_channel_page(html_content, channel_id):
                     {"url": rp["local_rel_path"], "remote_url": rp["remote_url"]}
                     for rp in remote_photos
                 ],
-                "video": video_info
+                "video": video_info,
+                "audio": audio_info
             },
             "forward_from": forward_from,
             "reply_to": reply_to,
             "original_url": f"https://t.me/{channel_id}/{post_id}",
             "_remote_photos": remote_photos,  # متادیتای داخلی برای دانلود
-            "_video_info": video_info
+            "_video_info": video_info,
+            "_audio_info": audio_info
         }
 
         messages.append(msg_obj)

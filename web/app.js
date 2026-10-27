@@ -151,6 +151,68 @@ async function fetchChannelFeed(channelId) {
 }
 
 // ==========================================================================
+// مدیریت کانال‌های حذف‌شده توسط کاربر (Hidden / Deleted Channels)
+// ==========================================================================
+
+const HIDDEN_CHANNELS_KEY = 'bale_tg_hidden_channels';
+
+function getHiddenChannels() {
+  try {
+    const raw = localStorage.getItem(HIDDEN_CHANNELS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function hideChannel(channelId) {
+  const list = getHiddenChannels();
+  if (!list.includes(channelId)) {
+    list.push(channelId);
+    localStorage.setItem(HIDDEN_CHANNELS_KEY, JSON.stringify(list));
+  }
+}
+
+let pendingDeleteChannelId = null;
+
+function initDeleteChannelModal() {
+  const modal = document.getElementById('deleteChannelModal');
+  const closeBtn = document.getElementById('closeDeleteModal');
+  const cancelBtn = document.getElementById('cancelDeleteBtn');
+  const confirmBtn = document.getElementById('confirmDeleteBtn');
+
+  const closeModal = () => {
+    modal.style.display = 'none';
+    pendingDeleteChannelId = null;
+  };
+
+  closeBtn.addEventListener('click', closeModal);
+  cancelBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  confirmBtn.addEventListener('click', () => {
+    if (pendingDeleteChannelId) {
+      hideChannel(pendingDeleteChannelId);
+      state.channels = state.channels.filter(c => c.id !== pendingDeleteChannelId);
+      renderChannelsList();
+      closeModal();
+    }
+  });
+}
+
+function openDeleteChannelModal(channelId) {
+  pendingDeleteChannelId = channelId;
+  const ch = state.channels.find(c => c.id === channelId);
+  const modal = document.getElementById('deleteChannelModal');
+  const textEl = document.getElementById('deleteModalText');
+  
+  textEl.textContent = `آیا می‌خواهید کانال «${ch ? ch.title : channelId}» از لیست کانال‌های شما حذف شود؟`;
+  modal.style.display = 'flex';
+}
+
+// ==========================================================================
 // رندرینگ رابط کاربری (UI Rendering)
 // ==========================================================================
 
@@ -158,8 +220,11 @@ function renderChannelsList() {
   const container = document.getElementById('channelsList');
   if (!container) return;
 
+  const hiddenList = getHiddenChannels();
+  const visibleChannels = state.channels.filter(c => !hiddenList.includes(c.id));
+
   const query = state.searchQuery.trim().toLowerCase();
-  const filtered = state.channels.filter(ch => {
+  const filtered = visibleChannels.filter(ch => {
     if (!query) return true;
     return (
       (ch.title && ch.title.toLowerCase().includes(query)) ||
@@ -174,14 +239,14 @@ function renderChannelsList() {
 
     container.innerHTML = `
       <div class="empty-state">
-        <p>کانالی در لیست ذخیره‌شده‌ها با عبارت «${escapeHtml(query)}» یافت نشد.</p>
+        <p>کانالی با عبارت «${escapeHtml(query)}» یافت نشد.</p>
         ${isPotentialId ? `
           <div class="online-search-card">
             <div class="online-search-header">
               <span class="online-badge">⚡ آنلاین</span>
-              <h4>جستجوی زنده در تلگرام</h4>
+              <h4>افزودن مستقیم به مینی‌اپ</h4>
             </div>
-            <p>می‌توانید پست‌های کانال عمومی <b>@${escapeHtml(cleanQ)}</b> را مستقیماً از تلگرام بخوانید:</p>
+            <p>می‌توانید کانال عمومی <b>@${escapeHtml(cleanQ)}</b> را مستقیماً دریافت و به لیست اضافه کنید:</p>
             <button class="btn btn-primary" id="btnSearchOnlineNow">
               🔍 دریافت فوری پست‌های @${escapeHtml(cleanQ)}
             </button>
@@ -258,10 +323,46 @@ function renderChannelsList() {
     `;
   }).join('');
 
-  // رویداد کلیک روی هر کانال
+  // رویدادهای لمس طولانی (Long-Press) و کلیک
   container.querySelectorAll('.channel-item').forEach(el => {
-    el.addEventListener('click', () => {
-      const chId = el.getAttribute('data-channel-id');
+    const chId = el.getAttribute('data-channel-id');
+    let pressTimer = null;
+    let didLongPress = false;
+
+    const startPress = () => {
+      didLongPress = false;
+      el.classList.add('long-pressing');
+      pressTimer = setTimeout(() => {
+        didLongPress = true;
+        el.classList.remove('long-pressing');
+        if (navigator.vibrate) {
+          try { navigator.vibrate(60); } catch(e) {}
+        }
+        openDeleteChannelModal(chId);
+      }, 600);
+    };
+
+    const cancelPress = () => {
+      clearTimeout(pressTimer);
+      el.classList.remove('long-pressing');
+    };
+
+    // رویدادهای لمسی موبایل
+    el.addEventListener('touchstart', startPress, { passive: true });
+    el.addEventListener('touchend', cancelPress);
+    el.addEventListener('touchmove', cancelPress);
+
+    // رویدادهای ماوس دسکتاپ
+    el.addEventListener('mousedown', startPress);
+    el.addEventListener('mouseup', cancelPress);
+    el.addEventListener('mouseleave', cancelPress);
+
+    el.addEventListener('click', (e) => {
+      if (didLongPress) {
+        didLongPress = false;
+        e.preventDefault();
+        return;
+      }
       openChannelFeed(chId);
     });
   });
@@ -382,16 +483,17 @@ async function openChannelFeed(channelId) {
     document.getElementById('headerSubtitle').textContent = subs;
   }
 
-  renderFeedMessages();
+  const previousLastReadId = state.readState[channelId] || 0;
+  renderFeedMessages(previousLastReadId);
 
-  // ثبت به عنوان خوانده‌شده
+  // ثبت به عنوان خوانده‌شده بعد از تشخیص نشانگر اولین پیام جدید
   if (feedData && feedData.messages && feedData.messages.length > 0) {
     const highestId = Math.max(...feedData.messages.map(m => m.id));
     markChannelAsRead(channelId, highestId);
   }
 }
 
-function renderFeedMessages() {
+function renderFeedMessages(previousLastReadId = 0) {
   const container = document.getElementById('messagesList');
   if (!container || !state.activeChannelFeed) return;
 
@@ -413,6 +515,7 @@ function renderFeedMessages() {
   }
 
   let lastDateStr = '';
+  let firstUnreadFound = false;
   const htmlParts = [];
 
   filtered.forEach(msg => {
@@ -427,6 +530,16 @@ function renderFeedMessages() {
       lastDateStr = msgDateStr;
     }
 
+    // نشانگر خط اولین پیام جدید خوانده‌نشده
+    if (!firstUnreadFound && previousLastReadId > 0 && msg.id > previousLastReadId) {
+      firstUnreadFound = true;
+      htmlParts.push(`
+        <div class="unread-separator" id="first-unread-separator">
+          <span>🔻 پیام‌های جدید (خوانده‌نشده)</span>
+        </div>
+      `);
+    }
+
     // مدیا (عکس‌ها)
     let mediaHtml = '';
     if (msg.media && msg.media.photos && msg.media.photos.length > 0) {
@@ -437,24 +550,46 @@ function renderFeedMessages() {
       `).join('');
     }
 
-    // کارت اختصاصی ویدیو
+    // کارت اختصاصی ویدیو (پخش زنده یا لینک تلگرام)
     let videoHtml = '';
-    if (msg.media_type === 'video_link' && msg.media && msg.media.video) {
+    if (msg.media && msg.media.video) {
       const v = msg.media.video;
       const thumbSrc = v.thumb_url || (msg.media.photos && msg.media.photos[0] ? msg.media.photos[0].url : '');
-      videoHtml = `
-        <div class="video-card-wrap">
-          ${thumbSrc ? `<img src="${thumbSrc}" class="video-thumb" alt="کاور ویدیو">` : ''}
-          <div class="video-play-overlay">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
+      if (v.local_video_url) {
+        // ویدیوی زیر ۱۲ مگابایت دانلودشده جهت پخش مستقیم
+        videoHtml = `
+          <div class="video-card-wrap">
+            <video src="${v.local_video_url}" poster="${thumbSrc || ''}" controls playsinline preload="metadata" class="chat-video-player"></video>
           </div>
-          ${v.duration ? `<span class="video-duration-badge">${escapeHtml(v.duration)}</span>` : ''}
+        `;
+      } else {
+        // ویدیوی سنگین بالای ۱۲ مگابایت
+        videoHtml = `
+          <div class="video-card-wrap">
+            ${thumbSrc ? `<img src="${thumbSrc}" class="video-thumb" alt="کاور ویدیو">` : ''}
+            <div class="video-play-overlay">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+            ${v.duration ? `<span class="video-duration-badge">${escapeHtml(v.duration)}</span>` : ''}
+          </div>
+          <a href="${msg.original_url}" target="_blank" rel="noopener noreferrer" class="video-open-btn">
+            مشاهده ویدیو در تلگرام
+          </a>
+        `;
+      }
+    }
+
+    // صوت و ویس (Voice & Audio Player)
+    let audioHtml = '';
+    if (msg.media && msg.media.audio && msg.media.audio.local_audio_url) {
+      const a = msg.media.audio;
+      audioHtml = `
+        <div class="chat-audio-wrap">
+          <span class="chat-audio-title">🎵 ${escapeHtml(a.title || 'پیام صوتی')} ${a.duration ? `(${escapeHtml(a.duration)})` : ''}</span>
+          <audio src="${a.local_audio_url}" controls class="chat-audio-player" preload="metadata"></audio>
         </div>
-        <a href="${msg.original_url}" target="_blank" rel="noopener noreferrer" class="video-open-btn">
-          مشاهده ویدیو در تلگرام
-        </a>
       `;
     }
 
@@ -488,6 +623,7 @@ function renderFeedMessages() {
         ${replyHtml}
         ${mediaHtml}
         ${videoHtml}
+        ${audioHtml}
         ${msg.text_html ? `<div class="message-text">${msg.text_html}</div>` : ''}
         <div class="message-meta">
           ${msg.views ? `
@@ -506,6 +642,16 @@ function renderFeedMessages() {
   });
 
   container.innerHTML = htmlParts.join('');
+
+  // اسکرول هوشمند: به اولین پیام خوانده‌نشده یا به انتهای چت
+  setTimeout(() => {
+    const unreadMarker = document.getElementById('first-unread-separator');
+    if (unreadMarker) {
+      unreadMarker.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  }, 150);
 
   // اتصال رویداد زوم لایت‌باکس روی عکس‌ها
   container.querySelectorAll('.zoomable-img').forEach(img => {
@@ -694,16 +840,41 @@ function initAddChannelModal() {
   const input = document.getElementById('newChannelInput');
   const feedback = document.getElementById('addChannelFeedback');
 
+  const previewBox = document.getElementById('channelPreviewBox');
+  const previewImg = document.getElementById('previewAvatarImg');
+  const previewTitle = document.getElementById('previewTitle');
+
   const openModal = () => {
     modal.style.display = 'flex';
     input.value = '';
     feedback.style.display = 'none';
+    if (previewBox) previewBox.style.display = 'none';
     input.focus();
   };
 
   const closeModal = () => {
     modal.style.display = 'none';
+    if (previewBox) previewBox.style.display = 'none';
   };
+
+  // پیش‌نمایش لوگو و آیدی کانال به محض تایپ
+  let previewDebounce = null;
+  input.addEventListener('input', () => {
+    clearTimeout(previewDebounce);
+    previewDebounce = setTimeout(() => {
+      let raw = input.value.trim().replace(/^@/, '').replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();
+      if (raw.length >= 3 && previewBox) {
+        previewBox.style.display = 'flex';
+        previewTitle.textContent = '@' + raw;
+        previewImg.src = `https://t.me/i/userpic/320/${raw}.jpg`;
+        previewImg.onerror = () => {
+          previewImg.src = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'><circle cx='22' cy='22' r='22' fill='%232481cc'/><text x='22' y='27' font-size='18' text-anchor='middle' fill='%23fff' font-family='sans-serif'>${raw.charAt(0).toUpperCase()}</text></svg>`;
+        };
+      } else if (previewBox) {
+        previewBox.style.display = 'none';
+      }
+    }, 300);
+  });
 
   addBtn.addEventListener('click', openModal);
   closeBtn.addEventListener('click', closeModal);
@@ -829,6 +1000,7 @@ async function bootstrap() {
   loadReadState();
   initLightbox();
   initAddChannelModal();
+  initDeleteChannelModal();
   initEvents();
 
   const data = await fetchIndexData();
