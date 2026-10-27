@@ -224,6 +224,8 @@ def parse_channel_page(html_content, channel_id):
                 "local_video_path": f"media/{channel_id}/{post_id}.mp4" if video_src else None,
                 "remote_thumb_url": thumb_url,
                 "local_thumb_path": f"media/{channel_id}/{post_id}_thumb.webp" if thumb_url else None,
+                # آدرس محلی کاور ویدیو برای مصرف مستقیم فرانت‌اند
+                "thumb_url": f"media/{channel_id}/{post_id}_thumb.webp" if thumb_url else None,
                 "original_url": f"https://t.me/{channel_id}/{post_id}"
             }
 

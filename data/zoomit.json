@@ -7,7 +7,7 @@
     "avatar": "media/zoomit/avatar.webp",
     "subscribers": "11",
     "verified": false,
-    "last_updated": 1793094666
+    "last_updated": 1793115448
   },
   "messages": [
     {
@@ -19,7 +19,9 @@
       "media_type": "none",
       "media": {
         "photos": [],
-        "video": null
+        "video": null,
+        "audio": null,
+        "document": null
       },
       "forward_from": null,
       "reply_to": null,
@@ -34,7 +36,9 @@
       "media_type": "none",
       "media": {
         "photos": [],
-        "video": null
+        "video": null,
+        "audio": null,
+        "document": null
       },
       "forward_from": null,
       "reply_to": null,

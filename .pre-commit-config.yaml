@@ -1,0 +1,10 @@
+# نصب: pip install pre-commit gitleaks && pre-commit install
+# اجرای دستی: pre-commit run --all-files
+repos:
+  - repo: local
+    hooks:
+      - id: gitleaks-staged
+        name: gitleaks (secret scan on staged files)
+        entry: gitleaks protect --staged --redact --verbose
+        language: system
+        pass_filenames: false

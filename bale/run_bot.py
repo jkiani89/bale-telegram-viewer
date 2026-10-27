@@ -4,12 +4,18 @@
 یک پیام خوش‌آمدگویی به همراه دکمه شیشه‌ای مینی‌اپ ارسال می‌کند.
 """
 
+import os
+import sys
 import time
 import requests
 
 BALE_API = "https://tapi.bale.ai"
-TOKEN = "1428241446:Sgux--r9MubQCm2JEoBLA2uW00ful-9T1fI"
-MINIAPP_URL = "https://jkiani89.github.io/bale-telegram-viewer/"
+
+# توکن ربات هرگز داخل کد قرار نمی‌گیرد. آن را از متغیر محیطی بخوانید:
+#   PowerShell:  $env:BALE_BOT_TOKEN="123456:ABC..."
+#   Linux/macOS: export BALE_BOT_TOKEN="123456:ABC..."
+TOKEN = os.environ.get("BALE_BOT_TOKEN", "").strip()
+MINIAPP_URL = os.environ.get("MINIAPP_URL", "https://jkiani89.github.io/bale-telegram-viewer/")
 
 
 def send_welcome_message(chat_id):
@@ -35,6 +41,11 @@ def send_welcome_message(chat_id):
 
 
 def main():
+    if not TOKEN:
+        print("❌ متغیر محیطی BALE_BOT_TOKEN تنظیم نشده است.")
+        print("   نمونه: export BALE_BOT_TOKEN=\"<BOT_TOKEN>\"")
+        sys.exit(1)
+
     print(f"🤖 ربات @bletgrmbot در حال گوش دادن به پیام‌هاست...")
     print(f"🔗 آدرس مینی‌اپ: {MINIAPP_URL}")
     last_update_id = 0

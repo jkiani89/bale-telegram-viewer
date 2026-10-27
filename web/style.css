@@ -544,6 +544,21 @@ body {
   line-height: 1.6;
 }
 
+.modal-mode-hint {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  background: var(--surface-alt);
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.modal-mode-hint:empty {
+  display: none;
+}
+
 .modal-input-wrap {
   display: flex;
   align-items: center;

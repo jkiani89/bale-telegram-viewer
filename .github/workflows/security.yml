@@ -1,0 +1,29 @@
+name: Secret Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: دریافت کد مخزن
+        uses: actions/checkout@v4
+
+      # اسکن درخت فعلی فایل‌ها (نه تاریخچه).
+      # برای اسکن تاریخچه کامل به‌صورت محلی از `gitleaks detect` استفاده کنید.
+      - name: اسکن رمزهای لو رفته
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/repo" \
+            ghcr.io/gitleaks/gitleaks:latest detect \
+            --source=/repo --no-git --redact --verbose

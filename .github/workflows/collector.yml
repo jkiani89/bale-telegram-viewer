@@ -27,6 +27,14 @@ concurrency:
 jobs:
   collect-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
+    # فقط Issueهایی که قالب افزودن کانال دارند باعث اجرای کامل جمع‌آوری و دیپلوی شوند
+    if: >
+      github.event_name != 'issues' ||
+      startsWith(github.event.issue.title, 'add:') ||
+      startsWith(github.event.issue.title, '/add') ||
+      startsWith(github.event.issue.title, 'add ') ||
+      startsWith(github.event.issue.title, 'کانال:')
     permissions:
       contents: write
       issues: write
@@ -48,6 +56,34 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r collector/requirements.txt
 
+      - name: بازیابی کش داده‌ها و رسانه‌ها (Data & Media Cache)
+        uses: actions/cache@v4
+        with:
+          path: |
+            data
+            media
+          key: collector-cache-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            collector-cache-${{ runner.os }}-
+
+      - name: بازیابی پشتیبان از شاخه gh-pages در صورت نبود کش
+        run: |
+          if [ ! -f "data/index.json" ]; then
+            echo "کش اولیه یافت نشد؛ در حال بازیابی داده‌ها از آخرین انتشار شاخه gh-pages..."
+            git clone --depth 1 --branch gh-pages "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh_pages_backup || true
+            if [ -d "gh_pages_backup/data" ]; then
+              mkdir -p data media
+              cp -rn gh_pages_backup/data/* data/ 2>/dev/null || true
+              if [ -d "gh_pages_backup/media" ]; then
+                cp -rn gh_pages_backup/media/* media/ 2>/dev/null || true
+              fi
+              echo "✅ داده‌ها و رسانه‌ها با موفقیت از شاخه gh-pages بازیابی شدند."
+            fi
+            rm -rf gh_pages_backup
+          else
+            echo "✅ فایل‌های داده و رسانه با موفقیت از کش GitHub Actions بازیابی شدند."
+          fi
+
       - name: پردازش درخواست افزودن کانال از Issue
         if: github.event_name == 'issues'
         env:
@@ -55,35 +91,42 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "عنوان ایشو: $ISSUE_TITLE"
+          echo "عنوان ایشو دریافت شد."
           # استخراج آیدی کانال از عباراتی مثل "add:isna94" یا "/add isna94" یا "isna94"
           CHANNEL=$(echo "$ISSUE_TITLE" | sed -E 's/^(add:|add|\/add|کانال:)[[:space:]]*//i' | tr -d ' @' | tr -cd '[:alnum:]_')
           echo "شناسه استخراج‌شده: $CHANNEL"
 
-          if [ -n "$CHANNEL" ]; then
+          if [ ${#CHANNEL} -ge 4 ] && [ ${#CHANNEL} -le 64 ]; then
             python collector/add_channel.py --channel "$CHANNEL"
             
             # ثبت کامیت در شاخه main جهت ذخیره کانال جدید در config
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
             git add config/channels.json
-            git commit -m "feat(channels): add @$CHANNEL via Issue #$ISSUE_NUMBER" || echo "کانال از قبل موجود بود."
+            git commit -m "feat(channels): add channel via Issue #$ISSUE_NUMBER" || echo "کانال از قبل موجود بود."
             git push origin main || echo "بدون تغییر جدید در main."
             
             gh issue comment "$ISSUE_NUMBER" --body "✅ کانال **@$CHANNEL** با موفقیت بررسی، تایید و به مینی‌اپ تلگرام ریدر اضافه شد!"
             gh issue close "$ISSUE_NUMBER"
           else
-            gh issue comment "$ISSUE_NUMBER" --body "❌ شناسه کانال در عنوان ایشو پیدا نشد. لطفاً در عنوان بنویسید: add:channel_name"
+            gh issue comment "$ISSUE_NUMBER" --body "❌ شناسه کانال در عنوان ایشو پیدا نشد یا نامعتبر است. لطفاً در عنوان بنویسید: add:channel_name"
           fi
 
-      - name: پردازش ورودی دستی دستی (Workflow Dispatch Input)
+      - name: پردازش ورودی دستی (Workflow Dispatch Input)
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.channel_id != ''
+        env:
+          # ورودی از طریق متغیر محیطی منتقل می‌شود تا امکان تزریق دستور شل وجود نداشته باشد
+          CHANNEL_INPUT: ${{ github.event.inputs.channel_id }}
         run: |
-          python collector/add_channel.py --channel "${{ github.event.inputs.channel_id }}"
+          if ! printf '%s' "$CHANNEL_INPUT" | grep -Eq '^[[:space:]]*(del:)?[A-Za-z0-9_]{4,64}([[:space:],;]+(del:)?[A-Za-z0-9_]{4,64})*[[:space:]]*$'; then
+            echo "::error::ورودی نامعتبر است. فقط شناسه کانال (حروف/اعداد/آندرلاین) یا del:<id> مجاز است."
+            exit 1
+          fi
+          python collector/add_channel.py --channel "$CHANNEL_INPUT"
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add config/channels.json
-          git commit -m "feat(channels): add @${{ github.event.inputs.channel_id }} via workflow_dispatch" || echo "کانال از قبل موجود بود."
+          git commit -m "feat(channels): update channels via workflow_dispatch" || echo "کانال از قبل موجود بود."
           git push origin main || echo "بدون تغییر جدید در main."
 
       - name: اجرای چرخه کامل اسکرپ و فشرده‌سازی برای تمام کانال‌ها

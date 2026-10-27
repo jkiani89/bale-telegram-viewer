@@ -1,16 +1,120 @@
 {
-  "updated_at": 1793105787,
+  "updated_at": 1793120008,
   "channels": [
+    {
+      "id": "durov",
+      "title": "Pavel Durov",
+      "avatar": "media/durov/avatar.webp",
+      "description": "پست‌های رسمی پاول دورف (بنیان‌گذار تلگرام)",
+      "last_post": {
+        "id": 552,
+        "date": "2026-10-11T14:52:40+00:00",
+        "timestamp": 1791730360,
+        "snippet": "✨ Designers × AI  🆕 The mockup era is over. Today’s AI tools give every designer a superpo..."
+      },
+      "total_posts": 20
+    },
     {
       "id": "varzesh3",
       "title": "ورزش سه",
       "avatar": "media/varzesh3/avatar.webp",
       "description": "اخبار ورزشی ایران و جهان",
       "last_post": {
-        "id": 305329,
-        "date": "2026-10-27T12:48:01+00:00",
-        "timestamp": 1793105281,
-        "snippet": "بزرگ ازبکستان را زمین‌گیر کردند؛ در حضور کامل پورعلی‌گنجی بازنده بودند  🔈 پایان مسابقه - پ..."
+        "id": 305340,
+        "date": "2026-10-27T15:10:57+00:00",
+        "timestamp": 1793113857,
+        "snippet": "9 از 10 مدال؛ 💥 شاهکار تاریخی شاگردان رنگرز تمام شد   🥇سعید اسماعیلی 🥇دانیال سهرابی 🥇غلامر..."
+      },
+      "total_posts": 20
+    },
+    {
+      "id": "isna94",
+      "title": "خبرگزاری ایسنا",
+      "avatar": "media/isna94/avatar.webp",
+      "description": "کانال رسمی خبرگزاری دانشجویان ایران (ایسنا)",
+      "last_post": {
+        "id": 410639,
+        "date": "2026-10-27T15:30:48+00:00",
+        "timestamp": 1793115048,
+        "snippet": "🎥 محسن راستانی روی دست دوستانش به سمت خانه ابدی تشییع شد 🔹آیین وداع با محسن راستانی، عکاس ..."
+      },
+      "total_posts": 16
+    },
+    {
+      "id": "zoomit",
+      "title": "زومیت",
+      "avatar": "media/zoomit/avatar.webp",
+      "description": "اخبار فناوری، موبایل، بررسی گجت‌ها و هوش مصنوعی",
+      "last_post": {
+        "id": 9,
+        "date": "2025-12-27T17:51:12+00:00",
+        "timestamp": 1766857872,
+        "snippet": "🔥Did you like any usernames?   📲Follow the link below and pick one you like!  https://t.me..."
+      },
+      "total_posts": 2
+    },
+    {
+      "id": "digiato",
+      "title": "دیجیاتو",
+      "avatar": "media/digiato/avatar.webp",
+      "description": "زندگی با تکنولوژی، اخبار فناوری و بررسی خودرو",
+      "last_post": {
+        "id": 114704,
+        "date": "2026-10-27T15:33:09+00:00",
+        "timestamp": 1793115189,
+        "snippet": "🗣سازمان جهانی هواشناسی: غلظت گازهای گلخانه‌ای در جو زمین رکورد تاریخی ثبت کرد 🔵سازمان جهان..."
+      },
+      "total_posts": 12
+    },
+    {
+      "id": "farsna",
+      "title": "خبرگزاری فارس",
+      "avatar": "media/farsna/avatar.webp",
+      "description": "اخبار سیاسی، اقتصادی، اجتماعی و بین‌المللی",
+      "last_post": {
+        "id": 471087,
+        "date": "2026-10-27T15:34:23+00:00",
+        "timestamp": 1793115263,
+        "snippet": "🖼 قهرمانی کشتی فرنگی ایران به مقتدرانه‌ترین شکل ممکن  🔹در جدول نهایی کشتی فرنگی قهرمانی جه..."
+      },
+      "total_posts": 16
+    },
+    {
+      "id": "akharinkhabar",
+      "title": "آخرین خبر",
+      "avatar": "media/akharinkhabar/avatar.webp",
+      "description": "سریع‌ترین و داغ‌ترین اخبار روز ایران و جهان",
+      "last_post": {
+        "id": 640998,
+        "date": "2026-10-27T15:31:02+00:00",
+        "timestamp": 1793115062,
+        "snippet": "📹 رهبری فرد: زاهدان آرام ترین شهر ایران است؛ مردم مثل کوه پشت نظام هستند و همه کشور در آرا..."
+      },
+      "total_posts": 20
+    },
+    {
+      "id": "khabar_fouri",
+      "title": "خبر فوری",
+      "avatar": "media/khabar_fouri/avatar.webp",
+      "description": "اخبار فوری و لحظه‌ای ایران و جهان",
+      "last_post": {
+        "id": 553673,
+        "date": "2026-10-27T15:29:01+00:00",
+        "timestamp": 1793114941,
+        "snippet": "نماینده پاکستان در شورای امنیت: راهکار دیپلماتیک برای پرونده هسته‌ای ایران حیاتی است نماین..."
+      },
+      "total_posts": 17
+    },
+    {
+      "id": "naghal_bashi",
+      "title": "نقال‌باشی",
+      "avatar": "media/naghal_bashi/avatar.webp",
+      "description": "پادکست‌ها، فایل‌های صوتی و روایت‌های نقال‌باشی",
+      "last_post": {
+        "id": 454,
+        "date": "2026-10-27T15:17:43+00:00",
+        "timestamp": 1793114263,
+        "snippet": "📚 آغاز پیش‌فروش کتاب «سیاست؛ روایتی ساده از ماجرایی پیچیده» 📜 پس از کش و قوس فراوان، ترجمه..."
       },
       "total_posts": 20
     }

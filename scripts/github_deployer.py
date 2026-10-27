@@ -72,7 +72,7 @@ class GitHubAutoDeployer:
         else:
             print(f"⚠️ اخطار در تنظیم دسترسی اکشن‌ها ({resp.status_code}): {resp.text}")
 
-    def upload_files_to_main(self, root_dir="."):
+    def upload_files_to_main(self, root_dir=".", commit_message="feat: security, media persistence, resilient index merging and cleanup"):
         """بارگذاری فایل‌های پروژه با استفاده از Git Data API"""
         print("[*] در حال آماده‌سازی و ارسال فایل‌ها به شاخه main...")
 
@@ -95,18 +95,9 @@ class GitHubAutoDeployer:
 
         latest_commit_sha = ref_resp.json()["object"]["sha"]
 
-        # دریافت base tree
-        commit_resp = requests.get(
-            f"{GITHUB_API_BASE}/repos/{self.owner}/{self.repo_name}/git/commits/{latest_commit_sha}",
-            headers=self.headers,
-            timeout=15
-        )
-        base_tree_sha = commit_resp.json()["tree"]["sha"]
-
-        # فایل‌های مشمول ارسال
-        # فایل‌های مشمول ارسال به شاخه main (فقط فایل‌های پروژه و کد منبع)
+        # فایل‌های مشمول ارسال به شاخه main (فقط فایل‌های پروژه و کد منبع + داده‌های سبک JSON)
         tree_elements = []
-        ignore_dirs = {".git", "__pycache__", ".vscode", ".idea", "venv", ".venv", "media", "data", "scratch", "_test_dist"}
+        ignore_dirs = {".git", "__pycache__", ".vscode", ".idea", "venv", ".venv", "media", "scratch", "_test_dist"}
 
         for dirpath, dirnames, filenames in os.walk(root_dir):
             # حذف پوشه‌های نادیده‌گرفته
@@ -157,9 +148,8 @@ class GitHubAutoDeployer:
 
         print(f"[*] تعداد {len(tree_elements)} فایل آماده کامیت شد. در حال ایجاد Tree...")
 
-        # ساخت Tree
+        # ساخت Tree به صورت مستقل تا فایل‌های حذف‌شده (api, deno, vercel) از درخت شاخه main پاک شوند
         tree_payload = {
-            "base_tree": base_tree_sha,
             "tree": tree_elements
         }
         tree_resp = requests.post(
@@ -172,7 +162,7 @@ class GitHubAutoDeployer:
 
         # ساخت کامیت
         commit_payload = {
-            "message": "feat: full setup of bale telegram viewer with actions & miniapp",
+            "message": commit_message,
             "tree": new_tree_sha,
             "parents": [latest_commit_sha]
         }

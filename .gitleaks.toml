@@ -1,0 +1,13 @@
+title = "Bale Telegram Viewer - secret scanning"
+
+[extend]
+useDefault = true
+
+# داده‌ها و مدیای تولیدشده توسط Collector اسکن نمی‌شوند؛
+# اما کد، مستندات و فایل‌های تنظیمات همیشه اسکن می‌شوند.
+[allowlist]
+description = "Generated collector output"
+paths = [
+  '''^data/''',
+  '''^media/''',
+]

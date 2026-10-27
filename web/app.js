@@ -87,131 +87,11 @@ function isColorDark(hexColor) {
 const STORAGE_KEY = 'bale_tg_viewer_state_v1';
 
 // ==========================================================================
-// همگام‌سازی ابری پروفایل کاربر بله (Bale User Cloud Profile Sync - Model 2)
+// وضعیت خوانده‌شده (Read State) — فقط روی همین دستگاه
 // ==========================================================================
-
-let userProfileSha = null;
-let syncDebounceTimer = null;
-
-function getCurrentBaleUser() {
-  try {
-    if (window.Bale && window.Bale.WebApp && window.Bale.WebApp.initDataUnsafe && window.Bale.WebApp.initDataUnsafe.user) {
-      return window.Bale.WebApp.initDataUnsafe.user;
-    }
-  } catch (e) {}
-  return null;
-}
-
-async function syncUserProfileFromCloud() {
-  const user = getCurrentBaleUser();
-  if (!user || !user.id) return;
-
-  const userId = user.id;
-  const url = `https://raw.githubusercontent.com/${GH_REPO}/gh-pages/data/users/${userId}.json?t=${Date.now()}`;
-
-  try {
-    const resp = await fetch(url, {
-      cache: 'no-store',
-      headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache' }
-    });
-
-    if (resp.ok) {
-      const data = await resp.json();
-      let changed = false;
-
-      // همگام‌سازی لیست کانال‌های مخفی‌شده
-      if (Array.isArray(data.hidden_channels)) {
-        const localHidden = getHiddenChannels();
-        if (JSON.stringify(localHidden.sort()) !== JSON.stringify(data.hidden_channels.sort())) {
-          localStorage.setItem(HIDDEN_CHANNELS_KEY, JSON.stringify(data.hidden_channels));
-          changed = true;
-        }
-      }
-
-      // همگام‌سازی وضعیت خوانده‌شده پیام‌ها
-      if (data.read_state && typeof data.read_state === 'object') {
-        state.readState = Object.assign({}, state.readState, data.read_state);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({
-          read_state: state.readState,
-          updated_at: Date.now()
-        }));
-        changed = true;
-      }
-
-      if (changed && state.currentView === 'channels') {
-        renderChannelsList();
-      }
-    }
-  } catch (err) {
-    console.warn('دسترسی به پروفایل ابری مقدور نشد یا هنوز ساخته نشده است:', err);
-  }
-}
-
-function saveUserProfileToCloud() {
-  const user = getCurrentBaleUser();
-  if (!user || !user.id) return;
-
-  clearTimeout(syncDebounceTimer);
-  syncDebounceTimer = setTimeout(async () => {
-    const userId = user.id;
-    const token = getEffectiveToken();
-    if (!token) return;
-
-    const payloadObj = {
-      user_id: userId,
-      first_name: user.first_name || '',
-      username: user.username || '',
-      hidden_channels: getHiddenChannels(),
-      read_state: state.readState,
-      updated_at: Math.floor(Date.now() / 1000)
-    };
-
-    const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(payloadObj, null, 2))));
-    const apiUrl = `https://api.github.com/repos/${GH_REPO}/contents/data/users/${userId}.json`;
-
-    try {
-      if (!userProfileSha) {
-        const checkResp = await fetch(apiUrl, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/vnd.github+json'
-          }
-        });
-        if (checkResp.ok) {
-          const fileData = await checkResp.json();
-          userProfileSha = fileData.sha;
-        }
-      }
-
-      const bodyData = {
-        message: `sync profile for user ${userId}`,
-        content: contentBase64,
-        branch: 'gh-pages'
-      };
-      if (userProfileSha) {
-        bodyData.sha = userProfileSha;
-      }
-
-      const putResp = await fetch(apiUrl, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/vnd.github+json'
-        },
-        body: JSON.stringify(bodyData)
-      });
-
-      if (putResp.ok) {
-        const resJson = await putResp.json();
-        if (resJson && resJson.content && resJson.content.sha) {
-          userProfileSha = resJson.content.sha;
-        }
-      }
-    } catch (e) {
-      console.warn('خطا در ذخیره پروفایل ابری کاربر:', e);
-    }
-  }, 1200);
-}
+// توجه امنیتی: نگهداری پروفایل کاربر روی شاخه gh-pages نه پایدار است (دیپلوی
+// orphan هر بار آن را پاک می‌کند) و نه امن (نیازمند توکن نوشتن در کلاینت است).
+// بنابراین وضعیت خوانده‌شده صرفاً در localStorage همین دستگاه ذخیره می‌شود.
 
 function loadReadState() {
   try {
@@ -238,51 +118,110 @@ function markChannelAsRead(channelId, highestMsgId) {
   } catch (e) {
     console.error('خطا در ذخیره localStorage:', e);
   }
-  saveUserProfileToCloud();
 }
 
 // ==========================================================================
 // دریافت داده‌ها از GitHub Pages CDN با ضدکش (Cache-Busting)
 // ==========================================================================
 
+const FETCH_TIMEOUT_MS = 12000;
+const FEED_CACHE_PREFIX = 'bale_tg_feed_cache_v1_';
+const FEED_CACHE_MAX_CHARS = 400 * 1024;
+
+/**
+ * fetch امن با تایم‌اوت و خطای قابل‌تشخیص.
+ * از گیر کردن رابط کاربری روی حالت لودینگ جلوگیری می‌کند.
+ */
+async function fetchJson(url, timeoutMs = FETCH_TIMEOUT_MS) {
+  const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+  const timer = setTimeout(() => { if (controller) controller.abort(); }, timeoutMs);
+
+  try {
+    const resp = await fetch(url, {
+      cache: 'no-store',
+      headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache' },
+      signal: controller ? controller.signal : undefined
+    });
+
+    if (!resp.ok) {
+      const err = new Error(`پاسخ ناموفق سرور (HTTP ${resp.status})`);
+      err.httpStatus = resp.status;
+      throw err;
+    }
+
+    return await resp.json();
+  } catch (err) {
+    if (err && err.name === 'AbortError') {
+      throw new Error('زمان انتظار برای دریافت داده به پایان رسید.');
+    }
+    throw err;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function readCachedFeed(channelId) {
+  try {
+    const raw = localStorage.getItem(FEED_CACHE_PREFIX + channelId);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || !parsed.channel || !Array.isArray(parsed.messages)) return null;
+    return parsed;
+  } catch (e) {
+    return null;
+  }
+}
+
+function writeCachedFeed(channelId, feed) {
+  try {
+    const serialized = JSON.stringify(feed);
+    if (serialized.length > FEED_CACHE_MAX_CHARS) return;
+    localStorage.setItem(FEED_CACHE_PREFIX + channelId, serialized);
+  } catch (e) {
+    // سهمیه localStorage پر شده است؛ کش کردن فید اختیاری است.
+  }
+}
+
 async function fetchIndexData() {
   const cacheBuster = `t=${Date.now()}`;
-  const fetchOpts = {
-    cache: 'no-store',
-    headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache' }
-  };
   try {
-    const resp = await fetch(`data/index.json?${cacheBuster}`, fetchOpts);
-    if (!resp.ok) {
-      // اگر روی محیط توسعه هنوز داده تولید نشده بود، به samples برود
-      const fallback = await fetch(`data/samples/index.json?${cacheBuster}`, fetchOpts);
-      return await fallback.json();
+    return await fetchJson(`data/index.json?${cacheBuster}`);
+  } catch (primaryErr) {
+    console.warn('دسترسی به data/index.json ممکن نشد، تلاش برای بارگذاری سمپل:', primaryErr);
+    try {
+      return await fetchJson(`data/samples/index.json?${cacheBuster}`);
+    } catch (fallbackErr) {
+      throw new Error('فهرست کانال‌ها دریافت نشد. اتصال اینترنت را بررسی و دوباره تلاش کنید.');
     }
-    return await resp.json();
-  } catch (e) {
-    console.warn('دسترسی به data/index.json ممکن نشد، بارگذاری سمپل:', e);
-    const fallback = await fetch(`data/samples/index.json?${cacheBuster}`, fetchOpts);
-    return await fallback.json();
   }
 }
 
 async function fetchChannelFeed(channelId) {
   const cacheBuster = `t=${Date.now()}`;
-  const fetchOpts = {
-    cache: 'no-store',
-    headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache' }
-  };
   try {
-    const resp = await fetch(`data/${channelId}.json?${cacheBuster}`, fetchOpts);
-    if (!resp.ok) {
-      const fallback = await fetch(`data/samples/${channelId}.json?${cacheBuster}`, fetchOpts);
-      return await fallback.json();
+    const data = await fetchJson(`data/${encodeURIComponent(channelId)}.json?${cacheBuster}`);
+    if (!data || !data.channel || !Array.isArray(data.messages)) {
+      throw new Error('ساختار داده کانال نامعتبر است.');
     }
-    return await resp.json();
-  } catch (e) {
-    console.warn(`خطا در دریافت data/${channelId}.json، بارگذاری سمپل:`, e);
-    const fallback = await fetch(`data/samples/${channelId}.json?${cacheBuster}`, fetchOpts);
-    return await fallback.json();
+    writeCachedFeed(channelId, data);
+    return data;
+  } catch (primaryErr) {
+    // ۱. آخرین نسخه موفق ذخیره‌شده روی همین دستگاه
+    const cached = readCachedFeed(channelId);
+    if (cached) {
+      console.warn(`فید ${channelId} از کش محلی بارگذاری شد.`, primaryErr);
+      return cached;
+    }
+
+    // ۲. داده نمونه (فقط برای محیط توسعه)
+    try {
+      const sample = await fetchJson(`data/samples/${encodeURIComponent(channelId)}.json?${cacheBuster}`);
+      if (sample && Array.isArray(sample.messages)) return sample;
+    } catch (sampleErr) {
+      // نادیده گرفتن؛ خطای اصلی پایین‌تر پرتاب می‌شود.
+    }
+
+    throw primaryErr;
   }
 }
 
@@ -306,7 +245,6 @@ function hideChannel(channelId) {
   if (!list.includes(channelId)) {
     list.push(channelId);
     localStorage.setItem(HIDDEN_CHANNELS_KEY, JSON.stringify(list));
-    saveUserProfileToCloud();
   }
 }
 
@@ -315,7 +253,6 @@ function unhideChannel(channelId) {
     const list = getHiddenChannels();
     const updated = list.filter(id => id.toLowerCase() !== channelId.toLowerCase());
     localStorage.setItem(HIDDEN_CHANNELS_KEY, JSON.stringify(updated));
-    saveUserProfileToCloud();
   } catch (e) {
     console.error('خطا در رفع حذف کانال:', e);
   }
@@ -347,8 +284,6 @@ function initDeleteChannelModal() {
       state.channels = state.channels.filter(c => c.id !== chId);
       renderChannelsList();
       closeModal();
-      // همگام‌سازی سروری حذف کانال برای تمام دستگاه‌ها
-      triggerDirectChannelAdd(`del:${chId}`, () => {}, () => {}, () => {});
     }
   });
 }
@@ -600,82 +535,10 @@ function renderChannelsList() {
   });
 }
 
-// ==========================================================================
-// جستجوی آنلاین لحظه‌ای (Real-Time Live Search)
-// ==========================================================================
-
-async function fetchAndShowOnlineChannel(channelId) {
-  state.activeChannelId = channelId;
-  state.currentView = 'feed';
-
-  const backBtn = document.getElementById('backBtn');
-  backBtn.style.display = 'flex';
-
-  document.getElementById('headerTitle').textContent = `@${channelId}`;
-  document.getElementById('headerSubtitle').textContent = 'در حال جستجوی آنلاین...';
-
-  document.getElementById('channelsView').style.display = 'none';
-  const feedView = document.getElementById('feedView');
-  feedView.style.display = 'flex';
-
-  const messagesList = document.getElementById('messagesList');
-  messagesList.innerHTML = `
-    <div class="loading-state">
-      <div class="spinner"></div>
-      <p>در حال ارتباط با تلگرام و استخراج زنده پست‌های <b>@${escapeHtml(channelId)}</b>...</p>
-    </div>
-  `;
-
-  if (window.Bale && window.Bale.WebApp && window.Bale.WebApp.BackButton) {
-    try { window.Bale.WebApp.BackButton.show(); } catch (e) {}
-  }
-
-  window.scrollTo(0, 0);
-
-  try {
-    const resp = await fetch(`/api/channel?id=${encodeURIComponent(channelId)}`);
-    const data = await resp.json();
-
-    if (!resp.ok || data.error) {
-      messagesList.innerHTML = `
-        <div class="empty-state">
-          <p style="color: #ef4444; font-weight: 700;">خطا در دریافت کانال:</p>
-          <p>${escapeHtml(data.error || 'کانال پیدا نشد یا خصوصی است.')}</p>
-          <button class="btn btn-primary" onclick="showChannelsView()" style="margin-top: 14px;">
-            بازگشت به لیست کانال‌ها
-          </button>
-        </div>
-      `;
-      document.getElementById('headerSubtitle').textContent = 'خطا در بارگذاری';
-      return;
-    }
-
-    state.activeChannelFeed = data;
-    if (data.channel) {
-      document.getElementById('headerTitle').textContent = data.channel.title || channelId;
-      document.getElementById('headerSubtitle').textContent = data.channel.subscribers 
-        ? `${data.channel.subscribers} دنبال‌کننده (زنده)` 
-        : 'کانال تلگرام (زنده)';
-    }
-
-    renderFeedMessages();
-
-  } catch (err) {
-    messagesList.innerHTML = `
-      <div class="empty-state">
-        <p style="color: #ef4444;">ارتباط با سرورلس برقرار نشد.</p>
-        <p style="font-size: 0.8rem; opacity: 0.8;">${escapeHtml(err.message)}</p>
-        <button class="btn btn-primary" onclick="showChannelsView()" style="margin-top: 14px;">
-          بازگشت
-        </button>
-      </div>
-    `;
-  }
-}
-
 async function openChannelFeed(channelId) {
   state.activeChannelId = channelId;
   state.currentView = 'feed';
+  state.activeChannelFeed = null;
 
   // تغییر ظاهر هدر
   const backBtn = document.getElementById('backBtn');
@@ -706,22 +569,62 @@ async function openChannelFeed(channelId) {
   // اسکرول به بالا
   window.scrollTo(0, 0);
 
-  // دریافت فید
-  const feedData = await fetchChannelFeed(channelId);
-  state.activeChannelFeed = feedData;
+  // دریافت فید (با مدیریت خطا و بدون گیر کردن روی حالت لودینگ)
+  try {
+    const feedData = await fetchChannelFeed(channelId);
 
-  if (feedData && feedData.channel) {
-    const subs = feedData.channel.subscribers ? `${feedData.channel.subscribers} دنبال‌کننده` : 'کانال تلگرام';
-    document.getElementById('headerSubtitle').textContent = subs;
+    state.activeChannelFeed = feedData;
+
+    if (feedData.channel) {
+      const subs = feedData.channel.subscribers ? `${feedData.channel.subscribers} دنبال‌کننده` : 'کانال تلگرام';
+      document.getElementById('headerSubtitle').textContent = subs;
+    }
+
+    const previousLastReadId = state.readState[channelId] || 0;
+    renderFeedMessages(previousLastReadId);
+
+    // ثبت به عنوان خوانده‌شده بعد از تشخیص نشانگر اولین پیام جدید
+    if (feedData.messages && feedData.messages.length > 0) {
+      const highestId = Math.max(...feedData.messages.map(m => m.id));
+      markChannelAsRead(channelId, highestId);
+    }
+  } catch (err) {
+    console.error(`خطا در بارگذاری فید ${channelId}:`, err);
+    document.getElementById('headerSubtitle').textContent = 'خطا در بارگذاری';
+    renderFeedError(channelId, err);
+  }
+}
+
+/**
+ * نمایش وضعیت خطای فید همراه با دکمه تلاش مجدد.
+ * جایگزین اسپینر بی‌پایان در صورت خطای شبکه یا نبود داده می‌شود.
+ */
+function renderFeedError(channelId, err) {
+  const container = document.getElementById('messagesList');
+  if (!container) return;
+
+  const detail = err && err.message ? escapeHtml(err.message) : 'خطای نامشخص';
+
+  container.innerHTML = `
+    <div class="empty-state">
+      <div style="font-size: 2rem; margin-bottom: 8px;">⚠️</div>
+      <p style="font-weight: 700; margin-bottom: 6px;">دریافت پست‌های این کانال ممکن نشد.</p>
+      <p style="font-size: 0.82rem; opacity: 0.8; margin-bottom: 16px;">${detail}</p>
+      <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+        <button class="btn btn-primary" id="retryFeedBtn">🔄 تلاش مجدد</button>
+        <button class="btn btn-secondary" id="backToChannelsBtn">بازگشت به لیست</button>
+      </div>
+    </div>
+  `;
+
+  const retryBtn = document.getElementById('retryFeedBtn');
+  if (retryBtn) {
+    retryBtn.addEventListener('click', () => openChannelFeed(channelId));
   }
 
-  const previousLastReadId = state.readState[channelId] || 0;
-  renderFeedMessages(previousLastReadId);
-
-  // ثبت به عنوان خوانده‌شده بعد از تشخیص نشانگر اولین پیام جدید
-  if (feedData && feedData.messages && feedData.messages.length > 0) {
-    const highestId = Math.max(...feedData.messages.map(m => m.id));
-    markChannelAsRead(channelId, highestId);
+  const backBtn = document.getElementById('backToChannelsBtn');
+  if (backBtn) {
+    backBtn.addEventListener('click', showChannelsView);
   }
 }
 
@@ -798,7 +701,7 @@ function renderFeedMessages(previousLastReadId = 0) {
         // ویدیوی سنگین بالای ۱۲ مگابایت
         videoHtml = `
           <div class="video-card-wrap">
-            ${thumbSrc ? `<img src="${thumbSrc}" class="video-thumb" alt="کاور ویدیو">` : ''}
+            ${thumbSrc ? `<img src="${thumbSrc}" class="video-thumb" alt="کاور ویدیو" onerror="this.remove()">` : ''}
             <div class="video-play-overlay">
               <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -1050,14 +953,23 @@ function escapeHtml(str) {
 const GH_TOKEN_KEY = 'bale_tg_gh_token';
 const GH_REPO = 'jkiani89/bale-telegram-viewer';
 
-// آرایه بایت‌های رمزگذاری‌شده جهت فعال‌سازی خودکار و بدون نیاز به ورود دستی توکن توسط کاربر
-const _ENC_BUF = [37, 9, 28, 58, 38, 31, 52, 52, 29, 48, 16, 85, 69, 94, 123, 115, 50, 49, 85, 46, 54, 52, 34, 33, 17, 48, 51, 61, 93, 120, 85, 127, 10, 40, 94, 52, 58, 34, 28, 11];
-const _ENC_KEY = 'BaleTelegram2026';
-
+/**
+ * توکن مدیریت فقط به‌صورت اختیاری و محلی (localStorage) نگهداری می‌شود.
+ * هیچ توکنی داخل کد، فایل‌های عمومی یا آرایه «رمزنگاری‌شده» قرار نمی‌گیرد.
+ * برای فعال‌سازی روی دستگاه خودتان، یک‌بار آدرس را با #token=... باز کنید.
+ */
 function getEffectiveToken() {
-  const custom = localStorage.getItem(GH_TOKEN_KEY);
-  if (custom && custom.startsWith('ghp_')) return custom;
-  return _ENC_BUF.map((b, i) => String.fromCharCode(b ^ _ENC_KEY.charCodeAt(i % _ENC_KEY.length))).join('');
+  try {
+    const custom = localStorage.getItem(GH_TOKEN_KEY);
+    if (custom && /^(ghp_|github_pat_)/.test(custom.trim())) return custom.trim();
+  } catch (e) {
+    // localStorage در دسترس نیست (حالت خصوصی)
+  }
+  return null;
+}
+
+function isAdminMode() {
+  return !!getEffectiveToken();
 }
 
 function checkUrlForAdminToken() {
@@ -1066,13 +978,51 @@ function checkUrlForAdminToken() {
     if (match) {
       localStorage.setItem(GH_TOKEN_KEY, match[1]);
       history.replaceState(null, null, window.location.pathname);
-      console.log('✅ توکن مدیریت با موفقیت در مرورگر ذخیره شد.');
+      console.log('✅ توکن مدیریت به‌صورت محلی در این مرورگر ذخیره شد.');
     }
   }
 }
 
+/**
+ * باز کردن لینک بیرونی؛ ابتدا از متد رسمی SDK بله و سپس از window.open استفاده می‌کند.
+ */
+function openExternal(url) {
+  try {
+    if (window.Bale && window.Bale.WebApp && typeof window.Bale.WebApp.openLink === 'function') {
+      window.Bale.WebApp.openLink(url);
+      return true;
+    }
+  } catch (e) {
+    // ادامه با روش جایگزین
+  }
+
+  const win = window.open(url, '_blank', 'noopener,noreferrer');
+  return !!win;
+}
+
+/**
+ * ساخت لینک ثبت درخواست افزودن کانال در گیت‌هاب.
+ * این مسیر برای کاربران عادی (بدون توکن) استفاده می‌شود و هیچ کلید محرمانه‌ای لازم ندارد.
+ */
+function buildAddIssueUrl(channels) {
+  const title = `add:${channels.join(',')}`;
+  const body = [
+    'درخواست افزودن کانال عمومی تلگرام به مینی‌اپ.',
+    '',
+    `کانال‌ها: ${channels.map(c => '@' + c).join(' , ')}`,
+    '',
+    'این Issue به‌صورت خودکار توسط GitHub Actions بررسی می‌شود.'
+  ].join('\n');
+
+  return `https://github.com/${GH_REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+}
+
 async function triggerDirectChannelAdd(channelId, onProgress, onSuccess, onError) {
   const token = getEffectiveToken();
+  if (!token) {
+    onError('حالت مدیر فعال نیست. برای افزودن کانال از مسیر ثبت درخواست استفاده کنید.');
+    return;
+  }
 
   onProgress('در حال ارسال دستور به موتور گیت‌هاب...');
 
@@ -1098,19 +1048,26 @@ async function triggerDirectChannelAdd(channelId, onProgress, onSuccess, onError
       const targetIds = channelId.split(',').map(s => s.trim().toLowerCase());
       const interval = setInterval(async () => {
         attempts++;
-        const indexData = await fetchIndexData();
-        const found = targetIds.some(tid => (indexData.channels || []).some(c => c.id.toLowerCase() === tid));
+        try {
+          const indexData = await fetchIndexData();
+          const found = targetIds.some(tid => (indexData.channels || []).some(c => c.id.toLowerCase() === tid));
 
-        if (found) {
-          clearInterval(interval);
-          state.channels = indexData.channels;
-          renderChannelsList();
-          onSuccess(targetIds.length > 1
-            ? `کانال‌های درخواستی با موفقیت به مینی‌اپ اضافه شدند!`
-            : `کانال @${targetIds[0]} با موفقیت به مینی‌اپ اضافه شد!`);
-        } else if (attempts >= 15) {
-          clearInterval(interval);
-          onProgress(`پردازش ممکن است کمی بیشتر طول بکشد. صفحه را تا یک دقیقه دیگر تازه کنید.`);
+          if (found) {
+            clearInterval(interval);
+            state.channels = indexData.channels;
+            renderChannelsList();
+            onSuccess(targetIds.length > 1
+              ? `کانال‌های درخواستی با موفقیت به مینی‌اپ اضافه شدند!`
+              : `کانال @${targetIds[0]} با موفقیت به مینی‌اپ اضافه شد!`);
+          } else if (attempts >= 15) {
+            clearInterval(interval);
+            onProgress(`پردازش ممکن است کمی بیشتر طول بکشد. صفحه را تا یک دقیقه دیگر تازه کنید.`);
+          }
+        } catch (pollErr) {
+          if (attempts >= 15) {
+            clearInterval(interval);
+            onProgress('بررسی خودکار نتیجه ممکن نشد. صفحه را تا یک دقیقه دیگر تازه کنید.');
+          }
         }
       }, 8000);
 
@@ -1140,7 +1097,16 @@ function initAddChannelModal() {
     input.value = '';
     feedback.style.display = 'none';
     if (previewBox) previewBox.style.display = 'none';
+    updateModeHint();
     input.focus();
+  };
+
+  const updateModeHint = () => {
+    const hint = document.getElementById('addChannelModeHint');
+    if (!hint) return;
+    hint.textContent = isAdminMode()
+      ? 'حالت مدیر فعال است: کانال مستقیماً به مخزن اضافه و پست‌هایش استخراج می‌شود.'
+      : 'درخواست شما از طریق GitHub ثبت و به‌صورت خودکار بررسی می‌شود (نیازمند حساب گیت‌هاب).';
   };
 
   const closeModal = () => {
@@ -1185,7 +1151,8 @@ function initAddChannelModal() {
     const tokens = rawInput.split(/[,;\s\n]+/);
     const validChannels = tokens
       .map(t => t.replace(/^https?:\/\/t\.me\/(s\/)?/i, '').replace(/^@/, '').replace(/[^a-zA-Z0-9_]/g, '').toLowerCase())
-      .filter(t => t.length >= 4);
+      .filter(t => t.length >= 4 && t.length <= 64)
+      .slice(0, 20);
 
     if (validChannels.length === 0) {
       showFeedback('شناسه کانال نامعتبر است (حداقل ۴ کاراکتر انگلیسی).', 'error');
@@ -1198,10 +1165,14 @@ function initAddChannelModal() {
     // ۲. بررسی آیا کانال در سرور از قبل موجود است؟
     let existingChannel = state.channels.find(c => validChannels.includes(c.id.toLowerCase()));
     if (!existingChannel) {
-      const latestData = await fetchIndexData();
-      if (latestData && latestData.channels) {
-        state.channels = latestData.channels;
-        existingChannel = state.channels.find(c => validChannels.includes(c.id.toLowerCase()));
+      try {
+        const latestData = await fetchIndexData();
+        if (latestData && latestData.channels) {
+          state.channels = latestData.channels;
+          existingChannel = state.channels.find(c => validChannels.includes(c.id.toLowerCase()));
+        }
+      } catch (e) {
+        console.warn('بررسی آنلاین فهرست کانال‌ها ممکن نشد:', e);
       }
     }
 
@@ -1215,6 +1186,34 @@ function initAddChannelModal() {
         closeModal();
         openChannelFeed(existingChannel.id);
       }, 1000);
+      return;
+    }
+
+    // ۳. کاربران عادی (بدون توکن): ثبت درخواست از طریق Issue
+    // هیچ کلید محرمانه‌ای در کلاینت وجود ندارد؛ ورک‌فلو گیت‌هاب درخواست را پردازش می‌کند.
+    if (!isAdminMode()) {
+      const issueUrl = buildAddIssueUrl(validChannels);
+      const opened = openExternal(issueUrl);
+
+      if (opened) {
+        showFeedback('درخواست در گیت‌هاب باز شد. پس از ثبت Issue، کانال به‌صورت خودکار اضافه می‌شود.', 'info');
+      } else {
+        let copied = false;
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(issueUrl);
+            copied = true;
+          }
+        } catch (e) {
+          // کپی ممکن نشد؛ آدرس در متن پیام نمایش داده می‌شود
+        }
+        showFeedback(
+          copied
+            ? 'مرورگر اجازه باز کردن لینک را نداد. آدرس درخواست کپی شد؛ آن را در مرورگر باز کنید.'
+            : 'مرورگر اجازه باز کردن لینک را نداد. این آدرس را در مرورگر باز کنید: ' + issueUrl,
+          'info'
+        );
+      }
       return;
     }
 
@@ -1302,10 +1301,14 @@ function initEvents() {
     setTimeout(() => { icon.style.transform = 'none'; }, 500);
 
     if (state.currentView === 'channels') {
-      const data = await fetchIndexData();
-      state.channels = data.channels || [];
-      renderChannelsList();
-      syncUserProfileFromCloud();
+      try {
+        const data = await fetchIndexData();
+        state.channels = data.channels || [];
+        renderChannelsList();
+      } catch (err) {
+        console.error('خطا در تازه‌سازی فهرست کانال‌ها:', err);
+        alert(err.message || 'تازه‌سازی فهرست کانال‌ها ممکن نشد.');
+      }
     } else if (state.activeChannelId) {
       await openChannelFeed(state.activeChannelId);
     }
@@ -1325,12 +1328,50 @@ async function bootstrap() {
   initDeleteChannelModal();
   initEvents();
 
-  const data = await fetchIndexData();
-  state.channels = data.channels || [];
-  renderChannelsList();
+  try {
+    const data = await fetchIndexData();
+    state.channels = data.channels || [];
+    renderChannelsList();
+  } catch (err) {
+    console.error('خطا در راه‌اندازی اولیه:', err);
+    renderChannelsLoadError(err);
+  }
+}
 
-  // همگام‌سازی ابری پروفایل کاربر بله (مدل دوم - بر اساس Bale User ID)
-  syncUserProfileFromCloud();
+/**
+ * نمایش خطای بارگذاری اولیه فهرست کانال‌ها به‌جای اسپینر دائمی.
+ */
+function renderChannelsLoadError(err) {
+  const container = document.getElementById('channelsList');
+  if (!container) return;
+
+  const detail = err && err.message ? escapeHtml(err.message) : 'خطای نامشخص';
+
+  container.innerHTML = `
+    <div class="empty-state">
+      <div style="font-size: 2rem; margin-bottom: 8px;">📡</div>
+      <h3 style="margin-bottom: 6px; font-size: 1.05rem;">ارتباط با سرور برقرار نشد</h3>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 16px;">${detail}</p>
+      <button class="btn btn-primary" id="retryChannelsBtn">🔄 تلاش مجدد</button>
+    </div>
+  `;
+
+  const retryBtn = document.getElementById('retryChannelsBtn');
+  if (retryBtn) {
+    retryBtn.addEventListener('click', async () => {
+      retryBtn.disabled = true;
+      retryBtn.textContent = 'در حال تلاش...';
+      try {
+        const data = await fetchIndexData();
+        state.channels = data.channels || [];
+        renderChannelsList();
+      } catch (e) {
+        retryBtn.disabled = false;
+        retryBtn.textContent = '🔄 تلاش مجدد';
+        renderChannelsLoadError(e);
+      }
+    });
+  }
 }
 
 window.addEventListener('DOMContentLoaded', bootstrap);
