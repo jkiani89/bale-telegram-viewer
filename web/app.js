@@ -86,6 +86,133 @@ function isColorDark(hexColor) {
 
 const STORAGE_KEY = 'bale_tg_viewer_state_v1';
 
+// ==========================================================================
+// همگام‌سازی ابری پروفایل کاربر بله (Bale User Cloud Profile Sync - Model 2)
+// ==========================================================================
+
+let userProfileSha = null;
+let syncDebounceTimer = null;
+
+function getCurrentBaleUser() {
+  try {
+    if (window.Bale && window.Bale.WebApp && window.Bale.WebApp.initDataUnsafe && window.Bale.WebApp.initDataUnsafe.user) {
+      return window.Bale.WebApp.initDataUnsafe.user;
+    }
+  } catch (e) {}
+  return null;
+}
+
+async function syncUserProfileFromCloud() {
+  const user = getCurrentBaleUser();
+  if (!user || !user.id) return;
+
+  const userId = user.id;
+  const url = `https://raw.githubusercontent.com/${GH_REPO}/gh-pages/data/users/${userId}.json?t=${Date.now()}`;
+
+  try {
+    const resp = await fetch(url, {
+      cache: 'no-store',
+      headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache' }
+    });
+
+    if (resp.ok) {
+      const data = await resp.json();
+      let changed = false;
+
+      // همگام‌سازی لیست کانال‌های مخفی‌شده
+      if (Array.isArray(data.hidden_channels)) {
+        const localHidden = getHiddenChannels();
+        if (JSON.stringify(localHidden.sort()) !== JSON.stringify(data.hidden_channels.sort())) {
+          localStorage.setItem(HIDDEN_CHANNELS_KEY, JSON.stringify(data.hidden_channels));
+          changed = true;
+        }
+      }
+
+      // همگام‌سازی وضعیت خوانده‌شده پیام‌ها
+      if (data.read_state && typeof data.read_state === 'object') {
+        state.readState = Object.assign({}, state.readState, data.read_state);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          read_state: state.readState,
+          updated_at: Date.now()
+        }));
+        changed = true;
+      }
+
+      if (changed && state.currentView === 'channels') {
+        renderChannelsList();
+      }
+    }
+  } catch (err) {
+    console.warn('دسترسی به پروفایل ابری مقدور نشد یا هنوز ساخته نشده است:', err);
+  }
+}
+
+function saveUserProfileToCloud() {
+  const user = getCurrentBaleUser();
+  if (!user || !user.id) return;
+
+  clearTimeout(syncDebounceTimer);
+  syncDebounceTimer = setTimeout(async () => {
+    const userId = user.id;
+    const token = getEffectiveToken();
+    if (!token) return;
+
+    const payloadObj = {
+      user_id: userId,
+      first_name: user.first_name || '',
+      username: user.username || '',
+      hidden_channels: getHiddenChannels(),
+      read_state: state.readState,
+      updated_at: Math.floor(Date.now() / 1000)
+    };
+
+    const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(payloadObj, null, 2))));
+    const apiUrl = `https://api.github.com/repos/${GH_REPO}/contents/data/users/${userId}.json`;
+
+    try {
+      if (!userProfileSha) {
+        const checkResp = await fetch(apiUrl, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github+json'
+          }
+        });
+        if (checkResp.ok) {
+          const fileData = await checkResp.json();
+          userProfileSha = fileData.sha;
+        }
+      }
+
+      const bodyData = {
+        message: `sync profile for user ${userId}`,
+        content: contentBase64,
+        branch: 'gh-pages'
+      };
+      if (userProfileSha) {
+        bodyData.sha = userProfileSha;
+      }
+
+      const putResp = await fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github+json'
+        },
+        body: JSON.stringify(bodyData)
+      });
+
+      if (putResp.ok) {
+        const resJson = await putResp.json();
+        if (resJson && resJson.content && resJson.content.sha) {
+          userProfileSha = resJson.content.sha;
+        }
+      }
+    } catch (e) {
+      console.warn('خطا در ذخیره پروفایل ابری کاربر:', e);
+    }
+  }, 1200);
+}
+
 function loadReadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -111,6 +238,7 @@ function markChannelAsRead(channelId, highestMsgId) {
   } catch (e) {
     console.error('خطا در ذخیره localStorage:', e);
   }
+  saveUserProfileToCloud();
 }
 
 // ==========================================================================
@@ -178,6 +306,7 @@ function hideChannel(channelId) {
   if (!list.includes(channelId)) {
     list.push(channelId);
     localStorage.setItem(HIDDEN_CHANNELS_KEY, JSON.stringify(list));
+    saveUserProfileToCloud();
   }
 }
 
@@ -186,6 +315,7 @@ function unhideChannel(channelId) {
     const list = getHiddenChannels();
     const updated = list.filter(id => id.toLowerCase() !== channelId.toLowerCase());
     localStorage.setItem(HIDDEN_CHANNELS_KEY, JSON.stringify(updated));
+    saveUserProfileToCloud();
   } catch (e) {
     console.error('خطا در رفع حذف کانال:', e);
   }
@@ -1175,6 +1305,7 @@ function initEvents() {
       const data = await fetchIndexData();
       state.channels = data.channels || [];
       renderChannelsList();
+      syncUserProfileFromCloud();
     } else if (state.activeChannelId) {
       await openChannelFeed(state.activeChannelId);
     }
@@ -1197,6 +1328,9 @@ async function bootstrap() {
   const data = await fetchIndexData();
   state.channels = data.channels || [];
   renderChannelsList();
+
+  // همگام‌سازی ابری پروفایل کاربر بله (مدل دوم - بر اساس Bale User ID)
+  syncUserProfileFromCloud();
 }
 
 window.addEventListener('DOMContentLoaded', bootstrap);

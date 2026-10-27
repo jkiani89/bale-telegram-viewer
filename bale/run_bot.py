@@ -21,7 +21,7 @@ def send_welcome_message(chat_id):
             "inline_keyboard": [
                 [
                     {
-                        "text": "🚀 باز کردن کانال‌های تلگرام",
+                        "text": "باز کردن",
                         "web_app": {"url": MINIAPP_URL}
                     }
                 ]
