@@ -119,33 +119,41 @@ function markChannelAsRead(channelId, highestMsgId) {
 
 async function fetchIndexData() {
   const cacheBuster = `t=${Date.now()}`;
+  const fetchOpts = {
+    cache: 'no-store',
+    headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache' }
+  };
   try {
-    const resp = await fetch(`data/index.json?${cacheBuster}`, { cache: 'no-cache' });
+    const resp = await fetch(`data/index.json?${cacheBuster}`, fetchOpts);
     if (!resp.ok) {
       // اگر روی محیط توسعه هنوز داده تولید نشده بود، به samples برود
-      const fallback = await fetch(`data/samples/index.json?${cacheBuster}`);
+      const fallback = await fetch(`data/samples/index.json?${cacheBuster}`, fetchOpts);
       return await fallback.json();
     }
     return await resp.json();
   } catch (e) {
     console.warn('دسترسی به data/index.json ممکن نشد، بارگذاری سمپل:', e);
-    const fallback = await fetch(`data/samples/index.json?${cacheBuster}`);
+    const fallback = await fetch(`data/samples/index.json?${cacheBuster}`, fetchOpts);
     return await fallback.json();
   }
 }
 
 async function fetchChannelFeed(channelId) {
   const cacheBuster = `t=${Date.now()}`;
+  const fetchOpts = {
+    cache: 'no-store',
+    headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache' }
+  };
   try {
-    const resp = await fetch(`data/${channelId}.json?${cacheBuster}`, { cache: 'no-cache' });
+    const resp = await fetch(`data/${channelId}.json?${cacheBuster}`, fetchOpts);
     if (!resp.ok) {
-      const fallback = await fetch(`data/samples/${channelId}.json?${cacheBuster}`);
+      const fallback = await fetch(`data/samples/${channelId}.json?${cacheBuster}`, fetchOpts);
       return await fallback.json();
     }
     return await resp.json();
   } catch (e) {
     console.warn(`خطا در دریافت data/${channelId}.json، بارگذاری سمپل:`, e);
-    const fallback = await fetch(`data/samples/${channelId}.json?${cacheBuster}`);
+    const fallback = await fetch(`data/samples/${channelId}.json?${cacheBuster}`, fetchOpts);
     return await fallback.json();
   }
 }
@@ -204,10 +212,13 @@ function initDeleteChannelModal() {
 
   confirmBtn.addEventListener('click', () => {
     if (pendingDeleteChannelId) {
-      hideChannel(pendingDeleteChannelId);
-      state.channels = state.channels.filter(c => c.id !== pendingDeleteChannelId);
+      const chId = pendingDeleteChannelId;
+      hideChannel(chId);
+      state.channels = state.channels.filter(c => c.id !== chId);
       renderChannelsList();
       closeModal();
+      // همگام‌سازی سروری حذف کانال برای تمام دستگاه‌ها
+      triggerDirectChannelAdd(`del:${chId}`, () => {}, () => {}, () => {});
     }
   });
 }

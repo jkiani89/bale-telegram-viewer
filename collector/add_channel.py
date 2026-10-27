@@ -104,22 +104,50 @@ def verify_and_add_channel(channel_id, config_path="config/channels.json"):
         return False, f"خطای سیستمی در ارتباط با تلگرام: {str(e)}"
 
 
-def add_channels_bulk(channel_inputs, config_path="config/channels.json"):
-    """پشتیبانی از افزودن یک یا چند کانال تلگرام به صورت همزمان (تکی یا گروهی)."""
-    raw_list = re.split(r"[,;\s\n\r]+", channel_inputs.strip())
-    cleaned_ids = []
-    for raw in raw_list:
-        cid = clean_channel_id(raw)
-        if cid and len(cid) >= 4 and cid not in cleaned_ids:
-            cleaned_ids.append(cid)
+def remove_channel(channel_id, config_path="config/channels.json"):
+    """حذف کانال از فایل کانفیگ اصلی جهت همگام‌سازی در تمام دستگاه‌ها."""
+    channel_id = clean_channel_id(channel_id)
+    with open(config_path, "r", encoding="utf-8") as f:
+        config = json.load(f)
 
-    if not cleaned_ids:
+    channels = config.get("channels", [])
+    filtered = [c for c in channels if c["id"].lower() != channel_id.lower()]
+
+    if len(filtered) == len(channels):
+        logger.info(f"کانال '{channel_id}' در کانفیگ وجود نداشت.")
+        return True, f"کانال '{channel_id}' از قبل وجود نداشت."
+
+    config["channels"] = filtered
+    with open(config_path, "w", encoding="utf-8") as f:
+        json.dump(config, f, ensure_ascii=False, indent=2)
+
+    logger.info(f"کانال '{channel_id}' با موفقیت از کانفیگ حذف شد.")
+    # اجرای کالکتور جهت به‌روزرسانی data/index.json بدون این کانال
+    run_collector(config_path=config_path)
+    return True, f"کانال '{channel_id}' با موفقیت از سرور حذف شد."
+
+
+def add_channels_bulk(channel_inputs, config_path="config/channels.json", is_remove=False):
+    """پشتیبانی از افزودن یا حذف یک یا چند کانال تلگرام به صورت همزمان."""
+    raw_list = re.split(r"[,;\s\n\r]+", channel_inputs.strip())
+    cleaned_items = []
+    for raw in raw_list:
+        should_remove = is_remove or raw.startswith(("del:", "remove:", "delete:"))
+        clean_raw = re.sub(r"^(del|remove|delete):", "", raw)
+        cid = clean_channel_id(clean_raw)
+        if cid and len(cid) >= 4:
+            cleaned_items.append((cid, should_remove))
+
+    if not cleaned_items:
         return False, "شناسه کانال نامعتبر است (حداقل ۴ کاراکتر)."
 
     results = []
     overall_success = False
-    for cid in cleaned_ids:
-        ok, msg = verify_and_add_channel(cid, config_path=config_path)
+    for cid, should_remove in cleaned_items:
+        if should_remove:
+            ok, msg = remove_channel(cid, config_path=config_path)
+        else:
+            ok, msg = verify_and_add_channel(cid, config_path=config_path)
         if ok:
             overall_success = True
         results.append(f"@{cid}: {msg}")
@@ -128,8 +156,9 @@ def add_channels_bulk(channel_inputs, config_path="config/channels.json"):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="افزودن کانال تلگرام به Bale Telegram Viewer")
-    parser.add_argument("--channel", required=True, help="شناسه یک یا چند کانال تلگرام (مثال: isna یا @isna,zoomit)")
+    parser = argparse.ArgumentParser(description="افزودن یا حذف کانال تلگرام در Bale Telegram Viewer")
+    parser.add_argument("--channel", required=True, help="شناسه یک یا چند کانال تلگرام (مثال: isna یا del:isna یا @isna,zoomit)")
+    parser.add_argument("--remove", action="store_true", help="حذف کانال به جای افزودن")
     parser.add_argument("--config", default="config/channels.json", help="مسیر فایل کانفیگ")
     args = parser.parse_args()
 
@@ -137,6 +166,6 @@ if __name__ == "__main__":
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     os.chdir(root_dir)
 
-    success, msg = add_channels_bulk(args.channel, config_path=args.config)
+    success, msg = add_channels_bulk(args.channel, config_path=args.config, is_remove=args.remove)
     print(msg)
     sys.exit(0 if success else 1)
