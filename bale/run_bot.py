@@ -39,6 +39,17 @@ def main():
     print(f"🔗 آدرس مینی‌اپ: {MINIAPP_URL}")
     last_update_id = 0
 
+    # تخلیه پیام‌های قدیمی موجود در صف بله قبل از شروع
+    try:
+        flush_resp = requests.get(f"{BALE_API}/bot{TOKEN}/getUpdates?offset=-1", timeout=10)
+        if flush_resp.status_code == 200:
+            res = flush_resp.json().get("result", [])
+            if res:
+                last_update_id = res[-1]["update_id"]
+                print(f"تخلیه صف پیام‌های قبلی تا update_id: {last_update_id}")
+    except Exception as e:
+        print(f"خطا در تخلیه اولیه: {e}")
+
     while True:
         try:
             url = f"{BALE_API}/bot{TOKEN}/getUpdates?offset={last_update_id + 1}&timeout=20"
@@ -51,8 +62,9 @@ def main():
                     chat_id = msg.get("chat", {}).get("id")
                     text = msg.get("text", "")
 
-                    if chat_id:
-                        print(f"پیام جدید از {chat_id}: {text}")
+                    # پاسخ منحصراً به دستور /start
+                    if chat_id and text and text.strip().startswith("/start"):
+                        print(f"دستور /start از {chat_id}")
                         send_welcome_message(chat_id)
             time.sleep(1)
         except KeyboardInterrupt:
