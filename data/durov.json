@@ -7,7 +7,7 @@
     "avatar": "media/durov/avatar.webp",
     "subscribers": "10.2M",
     "verified": true,
-    "last_updated": 1793092143
+    "last_updated": 1793094655
   },
   "messages": [
     {
@@ -335,7 +335,7 @@
       "date": "2026-10-11T14:52:40+00:00",
       "timestamp": 1791730360,
       "text_html": "<i><b>✨</b></i> <b>Designers × AI<br><br></b><i><b>🆕</b></i> The mockup era is over. Today’s AI tools give <b>every</b> designer a <b>superpower</b>: you can now <b>craft</b> your ideas, not just draw them. <br><br>The gap between “what if…?” and “look, it works!” has never been smaller, and that <b>changed</b> how we build features in Telegram.<br><br><b>Message </b><a href=\"https://t.me/designers\" target=\"_blank\" rel=\"noopener noreferrer\"><b>@designers</b></a><b> to submit your concepts.</b><br><br><i><b>✔️</b></i> <b>We accept</b><br><i>– Working, ready-to-implement code<br></i> complemented by<i><br>– A demo video of your feature in action</i><br><br><i><b>🗑</b></i> <b>We no longer accept</b><br><i>– Static mockups<br>– Demo videos with no code behind them<br>– Text-only concepts</i><br><br>No coding background? Curiosity, attention to detail and a good prompt will take you far. <br><br>The future of design isn’t drawn – it’s built. <br><br><i><b>🚀</b></i> <b>Let's build it together!</b><br><br><i>(An example of what is possible by our iOS designer – this is a ready to use implementation not a motion video.) </i><i><b>👇</b></i>",
-      "views": "1.54M",
+      "views": "1.55M",
       "media_type": "video_link",
       "media": {
         "photos": [],

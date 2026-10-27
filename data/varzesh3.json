@@ -7,84 +7,15 @@
     "avatar": "media/varzesh3/avatar.webp",
     "subscribers": "1.3M",
     "verified": true,
-    "last_updated": 1793092146
+    "last_updated": 1793094658
   },
   "messages": [
-    {
-      "id": 305292,
-      "date": "2026-10-26T22:14:40+00:00",
-      "timestamp": 1793052880,
-      "text_html": "جایزه گرد مولر؛ <i><b>⭐️</b></i> هری کین به عنوان بهترین گلزن سال انتخاب شد  <i><b>🆔</b></i> @varzesh3",
-      "views": "209K",
-      "media_type": "photo",
-      "media": {
-        "photos": [
-          {
-            "url": "media/varzesh3/305292_0.webp",
-            "remote_url": "https://cdn4.telesco.pe/file/qACAwlV8Rh-FwnrkGTah-96k2S3E8ZewJZ4o9x_3A0BhcqnOySROjBt9lWGEYqbwBKjoPegxTgX0oGQjfvVOsxrOJWSAGt14Rjxg68fcrg4haVO8IbqCSR-_Zy5Mj7r_xJWw3_v3k1s-kWx8P41BQCDZ1Si-Ng8fwpx6X-3dhaLUQlHliy-ZQLaZfl3oPyaqJb3EVCh_GHn_SCPnirMO9TurkDqVOcB5PLZ-AnrALtNvnhgHYij-wn9tQxcK6gdzMHilWkIjDv40c-qeLILn6llDet_ay9vrPy5oAmk5w8woUjXFzByPykgwo7FCOKJralusC-9NI0MvVv0qxkWCLg.jpg"
-          }
-        ],
-        "video": null
-      },
-      "forward_from": null,
-      "reply_to": {
-        "id": 305291,
-        "text_snippet": "جایزه گرد مولر؛⭐️هری کین به عنوان بهترین گلزن سال انتخاب شد🆔@varzesh3"
-      },
-      "original_url": "https://t.me/varzesh3/305292"
-    },
-    {
-      "id": 305293,
-      "date": "2026-10-26T22:23:14+00:00",
-      "timestamp": 1793053394,
-      "text_html": "جایزه گرد مولر؛ <i><b>⭐️</b></i>شارلین کورال به عنوان بهترین گلزن زنان سال انتخاب شد  <i><b>🆔</b></i> @varzesh3",
-      "views": "211K",
-      "media_type": "video_link",
-      "media": {
-        "photos": [],
-        "video": {
-          "duration": "0:12",
-          "remote_thumb_url": "https://cdn4.telesco.pe/file/UgoOIMrGSBTfFk964ZaERg9Fi30RPkeQwBDoa81zsOex8Gx_vNBEW10dGl4n4PZt2vISmUubJ8yYatoUlufPxd-h9VQrMOFGUqcDqH2Lsv7KlCQ896devFnElVb1z9h6ppYBZ-X83PTWQbfPv2-AVQe0jP-HsC2bSltjTp4w3UQLSL6wUj-8sBFrreRSsOqiYWD6MXri4qMI6VAI-5Fa7JHlqb3FxEhqk1fkMzfDcWBqkBtZ0vu9TAkkAR3XsT0Kfye4V0q-j0jFJJKkH6S1JGtN1G8xTt3YbhIh_riz0MpOnQTB5SJkKKRrSJEiJqRLYwFsmttOdA9bA4T_RWn2vQ",
-          "local_thumb_path": "media/varzesh3/305293_thumb.webp",
-          "original_url": "https://t.me/varzesh3/305293"
-        }
-      },
-      "forward_from": null,
-      "reply_to": {
-        "id": 305292,
-        "text_snippet": "جایزه گرد مولر؛⭐️شارلین کورال به عنوان بهترین گلزن زنان سال انتخاب شد🆔@varzesh3"
-      },
-      "original_url": "https://t.me/varzesh3/305293"
-    },
-    {
-      "id": 305294,
-      "date": "2026-10-26T22:34:05+00:00",
-      "timestamp": 1793054045,
-      "text_html": "<i><b>🔥</b></i><i><b>🥇</b></i> رونمایی از توپ طلای 2026  <i><b>🆔</b></i> @varzesh3",
-      "views": "214K",
-      "media_type": "photo",
-      "media": {
-        "photos": [
-          {
-            "url": "media/varzesh3/305294_0.webp",
-            "remote_url": "https://cdn4.telesco.pe/file/hs-awd8MW7RSZqDMpNzYqhaeXVTawdl00dJicRzBq7CTB9XS_hyg1JTk2ttiQ-kFIW14KtnPDWyOCpqM2qQhlcwUM089jzjl6uMrGDvR89mFKB7Q3BOZBL82d3LMXGSgPQSNG9qPF6szPmBbGqalMDT3x0rVXiPr2LfNrCeKWfnZZ-xhenEChv1DNMxSu4lxbg3hxZvtF5jcmcqgTZl87_QSpfQ1xP7xkQc5sNlTyyVukKWZ3RtlfL2WYCGNeevmO0G1wQDawKUQVpSr5Qd3e_pTownWAKTUdKOAN6rAXQT3OGbjUrVSM6IIeirPFsOCLqAUvgH2qNbSq_Z_wl9Z9g.jpg"
-          }
-        ],
-        "video": null
-      },
-      "forward_from": null,
-      "reply_to": {
-        "id": 305293,
-        "text_snippet": "🔥🥇رونمایی از توپ طلای 2026🆔@varzesh3"
-      },
-      "original_url": "https://t.me/varzesh3/305294"
-    },
     {
       "id": 305295,
       "date": "2026-10-26T22:50:42+00:00",
       "timestamp": 1793055042,
-      "text_html": "<i><b>🔥</b></i> بهترین بازیکن سال 2026؛ <i><b>🥇</b></i> الکسیا پوتیاس بازیکن تیم لندن اف‌سی به عنوان بهترین بازیکن زنان سال انتخاب شد  <i><b>🆔</b></i> @varzesh3",
-      "views": "215K",
+      "text_html": "<i><b>🔥</b></i> بهترین بازیکن سال 2026؛ <i><b>🥇</b></i> الکسیا پوتیاس بازیکن تیم لندن اف‌سی برای سومین‌بار به عنوان بهترین بازیکن زنان سال انتخاب شد  <i><b>🆔</b></i> @varzesh3",
+      "views": "221K",
       "media_type": "photo",
       "media": {
         "photos": [
@@ -98,7 +29,7 @@
       "forward_from": null,
       "reply_to": {
         "id": 305294,
-        "text_snippet": "🔥بهترین بازیکن سال 2026؛🥇الکسیا پوتیاس بازیکن تیم لندن اف‌سی به عنوان بهترین بازیکن زنان سال انتخاب "
+        "text_snippet": "🔥بهترین بازیکن سال 2026؛🥇الکسیا پوتیاس بازیکن تیم لندن اف‌سی برای سومین‌بار به عنوان بهترین بازیکن ز"
       },
       "original_url": "https://t.me/varzesh3/305295"
     },
@@ -107,7 +38,7 @@
       "date": "2026-10-26T22:54:38+00:00",
       "timestamp": 1793055278,
       "text_html": "<i><b>🔥</b></i> بمب 2026 در لندن منفجر شد؛ <i><b>🥇</b></i>  هری کین مهاجم بایرن مونیخ و انگلیس برنده توپ طلای 2026 شد  <i><b>🆔</b></i> @varzesh3",
-      "views": "212K",
+      "views": "219K",
       "media_type": "video_link",
       "media": {
         "photos": [],
@@ -130,7 +61,7 @@
       "date": "2026-10-26T23:01:30+00:00",
       "timestamp": 1793055690,
       "text_html": "<i><b>🔥</b></i> از دستان رونالدو؛ <i><b>🥇</b></i>لحظه اعلام نام هری کین به عنوان برنده توپ طلای 2026  <i><b>🆔</b></i> @varzesh3",
-      "views": "215K",
+      "views": "222K",
       "media_type": "photo",
       "media": {
         "photos": [
@@ -153,7 +84,7 @@
       "date": "2026-10-26T23:14:04+00:00",
       "timestamp": 1793056444,
       "text_html": "<i><b>🥇</b></i> رده‌بندی نهایی توپ طلای 2026  <i><b>🥇</b></i> هری کین <i><b>🥈</b></i> کیلیان امباپه <i><b>🥉</b></i> لامین یامال  رتبه‌های چهارم تا دهم به ترتیب: رودری - لیونل مسی - خویچا کواراتسخلیا - عثمان دمبله - ارلینگ هالند - مایکل اولیسه - فابیان رویز  <i><b>🆔</b></i> @varzesh3",
-      "views": "216K",
+      "views": "224K",
       "media_type": "photo",
       "media": {
         "photos": [
@@ -176,7 +107,7 @@
       "date": "2026-10-26T23:24:04+00:00",
       "timestamp": 1793057044,
       "text_html": "<i><b>👑</b></i> <b>تمام برندگان امشب در یک نگاه</b><br><br>توپ طلای 2026 | <a href=\"https://t.me/varzesh3/305295\" target=\"_blank\" rel=\"noopener noreferrer\">هری کین</a><br>توپ طلای زنان 2026 | <a href=\"https://t.me/varzesh3/305294\" target=\"_blank\" rel=\"noopener noreferrer\">الکسیا پوتیاس</a><br>بهترین دروازه‌بان 2026 | <a href=\"https://t.me/varzesh3/305286\" target=\"_blank\" rel=\"noopener noreferrer\">اونای سیمون</a><br>بهترین دروازه‌بان زنان 2026 | <a href=\"https://t.me/varzesh3/305285\" target=\"_blank\" rel=\"noopener noreferrer\">کاتا کول</a><br>بهترین بازیکن جوان 2026 |<a href=\"https://t.me/varzesh3/305281\" target=\"_blank\" rel=\"noopener noreferrer\"> لامین یامال</a><br>بهترین بازیکن جوان زنان 2026 |<a href=\"https://t.me/varzesh3/305282\" target=\"_blank\" rel=\"noopener noreferrer\"> ویکی لوپز</a><br>بهترین سرمربی 2026 | <a href=\"https://t.me/varzesh3/305284\" target=\"_blank\" rel=\"noopener noreferrer\">لوئیز دلافوئنته</a><br>بهترین سرمربی زنان 2026 | <a href=\"https://t.me/varzesh3/305283\" target=\"_blank\" rel=\"noopener noreferrer\">پره رومئو</a><br>بهترین تیم 2026 | <a href=\"https://t.me/varzesh3/305290\" target=\"_blank\" rel=\"noopener noreferrer\">پاری‌سن‌ژرمن</a><br>بهترین تیم زنان 2026 | <a href=\"https://t.me/varzesh3/305288\" target=\"_blank\" rel=\"noopener noreferrer\">بارسلونا</a><br>بهترین مهاجم 2026 | <a href=\"https://t.me/varzesh3/305291\" target=\"_blank\" rel=\"noopener noreferrer\">هری کین</a><br>بهترین مهاجم زنان 2026 | <a href=\"https://t.me/varzesh3/305292\" target=\"_blank\" rel=\"noopener noreferrer\">شارلین کورال</a><br>برنده جایزه سوکراتیس 2026 | <a href=\"https://t.me/varzesh3/305287\" target=\"_blank\" rel=\"noopener noreferrer\">بوکایو ساکا</a><br><br><i><b>🆔</b></i> <a href=\"https://t.me/varzesh3\" target=\"_blank\" rel=\"noopener noreferrer\">@varzesh3</a>",
-      "views": "220K",
+      "views": "226K",
       "media_type": "photo",
       "media": {
         "photos": [
@@ -196,7 +127,7 @@
       "date": "2026-10-26T23:59:27+00:00",
       "timestamp": 1793059167,
       "text_html": "<i><b>👑</b></i> تمام برندگان امشب در یک نگاه  توپ طلای 2026 | هری کین توپ طلای زنان 2026 | الکسیا پوتیاس بهترین دروازه‌بان 2026 | اونای سیمون بهترین دروازه‌بان زنان 2026 | کاتا کول بهترین بازیکن جوان 2026 | لامین یامال بهترین بازیکن جوان زنان 2026 | ویکی لوپز بهترین سرمربی…",
-      "views": "218K",
+      "views": "225K",
       "media_type": "video_link",
       "media": {
         "photos": [],
@@ -219,7 +150,7 @@
       "date": "2026-10-27T05:15:08+00:00",
       "timestamp": 1793078108,
       "text_html": "<i><b>🖥</b></i> خلاصه اخبار را با ما مرور کنید؛<br><i><b>⌛️</b></i><b> آنچه در 24 ساعت اخیر گذشت</b><br><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305213\" target=\"_blank\" rel=\"noopener noreferrer\">نتایج دیدارهای شب گذشته NBA</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305228\" target=\"_blank\" rel=\"noopener noreferrer\">قهرمانی آنتونلی در فرمول یک آستین</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305236\" target=\"_blank\" rel=\"noopener noreferrer\">قهرمانی زودهنگام تیم کشتی فرنگی</a><b><br></b><b><i><b>🔴</b></i></b><a href=\"https://t.me/varzesh3/305237\" target=\"_blank\" rel=\"noopener noreferrer\">بیرانوند در سربازی</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305239?single\" target=\"_blank\" rel=\"noopener noreferrer\">بیرانوند رسما سرباز شد</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305233\" target=\"_blank\" rel=\"noopener noreferrer\">سعید اسماعیلی در فینال 67 کیلوگرم</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305231\" target=\"_blank\" rel=\"noopener noreferrer\">علیرضا مهمدی در فینال 87 کیلوگرم</a> <br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305230\" target=\"_blank\" rel=\"noopener noreferrer\">کشتکار اولین اوتی ایران</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305241\" target=\"_blank\" rel=\"noopener noreferrer\">فردین هدایتی پادشاه 130 کیلوگرم دنیا</a> <br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305243\" target=\"_blank\" rel=\"noopener noreferrer\">دانیال سهرابی قهرمان وزن 72 کیلوگرم</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305245\" target=\"_blank\" rel=\"noopener noreferrer\">ساروی به برنز 97 کیلوگرم رسید</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305265\" target=\"_blank\" rel=\"noopener noreferrer\">العین 2 - تراکتور 1</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305281\" target=\"_blank\" rel=\"noopener noreferrer\">یامال برنده جایزه کوپا</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305282\" target=\"_blank\" rel=\"noopener noreferrer\">ویکی لوپز برنده کوپا زنان</a> <br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305283\" target=\"_blank\" rel=\"noopener noreferrer\">پره رومئو برترین مربی زنان</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305284\" target=\"_blank\" rel=\"noopener noreferrer\">دلافوئنته بهترین مربی سال</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305285\" target=\"_blank\" rel=\"noopener noreferrer\">کاتا کول بهترین دروازه‌بان زنان</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305286\" target=\"_blank\" rel=\"noopener noreferrer\">اونای سیمون بهترین دروازه‌بان سال</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305287\" target=\"_blank\" rel=\"noopener noreferrer\">ساکا برنده جایزه سوکراتس</a> <br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305288\" target=\"_blank\" rel=\"noopener noreferrer\">بارسلونا بهترین تیم زنان</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305290\" target=\"_blank\" rel=\"noopener noreferrer\">پاری‌سن‌ژرمن بهترین تیم سال</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305291\" target=\"_blank\" rel=\"noopener noreferrer\">هری کین برنده جایزه گرد مولر</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305292\" target=\"_blank\" rel=\"noopener noreferrer\">شارلین کورال برنده جایزه گرد مولر زنان</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305294\" target=\"_blank\" rel=\"noopener noreferrer\">الکسیا پوتیاس برنده توپ طلا زنان</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305295\" target=\"_blank\" rel=\"noopener noreferrer\">هری کین برنده جایزه توپ طلا 2026</a><br><i><b>🔴</b></i><a href=\"https://t.me/varzesh3/305297\" target=\"_blank\" rel=\"noopener noreferrer\">رده بندی نهایی توپ طلا</a><br><br><i><b>🆔</b></i><a href=\"https://t.me/varzesh3\" target=\"_blank\" rel=\"noopener noreferrer\">@varzesh3</a>",
-      "views": "147K",
+      "views": "161K",
       "media_type": "photo",
       "media": {
         "photos": [
@@ -239,7 +170,7 @@
       "date": "2026-10-27T06:04:29+00:00",
       "timestamp": 1793081069,
       "text_html": "<i><b>👀</b></i> از سه فینال تلخ تا فتح قله فوتبال؛ <i><b>🔥</b></i> هری کین؛ از کابوس شکست تا قهرمانی با بایرن و فتح توپ طلا  2019؛ شکست در فینال لیگ قهرمانان اروپا مقابل لیورپول 2021؛ شکست در فینال یورو مقابل ایتالیا 2024؛ شکست در فینال یورو مقابل اسپانیا 2025؛ قهرمانی با بایرن مونیخ…",
-      "views": "132K",
+      "views": "145K",
       "media_type": "video_link",
       "media": {
         "photos": [],
@@ -262,7 +193,7 @@
       "date": "2026-10-27T06:57:57+00:00",
       "timestamp": 1793084277,
       "text_html": "صحبت‌های مدیر شرکت توسعه و تجهیز؛ <i><b>🎤</b></i> ثابت‌قدم: اواخر آذر یا اوایل دی بهره برداری اولیه انجام می‌شود  <i><b>🟢</b></i> باید تا آخر آذر مراحل آماده سازی را به نقطه انتهایی برسانیم و تکمیل کنیم <i><b>🟢</b></i> مانعی برای مسقف شدن ورزشگاه آزادی وجود ندارد <i><b>🟢</b></i> در ورزشگاه آزادی بالای 3.5 هزار…",
-      "views": "108K",
+      "views": "125K",
       "media_type": "photo",
       "media": {
         "photos": [
@@ -285,7 +216,7 @@
       "date": "2026-10-27T07:01:58+00:00",
       "timestamp": 1793084518,
       "text_html": "حضور مهدی طارمی و برانکو ایوانکوویچ در اردوی استقلال در دبی  <i><b>🆔</b></i> @varzesh3",
-      "views": "106K",
+      "views": "123K",
       "media_type": "photo",
       "media": {
         "photos": [
@@ -308,7 +239,7 @@
       "date": "2026-10-27T07:19:14+00:00",
       "timestamp": 1793085554,
       "text_html": "بچه‌های اوتیسم هیچوقت تنها نیستند! <i><b>🎤</b></i> دانیال سهرابی: دل بچه‌های اوتیسم و از همه مهم‌تر حسین عزیزم (برادر دانیال) را شاد کردم  <i><b>🆔</b></i> @varzesh3",
-      "views": "96.2K",
+      "views": "116K",
       "media_type": "video_link",
       "media": {
         "photos": [],
@@ -331,7 +262,7 @@
       "date": "2026-10-27T07:45:11+00:00",
       "timestamp": 1793087111,
       "text_html": "از پشتک تا سوبلس به مجید رمضانی؛ <i><b>✨</b></i> کلکسیونی از خوشحالی‌های فردین هدایتی پس از قهرمانی  <i><b>🤼‍♂️</b></i> #کشتی فرنگی قهرمانی جهان 2026 قزاقستان  <i><b>🆔</b></i> @varzesh3",
-      "views": "80.7K",
+      "views": "103K",
       "media_type": "video_link",
       "media": {
         "photos": [],
@@ -354,7 +285,7 @@
       "date": "2026-10-27T08:00:38+00:00",
       "timestamp": 1793088038,
       "text_html": "",
-      "views": "71.4K",
+      "views": "97.2K",
       "media_type": "none",
       "media": {
         "photos": [],
@@ -369,7 +300,7 @@
       "date": "2026-10-27T08:15:17+00:00",
       "timestamp": 1793088917,
       "text_html": "اولین طلا به نام شاغلام ثبت شد؛ <i><b>🥇</b></i> غلام فرخی، قهرمان بلامنازع دنیا  <i><b>🟢</b></i> وزن 82 کیلوگرم | <i><b>🥇</b></i> غلامرضا فرخی در دیدار فینال برابر یوکسل ساریچیچک از ترکیه قرار گرفت و با نتیجه 5-1 پیروز شد و به مدال طلا رسید.  <i><b>👑</b></i> او برای دومین سال متوالی موفق به قهرمانی در این وزن شد…",
-      "views": "65.1K",
+      "views": "92.9K",
       "media_type": "video_link",
       "media": {
         "photos": [],
@@ -392,7 +323,7 @@
       "date": "2026-10-27T08:29:01+00:00",
       "timestamp": 1793089741,
       "text_html": "<i><b>📺</b></i> <b>برنامه مسابقات مهم امروز</b><br><br><i><b>🔥</b></i>مهمترین رقابت:<br><i><b>🏆</b></i>   لیگ نخبگان آسیا<br><i><b>🇮🇹</b></i>   سری آ<br><i><b>🏆</b></i>   جام حذفی آلمان<br><i><b>🏴󠁧󠁢󠁥󠁮󠁧󠁿</b></i>   ای اف ال کاپ<br><br><i><b>🆔</b></i> <a href=\"https://t.me/varzesh3\" target=\"_blank\" rel=\"noopener noreferrer\">@varzesh3</a>",
-      "views": "51.6K",
+      "views": "84.6K",
       "media_type": "photo",
       "media": {
         "photos": [
@@ -412,7 +343,7 @@
       "date": "2026-10-27T08:44:40+00:00",
       "timestamp": 1793090680,
       "text_html": "<i><b>🎤</b></i> بیرانوند: امیدوارم روزهای خوبی برای فجر بسازیم  <i><b>🆔</b></i> @varzesh3",
-      "views": "38.1K",
+      "views": "78.3K",
       "media_type": "photo",
       "media": {
         "photos": [
@@ -435,7 +366,7 @@
       "date": "2026-10-27T09:00:21+00:00",
       "timestamp": 1793091621,
       "text_html": "<i><b>⚠️</b></i><i><b>🔵</b></i> شکایت استقلال از تیم داوری دربی  <i><b>🔴</b></i> باشگاه استقلال امروز طی نامه‌ای خطاب به کمیته داوران، شکایت خود از تیم داوری دربی را اعلام داشت. در این نامه به سه مورد که بازیکن پرسپولیس به دلیل خطا بر روی رزاقی‌نیا، آقاسی و اسلامی باید اخراج می‌شد اشاره شده است. …",
-      "views": "17.5K",
+      "views": "66.9K",
       "media_type": "photo",
       "media": {
         "photos": [
@@ -452,6 +383,72 @@
         "text_snippet": "⚠️🔵شکایت استقلال از تیم داوری دربی🔴باشگاه استقلال امروز طی نامه‌ای خطاب به کمیته داوران، شکایت خود ا"
       },
       "original_url": "https://t.me/varzesh3/305312"
+    },
+    {
+      "id": 305313,
+      "date": "2026-10-27T09:10:02+00:00",
+      "timestamp": 1793092202,
+      "text_html": "<i><b>🔴</b></i><i><b>🆚</b></i><i><b>🔵</b></i> دربی 5 روز به تعویق افتاد!  <i><b>🚫</b></i> با تصمیم شورای تامین استان تهران، دربی زنان بین استقلال و پرسپولیس در لیگ زنان به تعویق افتاد. قرار بود این مسابقه جمعه 1 آبان برگزار شود اما با تصمیم این شورا برگزاری این مسابقه در روز چهارشنبه 6 آبان انجام خواهد شد.  <i><b>ℹ️</b></i>…",
+      "views": "57.6K",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/varzesh3/305313_0.webp",
+            "remote_url": "https://cdn4.telesco.pe/file/a9qY0YcYCCAxDV0I_KQjzRXJ6SVxSQZ0-2Z_Aoj-Dpu__ZjG9eXGLHyBi803qjpkjhS6jCEE2XJ88-Gli9SZTuDESUWQKGpEm-nJvI8vr62RYMfcc7RTGYc8rCcp_xDoGo9UgjODihnwq2mgHjftsF-wVX9R3fq52NEjn1twcFyDF9rItLa76_Bfw14SebF8jiR6Ylcm2X_Ocb2QaPwh6ueqSjtPqVf0_g4JlW4HKJ6n64b1Dfgr5b1xpZPFLoFUClMsK4TH7HGhvkZdI6noEbtNtXTKUFCelpXkoAJmdcYofHDT8F4R_zz_olkbE7V4Eum-2q1oSNHh1fSKnC76Ww.jpg"
+          }
+        ],
+        "video": null
+      },
+      "forward_from": null,
+      "reply_to": {
+        "id": 304583,
+        "text_snippet": "🔴🆚🔵دربی 5 روز به تعویق افتاد!🚫با تصمیم شورای تامین استان تهران، دربی زنان بین استقلال و پرسپولیس در "
+      },
+      "original_url": "https://t.me/varzesh3/305313"
+    },
+    {
+      "id": 305314,
+      "date": "2026-10-27T09:22:01+00:00",
+      "timestamp": 1793092921,
+      "text_html": "<i><b>🔥</b></i> از دستان رونالدو؛ <i><b>🥇</b></i>لحظه اعلام نام هری کین به عنوان برنده توپ طلای 2026  <i><b>🆔</b></i> @varzesh3",
+      "views": "47.3K",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/varzesh3/305314_0.webp",
+            "remote_url": "https://cdn4.telesco.pe/file/sRsZBkfzUsBJmA4zXBUm4gMBIMCv7RjWtmBqky6I2tZAsuQ1gh5SPfP-0RIoafJ1AfK-0PcthFmqQf19R4_lKRukyuW4C3tJl3W4RXAaiBPx5WPQqfOb_m0X4YJ3mHTtmEfIT0yffC6lnitKzBf27I5IhuKN1qUEoqPcI68I92oQDTjLfzO1xL5i5fmUjN7ewt0woauDbsP8Qt8G3Y4R3vtK1JkwhG8ME9kQbSOj-2KRV2JARGgEElezQ-eFQj8_Ld6rIqZxJi3Y35zlbxmMrxK7K1jC02oeukbgUbp47TF5XITHqq6H3EpmnJO5dd8cqsTilfocVcIfIj0_z-julA.jpg"
+          }
+        ],
+        "video": null
+      },
+      "forward_from": null,
+      "reply_to": {
+        "id": 305296,
+        "text_snippet": "🔥از دستان رونالدو؛🥇لحظه اعلام نام هری کین به عنوان برنده توپ طلای 2026🆔@varzesh3"
+      },
+      "original_url": "https://t.me/varzesh3/305314"
+    },
+    {
+      "id": 305315,
+      "date": "2026-10-27T09:43:04+00:00",
+      "timestamp": 1793094184,
+      "text_html": "#لژیونرها | <i><b>🇲🇾</b></i> شهاب زاهدی در ترکیب <b>جوهور دارالتعظیم</b> برابر پورت ام آی تی<br><br><i><b>⏰</b></i> ساعت 13:30<br><i><b>🌏</b></i> #لیگ_نخبگان2027 <br><br><i><b>🆔</b></i> <a href=\"https://t.me/varzesh3\" target=\"_blank\" rel=\"noopener noreferrer\">@varzesh3</a>",
+      "views": "13.4K",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/varzesh3/305315_0.webp",
+            "remote_url": "https://cdn4.telesco.pe/file/UZQLFWcPhAkuPxgjc0U58pMBFbf4GvDu33KYEjsF-jPmEUBFhsXIODRGa5QWOwxD4MQpwtUOjI5fx7Ht8gLEIP24NZr8Ani4GqkcbfSHXu64tz6IPfjMMFtv-glX926v078j5OIb_W-xPOKosI5vN3J0rQUSzKYqtDq_SZXzPxraGKyvUXI_YfGl4P-m14h5SrmMn_LQUbrO3vx25qRL9koouNM9XvQoFzWZWU82pc3zjBvcACZX81yUmEG1yRbPXJv4NL1QZsBcn4lF_orPEXjFK3TMG4jq2jhaGgdHVZlWM66H_tY7sCv7HLenNlYlBj4GlGXQxwf4mSp1BV3bVw.jpg"
+          }
+        ],
+        "video": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/varzesh3/305315"
     }
   ]
 }

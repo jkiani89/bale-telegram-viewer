@@ -1,9 +1,9 @@
 {
   "$schema": "./channels.schema.json",
   "settings": {
-    "max_posts_per_channel": 50,
+    "max_posts_per_channel": 40,
     "max_age_days": 7,
-    "request_delay_seconds": 2.5,
+    "request_delay_seconds": 2.0,
     "image_compression": {
       "format": "webp",
       "quality": 75,
@@ -26,9 +26,39 @@
     },
     {
       "id": "isna94",
-      "title": "ایسنا",
+      "title": "خبرگزاری ایسنا",
       "enabled": true,
-      "description": "کانال رسمی خبرگزاری ایسنا💬ارسال سوژه‌های خبری:@isnaadminهماهنگی تبلیغات:@Isnabusiness24🔹ایسنا در شبکه‌های اجتماعی:https:"
+      "description": "کانال رسمی خبرگزاری دانشجویان ایران (ایسنا)"
+    },
+    {
+      "id": "zoomit",
+      "title": "زومیت",
+      "enabled": true,
+      "description": "اخبار فناوری، موبایل، بررسی گجت‌ها و هوش مصنوعی"
+    },
+    {
+      "id": "digiato",
+      "title": "دیجیاتو",
+      "enabled": true,
+      "description": "زندگی با تکنولوژی، اخبار فناوری و بررسی خودرو"
+    },
+    {
+      "id": "farsna",
+      "title": "خبرگزاری فارس",
+      "enabled": true,
+      "description": "اخبار سیاسی، اقتصادی، اجتماعی و بین‌المللی"
+    },
+    {
+      "id": "akharinkhabar",
+      "title": "آخرین خبر",
+      "enabled": true,
+      "description": "سریع‌ترین و داغ‌ترین اخبار روز ایران و جهان"
+    },
+    {
+      "id": "khabar_fouri",
+      "title": "خبر فوری",
+      "enabled": true,
+      "description": "اخبار فوری و لحظه‌ای ایران و جهان"
     }
   ]
 }
