@@ -1,0 +1,49 @@
+{
+  "channel": {
+    "id": "durov",
+    "title": "Pavel Durov",
+    "avatar": "media/durov/avatar.webp",
+    "description": "کانال رسمی پاول دورف (بنیان‌گذار تلگرام)",
+    "verified": true,
+    "subscribers": "2.8M",
+    "last_updated": 1730018400
+  },
+  "messages": [
+    {
+      "id": 530,
+      "date": "2026-10-26T14:15:00Z",
+      "timestamp": 1729952100,
+      "text_html": "Building tools for personal freedom and privacy has always been our mission. We believe users should always have full control over their digital communication.",
+      "views": "1.5M",
+      "media_type": "none",
+      "media": null,
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/530"
+    },
+    {
+      "id": 531,
+      "date": "2026-10-27T08:00:00Z",
+      "timestamp": 1730016000,
+      "text_html": "We have introduced a major update to Telegram Channels. You can read more about it on the <a href=\"https://telegram.org/blog\">official blog</a>.",
+      "views": "1.2M",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/durov/531_0.webp",
+            "width": 1080,
+            "height": 720
+          }
+        ],
+        "video": null
+      },
+      "forward_from": null,
+      "reply_to": {
+        "id": 530,
+        "text_snippet": "Building tools for personal freedom..."
+      },
+      "original_url": "https://t.me/durov/531"
+    }
+  ]
+}

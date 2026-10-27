@@ -1,0 +1,31 @@
+{
+  "updated_at": 1793089229,
+  "channels": [
+    {
+      "id": "durov",
+      "title": "Pavel Durov",
+      "avatar": "media/durov/avatar.webp",
+      "description": "پست‌های رسمی پاول دورف (بنیان‌گذار تلگرام)",
+      "last_post": {
+        "id": 552,
+        "date": "2026-10-11T14:52:40+00:00",
+        "timestamp": 1791730360,
+        "snippet": "✨ Designers × AI  🆕 The mockup era is over. Today’s AI tools give every designer a superpo..."
+      },
+      "total_posts": 20
+    },
+    {
+      "id": "varzesh3",
+      "title": "ورزش سه",
+      "avatar": "media/varzesh3/avatar.webp",
+      "description": "اخبار ورزشی ایران و جهان",
+      "last_post": {
+        "id": 305309,
+        "date": "2026-10-27T08:15:17+00:00",
+        "timestamp": 1793088917,
+        "snippet": "اولین طلا به نام شاغلام ثبت شد؛ 🥇 غلام فرخی، قهرمان بلامنازع دنیا  🟢 وزن 82 کیلوگرم | 🥇 غل..."
+      },
+      "total_posts": 20
+    }
+  ]
+}

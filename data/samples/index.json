@@ -1,0 +1,31 @@
+{
+  "updated_at": 1730018400,
+  "channels": [
+    {
+      "id": "durov",
+      "title": "Pavel Durov",
+      "avatar": "media/durov/avatar.webp",
+      "description": "کانال رسمی پاول دورف (بنیان‌گذار تلگرام)",
+      "last_post": {
+        "id": 531,
+        "date": "2026-10-27T08:00:00Z",
+        "timestamp": 1730016000,
+        "snippet": "We have introduced a major update to Telegram Channels..."
+      },
+      "total_posts": 2
+    },
+    {
+      "id": "varzesh3",
+      "title": "ورزش سه",
+      "avatar": "media/varzesh3/avatar.webp",
+      "description": "پوشش زنده اخبار و رویدادهای ورزشی",
+      "last_post": {
+        "id": 105,
+        "date": "2026-10-27T08:25:00Z",
+        "timestamp": 1730017500,
+        "snippet": "نتیجه بازی هفته لیگ برتر: پیروزی پرگل در دقایق پایانی"
+      },
+      "total_posts": 2
+    }
+  ]
+}

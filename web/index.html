@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>تلگرام ریدر | بله</title>
+
+  <!-- بله مینی‌اپ رسمی SDK -->
+  <script src="https://tapi.bale.ai/miniapp.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- هدر عمومی مینی‌اپ -->
+    <header class="app-header" id="appHeader">
+      <!-- بخش کنترل برگشت در نمای کانال -->
+      <button class="icon-btn back-btn" id="backBtn" aria-label="بازگشت" style="display: none;">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="header-titles">
+        <h1 class="header-title" id="headerTitle">کانال‌های تلگرام</h1>
+        <p class="header-subtitle" id="headerSubtitle">بدون فیلترشکن</p>
+      </div>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="searchToggleBtn" aria-label="جستجو">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <button class="icon-btn" id="refreshBtn" aria-label="تازه‌سازی">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- نوار جستجوی کشویی -->
+    <div class="search-bar-wrap" id="searchBarWrap" style="display: none;">
+      <div class="search-input-box">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" placeholder="جستجو در نام و متن پیام‌ها..." autocomplete="off">
+        <button class="clear-search-btn" id="clearSearchBtn" style="display: none;">&times;</button>
+      </div>
+    </div>
+
+    <!-- نمای ۱: لیست کانال‌ها (صفحه اصلی) -->
+    <main class="view-container active" id="channelsView">
+      <div class="channels-list" id="channelsList">
+        <!-- کانال‌ها به صورت پویا رندر می‌شوند -->
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>در حال بارگذاری کانال‌ها...</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- نمای ۲: فید پست‌های کانال انتخابی -->
+    <main class="view-container" id="feedView" style="display: none;">
+      <div class="feed-content" id="feedContent">
+        <div class="feed-messages" id="messagesList">
+          <!-- پیام‌های کانال به سبک تلگرام رندر می‌شوند -->
+        </div>
+      </div>
+    </main>
+
+    <!-- لایت‌باکس نمایش تمام‌صفحه عکس -->
+    <div class="lightbox-modal" id="lightboxModal" style="display: none;">
+      <div class="lightbox-overlay" id="lightboxOverlay"></div>
+      <button class="lightbox-close" id="lightboxClose">&times;</button>
+      <div class="lightbox-image-wrap">
+        <img id="lightboxImg" src="" alt="تصویر تمام‌صفحه">
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
