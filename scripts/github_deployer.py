@@ -104,8 +104,9 @@ class GitHubAutoDeployer:
         base_tree_sha = commit_resp.json()["tree"]["sha"]
 
         # فایل‌های مشمول ارسال
+        # فایل‌های مشمول ارسال به شاخه main (فقط فایل‌های پروژه و کد منبع)
         tree_elements = []
-        ignore_dirs = {".git", "__pycache__", ".vscode", ".idea", "venv", ".venv"}
+        ignore_dirs = {".git", "__pycache__", ".vscode", ".idea", "venv", ".venv", "media", "data", "scratch", "_test_dist"}
 
         for dirpath, dirnames, filenames in os.walk(root_dir):
             # حذف پوشه‌های نادیده‌گرفته
@@ -122,19 +123,29 @@ class GitHubAutoDeployer:
                 with open(full_path, "rb") as f:
                     content_bytes = f.read()
 
-                # ساخت Blob در گیت‌هاب
+                # ساخت Blob در گیت‌هاب با چند بار تلاش در صورت قطع شبکه
                 blob_payload = {
                     "content": base64.b64encode(content_bytes).decode("ascii"),
                     "encoding": "base64"
                 }
-                b_resp = requests.post(
-                    f"{GITHUB_API_BASE}/repos/{self.owner}/{self.repo_name}/git/blobs",
-                    headers=self.headers,
-                    json=blob_payload,
-                    timeout=20
-                )
-                if b_resp.status_code in (200, 201):
-                    blob_sha = b_resp.json()["sha"]
+                blob_sha = None
+                for attempt in range(3):
+                    try:
+                        b_resp = requests.post(
+                            f"{GITHUB_API_BASE}/repos/{self.owner}/{self.repo_name}/git/blobs",
+                            headers=self.headers,
+                            json=blob_payload,
+                            timeout=25
+                        )
+                        if b_resp.status_code in (200, 201):
+                            blob_sha = b_resp.json()["sha"]
+                            break
+                        else:
+                            time.sleep(1)
+                    except Exception:
+                        time.sleep(2)
+
+                if blob_sha:
                     tree_elements.append({
                         "path": rel_path,
                         "mode": "100644",
@@ -142,7 +153,7 @@ class GitHubAutoDeployer:
                         "sha": blob_sha
                     })
                 else:
-                    print(f"⚠️ خطا در آپلود {rel_path}: {b_resp.status_code}")
+                    print(f"⚠️ خطا در آپلود {rel_path}")
 
         print(f"[*] تعداد {len(tree_elements)} فایل آماده کامیت شد. در حال ایجاد Tree...")
 

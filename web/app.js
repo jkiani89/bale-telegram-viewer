@@ -999,7 +999,7 @@ function initAddChannelModal() {
     if (e.target === modal) closeModal();
   });
 
-  submitBtn.addEventListener('click', () => {
+  submitBtn.addEventListener('click', async () => {
     let rawInput = input.value.trim();
     if (!rawInput) {
       showFeedback('لطفاً شناسه کانال را وارد کنید.', 'error');
