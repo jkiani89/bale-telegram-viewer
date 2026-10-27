@@ -194,7 +194,25 @@ function renderChannelsList() {
       const btn = document.getElementById('btnSearchOnlineNow');
       if (btn) {
         btn.addEventListener('click', () => {
-          fetchAndShowOnlineChannel(cleanQ);
+          btn.disabled = true;
+          btn.textContent = 'در حال استخراج پست‌ها از تلگرام...';
+          triggerDirectChannelAdd(
+            cleanQ,
+            (progressText) => {
+              btn.textContent = progressText;
+            },
+            (successText) => {
+              btn.textContent = successText;
+              setTimeout(() => {
+                openChannelFeed(cleanQ);
+              }, 1200);
+            },
+            (errorText) => {
+              alert(errorText);
+              btn.disabled = false;
+              btn.textContent = `🔍 دریافت فوری پست‌های @${cleanQ}`;
+            }
+          );
         });
       }
     }
@@ -598,8 +616,75 @@ function escapeHtml(str) {
 }
 
 // ==========================================================================
-// مدیریت مودال افزودن کانال تلگرام
+// مدیریت توکن ادمین و افزودن مستقیم از گیت‌هاب (Zero-SaaS In-App Addition)
 // ==========================================================================
+
+const GH_TOKEN_KEY = 'bale_tg_gh_token';
+const GH_REPO = 'jkiani89/bale-telegram-viewer';
+
+function checkUrlForAdminToken() {
+  if (window.location.hash && window.location.hash.includes('token=')) {
+    const match = window.location.hash.match(/token=([a-zA-Z0-9_]+)/);
+    if (match) {
+      localStorage.setItem(GH_TOKEN_KEY, match[1]);
+      history.replaceState(null, null, window.location.pathname);
+      console.log('✅ توکن مدیریت با موفقیت در مرورگر ذخیره شد.');
+    }
+  }
+}
+
+async function triggerDirectChannelAdd(channelId, onProgress, onSuccess, onError) {
+  const token = localStorage.getItem(GH_TOKEN_KEY);
+  if (!token) {
+    onError('توکن گیت‌هاب در این مرورگر ذخیره نشده است. لطفاً توکن خود را در کادر زیر وارد کنید.');
+    return;
+  }
+
+  onProgress('در حال ارسال دستور به موتور گیت‌هاب...');
+
+  try {
+    const url = `https://api.github.com/repos/${GH_REPO}/actions/workflows/collector.yml/dispatches`;
+    const resp = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/vnd.github+json'
+      },
+      body: JSON.stringify({
+        ref: 'main',
+        inputs: { channel_id: channelId }
+      })
+    });
+
+    if (resp.status === 204) {
+      onProgress('عملیات با موفقیت آغاز شد! گیت‌هاب در حال بررسی کانال، دانلود پست‌ها و فشرده‌سازی عکس‌هاست. لطفاً ۶۰ ثانیه منتظر بمانید...');
+
+      // پایش خودکار بروزرسانی ایندکس هر ۸ ثانیه
+      let attempts = 0;
+      const interval = setInterval(async () => {
+        attempts++;
+        const indexData = await fetchIndexData();
+        const found = (indexData.channels || []).some(c => c.id.toLowerCase() === channelId.toLowerCase());
+
+        if (found) {
+          clearInterval(interval);
+          state.channels = indexData.channels;
+          renderChannelsList();
+          onSuccess(`کانال @${channelId} با موفقیت به مینی‌اپ اضافه شد!`);
+        } else if (attempts >= 15) {
+          clearInterval(interval);
+          onProgress(`پردازش ممکن است کمی بیشتر طول بکشد. صفحه را تا یک دقیقه دیگر تازه کنید.`);
+        }
+      }, 8000);
+
+    } else {
+      const errData = await resp.json().catch(() => ({}));
+      onError(`خطا در گیت‌هاب (${resp.status}): ${errData.message || 'توکن نامعتبر یا منقضی شده است.'}`);
+    }
+  } catch (err) {
+    onError(`خطای ارتباطی: ${err.message}`);
+  }
+}
 
 function initAddChannelModal() {
   const modal = document.getElementById('addChannelModal');
@@ -634,24 +719,37 @@ function initAddChannelModal() {
       return;
     }
 
-    // پاکسازی ورودی
     channelId = channelId.replace(/^https?:\/\/t\.me\/(s\/)?/i, '').replace(/^@/, '').trim();
-    channelId = channelId.replace(/[^a-zA-Z0-9_]/g, '');
+    channelId = channelId.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();
 
     if (channelId.length < 4) {
       showFeedback('شناسه کانال نامعتبر است (حداقل ۴ کاراکتر).', 'error');
       return;
     }
 
-    // هدایت به ساخت Issue در گیت‌هاب (جهت فعال‌سازی خودکار اکشن)
-    const issueUrl = `https://github.com/jkiani89/bale-telegram-viewer/issues/new?title=add:${encodeURIComponent(channelId)}&body=Add+Telegram+Channel+@${encodeURIComponent(channelId)}`;
-    
-    showFeedback(`در حال انتقال... لطفاً در صفحه گیت‌هاب دکمه "Submit new issue" را بزنید تا کانال ظرف ۱ دقیقه خودکار اسکرپ و اضافه شود.`, 'success');
-    
-    setTimeout(() => {
-      window.open(issueUrl, '_blank');
-      closeModal();
-    }, 1200);
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'در حال پردازش...';
+
+    triggerDirectChannelAdd(
+      channelId,
+      (progressText) => {
+        showFeedback(progressText, 'info');
+      },
+      (successText) => {
+        showFeedback(successText, 'success');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'تایید و افزودن کانال';
+        setTimeout(() => {
+          closeModal();
+          openChannelFeed(channelId);
+        }, 1500);
+      },
+      (errorText) => {
+        showFeedback(errorText, 'error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'تایید و افزودن کانال';
+      }
+    );
   });
 
   function showFeedback(text, type) {
@@ -726,6 +824,7 @@ function initEvents() {
 // ==========================================================================
 
 async function bootstrap() {
+  checkUrlForAdminToken();
   initBaleSDK();
   loadReadState();
   initLightbox();
