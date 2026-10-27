@@ -912,6 +912,29 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+.restore-channel-card {
+  margin-top: 14px;
+  background: var(--surface-color);
+  border: 1.5px dashed var(--accent-color);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.restore-channel-card p {
+  font-size: 0.86rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.restore-channel-card .btn {
+  width: 100%;
+}
+
 .online-search-header {
   display: flex;
   align-items: center;

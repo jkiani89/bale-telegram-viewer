@@ -173,6 +173,16 @@ function hideChannel(channelId) {
   }
 }
 
+function unhideChannel(channelId) {
+  try {
+    const list = getHiddenChannels();
+    const updated = list.filter(id => id.toLowerCase() !== channelId.toLowerCase());
+    localStorage.setItem(HIDDEN_CHANNELS_KEY, JSON.stringify(updated));
+  } catch (e) {
+    console.error('خطا در رفع حذف کانال:', e);
+  }
+}
+
 let pendingDeleteChannelId = null;
 
 function initDeleteChannelModal() {
@@ -237,10 +247,31 @@ function renderChannelsList() {
     const cleanQ = query.replace(/^@/, '').replace(/[^a-zA-Z0-9_]/g, '');
     const isPotentialId = cleanQ.length >= 4;
 
+    const hiddenMatches = query
+      ? state.channels.filter(c => hiddenList.includes(c.id) && (
+          (c.title && c.title.toLowerCase().includes(query)) ||
+          (c.id && c.id.toLowerCase().includes(query))
+        ))
+      : [];
+
+    let hiddenRestoreHtml = '';
+    if (hiddenMatches.length > 0) {
+      const hm = hiddenMatches[0];
+      hiddenRestoreHtml = `
+        <div class="restore-channel-card">
+          <p>کانال <b>«${escapeHtml(hm.title)}»</b> (@${escapeHtml(hm.id)}) قبلاً توسط شما حذف شده بود.</p>
+          <button class="btn btn-primary" id="btnRestoreHiddenChannel" data-id="${escapeHtml(hm.id)}">
+            🔄 بازگردانی این کانال به لیست
+          </button>
+        </div>
+      `;
+    }
+
     container.innerHTML = `
       <div class="empty-state">
-        <p>کانالی با عبارت «${escapeHtml(query)}» یافت نشد.</p>
-        ${isPotentialId ? `
+        ${hiddenRestoreHtml}
+        ${hiddenMatches.length === 0 ? `<p>کانالی با عبارت «${escapeHtml(query)}» یافت نشد.</p>` : ''}
+        ${isPotentialId && hiddenMatches.length === 0 ? `
           <div class="online-search-card">
             <div class="online-search-header">
               <span class="online-badge">⚡ آنلاین</span>
@@ -255,10 +286,36 @@ function renderChannelsList() {
       </div>
     `;
 
-    if (isPotentialId) {
+    const restoreBtn = document.getElementById('btnRestoreHiddenChannel');
+    if (restoreBtn) {
+      restoreBtn.addEventListener('click', () => {
+        const hid = restoreBtn.getAttribute('data-id');
+        unhideChannel(hid);
+        state.searchQuery = '';
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) searchInput.value = '';
+        renderChannelsList();
+      });
+    }
+
+    if (isPotentialId && hiddenMatches.length === 0) {
       const btn = document.getElementById('btnSearchOnlineNow');
       if (btn) {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', async () => {
+          unhideChannel(cleanQ);
+          let existing = state.channels.find(c => c.id.toLowerCase() === cleanQ.toLowerCase());
+          if (!existing) {
+            const latestData = await fetchIndexData();
+            if (latestData && latestData.channels) {
+              state.channels = latestData.channels;
+              existing = state.channels.find(c => c.id.toLowerCase() === cleanQ.toLowerCase());
+            }
+          }
+          if (existing) {
+            renderChannelsList();
+            openChannelFeed(existing.id);
+            return;
+          }
           btn.disabled = true;
           btn.textContent = 'در حال استخراج پست‌ها از تلگرام...';
           triggerDirectChannelAdd(
@@ -957,6 +1014,32 @@ function initAddChannelModal() {
 
     if (validChannels.length === 0) {
       showFeedback('شناسه کانال نامعتبر است (حداقل ۴ کاراکتر انگلیسی).', 'error');
+      return;
+    }
+
+    // ۱. اگر کانال قبلاً توسط کاربر حذف شده بود، فوراً از لیست حذفیات خارج می‌شود
+    validChannels.forEach(cid => unhideChannel(cid));
+
+    // ۲. بررسی آیا کانال در سرور از قبل موجود است؟
+    let existingChannel = state.channels.find(c => validChannels.includes(c.id.toLowerCase()));
+    if (!existingChannel) {
+      const latestData = await fetchIndexData();
+      if (latestData && latestData.channels) {
+        state.channels = latestData.channels;
+        existingChannel = state.channels.find(c => validChannels.includes(c.id.toLowerCase()));
+      }
+    }
+
+    // اگر از قبل در سرور آماده بود، مستقیماً به لیست بازگردانده می‌شود بدون معطلی گیت‌هاب!
+    if (existingChannel) {
+      renderChannelsList();
+      showFeedback(`کانال @${existingChannel.id} با موفقیت بازیابی شد!`, 'success');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'تایید و افزودن کانال';
+      setTimeout(() => {
+        closeModal();
+        openChannelFeed(existingChannel.id);
+      }, 1000);
       return;
     }
 
