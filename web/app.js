@@ -951,7 +951,26 @@ function escapeHtml(str) {
 // ==========================================================================
 
 const GH_TOKEN_KEY = 'bale_tg_gh_token';
-const GH_REPO = 'jkiani89/bale-telegram-viewer';
+
+/**
+ * تشخیص خودکار شناسه مخزن گیت‌هاب (owner/repo) از روی دامنه GitHub Pages
+ * این تابع به هر فردی که مخزن را فورک یا از آن Template می‌سازد اجازه می‌دهد
+ * بدون تغییر کد، افزودن کانال از طریق Issue را روی مخزن اختصاصی خودش اجرا کند.
+ */
+function getDetectedRepo() {
+  try {
+    const host = window.location.hostname;
+    if (host.endsWith('.github.io')) {
+      const owner = host.split('.')[0];
+      const pathSegments = window.location.pathname.split('/').filter(Boolean);
+      const repo = pathSegments[0] || 'bale-telegram-viewer';
+      return `${owner}/${repo}`;
+    }
+  } catch (e) {}
+  return 'jkiani89/bale-telegram-viewer';
+}
+
+const GH_REPO = getDetectedRepo();
 
 /**
  * توکن مدیریت فقط به‌صورت اختیاری و محلی (localStorage) نگهداری می‌شود.

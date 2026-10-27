@@ -15,7 +15,19 @@ BALE_API = "https://tapi.bale.ai"
 #   PowerShell:  $env:BALE_BOT_TOKEN="123456:ABC..."
 #   Linux/macOS: export BALE_BOT_TOKEN="123456:ABC..."
 TOKEN = os.environ.get("BALE_BOT_TOKEN", "").strip()
-MINIAPP_URL = os.environ.get("MINIAPP_URL", "https://jkiani89.github.io/bale-telegram-viewer/")
+MINIAPP_URL = os.environ.get("MINIAPP_URL", "https://jkiani89.github.io/bale-telegram-viewer/").strip()
+
+
+def get_bot_info():
+    """دریافت نام و شناسه ربات از سرور بله به صورت پویا"""
+    try:
+        r = requests.get(f"{BALE_API}/bot{TOKEN}/getMe", timeout=10)
+        if r.status_code == 200 and r.json().get("ok"):
+            res = r.json().get("result", {})
+            return res.get("username", "BaleBot"), res.get("first_name", "Bot")
+    except Exception:
+        pass
+    return "BaleBot", "Bot"
 
 
 def send_welcome_message(chat_id):
@@ -46,7 +58,8 @@ def main():
         print("   نمونه: export BALE_BOT_TOKEN=\"<BOT_TOKEN>\"")
         sys.exit(1)
 
-    print(f"🤖 ربات @bletgrmbot در حال گوش دادن به پیام‌هاست...")
+    bot_username, bot_name = get_bot_info()
+    print(f"🤖 ربات @{bot_username} ({bot_name}) در حال گوش دادن به پیام‌هاست...")
     print(f"🔗 آدرس مینی‌اپ: {MINIAPP_URL}")
     last_update_id = 0
 
