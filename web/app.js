@@ -169,11 +169,35 @@ function renderChannelsList() {
   });
 
   if (filtered.length === 0) {
+    const cleanQ = query.replace(/^@/, '').replace(/[^a-zA-Z0-9_]/g, '');
+    const isPotentialId = cleanQ.length >= 4;
+
     container.innerHTML = `
       <div class="empty-state">
-        <p>کانالی یافت نشد.</p>
+        <p>کانالی در لیست ذخیره‌شده‌ها با عبارت «${escapeHtml(query)}» یافت نشد.</p>
+        ${isPotentialId ? `
+          <div class="online-search-card">
+            <div class="online-search-header">
+              <span class="online-badge">⚡ آنلاین</span>
+              <h4>جستجوی زنده در تلگرام</h4>
+            </div>
+            <p>می‌توانید پست‌های کانال عمومی <b>@${escapeHtml(cleanQ)}</b> را مستقیماً از تلگرام بخوانید:</p>
+            <button class="btn btn-primary" id="btnSearchOnlineNow">
+              🔍 دریافت فوری پست‌های @${escapeHtml(cleanQ)}
+            </button>
+          </div>
+        ` : ''}
       </div>
     `;
+
+    if (isPotentialId) {
+      const btn = document.getElementById('btnSearchOnlineNow');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          fetchAndShowOnlineChannel(cleanQ);
+        });
+      }
+    }
     return;
   }
 
@@ -223,6 +247,79 @@ function renderChannelsList() {
       openChannelFeed(chId);
     });
   });
+}
+
+// ==========================================================================
+// جستجوی آنلاین لحظه‌ای (Real-Time Live Search)
+// ==========================================================================
+
+async function fetchAndShowOnlineChannel(channelId) {
+  state.activeChannelId = channelId;
+  state.currentView = 'feed';
+
+  const backBtn = document.getElementById('backBtn');
+  backBtn.style.display = 'flex';
+
+  document.getElementById('headerTitle').textContent = `@${channelId}`;
+  document.getElementById('headerSubtitle').textContent = 'در حال جستجوی آنلاین...';
+
+  document.getElementById('channelsView').style.display = 'none';
+  const feedView = document.getElementById('feedView');
+  feedView.style.display = 'flex';
+
+  const messagesList = document.getElementById('messagesList');
+  messagesList.innerHTML = `
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>در حال ارتباط با تلگرام و استخراج زنده پست‌های <b>@${escapeHtml(channelId)}</b>...</p>
+    </div>
+  `;
+
+  if (window.Bale && window.Bale.WebApp && window.Bale.WebApp.BackButton) {
+    try { window.Bale.WebApp.BackButton.show(); } catch (e) {}
+  }
+
+  window.scrollTo(0, 0);
+
+  try {
+    const resp = await fetch(`/api/channel?id=${encodeURIComponent(channelId)}`);
+    const data = await resp.json();
+
+    if (!resp.ok || data.error) {
+      messagesList.innerHTML = `
+        <div class="empty-state">
+          <p style="color: #ef4444; font-weight: 700;">خطا در دریافت کانال:</p>
+          <p>${escapeHtml(data.error || 'کانال پیدا نشد یا خصوصی است.')}</p>
+          <button class="btn btn-primary" onclick="showChannelsView()" style="margin-top: 14px;">
+            بازگشت به لیست کانال‌ها
+          </button>
+        </div>
+      `;
+      document.getElementById('headerSubtitle').textContent = 'خطا در بارگذاری';
+      return;
+    }
+
+    state.activeChannelFeed = data;
+    if (data.channel) {
+      document.getElementById('headerTitle').textContent = data.channel.title || channelId;
+      document.getElementById('headerSubtitle').textContent = data.channel.subscribers 
+        ? `${data.channel.subscribers} دنبال‌کننده (زنده)` 
+        : 'کانال تلگرام (زنده)';
+    }
+
+    renderFeedMessages();
+
+  } catch (err) {
+    messagesList.innerHTML = `
+      <div class="empty-state">
+        <p style="color: #ef4444;">ارتباط با سرورلس برقرار نشد.</p>
+        <p style="font-size: 0.8rem; opacity: 0.8;">${escapeHtml(err.message)}</p>
+        <button class="btn btn-primary" onclick="showChannelsView()" style="margin-top: 14px;">
+          بازگشت
+        </button>
+      </div>
+    `;
+  }
 }
 
 async function openChannelFeed(channelId) {
