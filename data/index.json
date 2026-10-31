@@ -1,0 +1,122 @@
+{
+  "updated_at": 1793461546,
+  "channels": [
+    {
+      "id": "durov",
+      "title": "Pavel Durov",
+      "avatar": "media/durov/avatar.webp",
+      "description": "پست‌های رسمی پاول دورف (بنیان‌گذار تلگرام)",
+      "last_post": {
+        "id": 552,
+        "date": "2026-10-11T14:52:40+00:00",
+        "timestamp": 1791730360,
+        "snippet": "✨ Designers × AI  🆕 The mockup era is over. Today’s AI tools give every designer a superpo..."
+      },
+      "total_posts": 20
+    },
+    {
+      "id": "varzesh3",
+      "title": "ورزش سه",
+      "avatar": "media/varzesh3/avatar.webp",
+      "description": "اخبار ورزشی ایران و جهان",
+      "last_post": {
+        "id": 305717,
+        "date": "2026-10-31T15:27:58+00:00",
+        "timestamp": 1793460478,
+        "snippet": "▶️خلاصه بازی نساجی 0 - پرسپولیس 1  🖥 برای تماشای ویدیو با کیفیت‌های بالاتر 👈 (لینک ویدیو) ..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "isna94",
+      "title": "خبرگزاری ایسنا",
+      "avatar": "media/isna94/avatar.webp",
+      "description": "کانال رسمی خبرگزاری دانشجویان ایران (ایسنا)",
+      "last_post": {
+        "id": 411150,
+        "date": "2026-10-31T15:34:17+00:00",
+        "timestamp": 1793460857,
+        "snippet": "رده‌بندی تیمی مسابقات کشتی آزاد قهرمانی جهان ۲۰۲۶ پس از پایان روز سوم  🔹ایران پس از آمریکا..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "zoomit",
+      "title": "زومیت",
+      "avatar": "media/zoomit/avatar.webp",
+      "description": "اخبار فناوری، موبایل، بررسی گجت‌ها و هوش مصنوعی",
+      "last_post": {
+        "id": 9,
+        "date": "2025-12-27T17:51:12+00:00",
+        "timestamp": 1766857872,
+        "snippet": "🔥Did you like any usernames?   📲Follow the link below and pick one you like!  https://t.me..."
+      },
+      "total_posts": 2
+    },
+    {
+      "id": "digiato",
+      "title": "دیجیاتو",
+      "avatar": "media/digiato/avatar.webp",
+      "description": "زندگی با تکنولوژی، اخبار فناوری و بررسی خودرو",
+      "last_post": {
+        "id": 114917,
+        "date": "2026-10-31T15:32:39+00:00",
+        "timestamp": 1793460759,
+        "snippet": "🤪هک بایننس چگونه اتفاق افتاد و چه کسانی عامل بزرگ‌ترین سرقت تاریخ کریپتو بودند؟ ▫️ تحقیقات..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "farsna",
+      "title": "خبرگزاری فارس",
+      "avatar": "media/farsna/avatar.webp",
+      "description": "اخبار سیاسی، اقتصادی، اجتماعی و بین‌المللی",
+      "last_post": {
+        "id": 471709,
+        "date": "2026-10-31T15:28:28+00:00",
+        "timestamp": 1793460508,
+        "snippet": "موج جدید اعتراضات در آلمان؛ جوانان در ۳۰ شهر به خیابان‌ها آمدند 🔹تظاهرات جوانان آلمانی در ..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "akharinkhabar",
+      "title": "آخرین خبر",
+      "avatar": "media/akharinkhabar/avatar.webp",
+      "description": "سریع‌ترین و داغ‌ترین اخبار روز ایران و جهان",
+      "last_post": {
+        "id": 641801,
+        "date": "2026-10-31T15:39:03+00:00",
+        "timestamp": 1793461143,
+        "snippet": "🔺🔻ادعای خصمانه رئیس جمهور متوهم آمریکا: ابتدا کار ایران را تمام می‌کنیم و سپس به سراغ کوبا..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "khabar_fouri",
+      "title": "خبر فوری",
+      "avatar": "media/khabar_fouri/avatar.webp",
+      "description": "اخبار فوری و لحظه‌ای ایران و جهان",
+      "last_post": {
+        "id": 554199,
+        "date": "2026-10-31T15:40:46+00:00",
+        "timestamp": 1793461246,
+        "snippet": "ادعای خصمانه رئیس‌جمهور متوهم آمریکا: ابتدا کار ایران را تمام می‌کنیم و سپس به سراغ کوبا م..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "naghal_bashi",
+      "title": "نقال‌باشی",
+      "avatar": "media/naghal_bashi/avatar.webp",
+      "description": "پادکست‌ها، فایل‌های صوتی و روایت‌های نقال‌باشی",
+      "last_post": {
+        "id": 456,
+        "date": "2026-10-29T08:16:27+00:00",
+        "timestamp": 1793261787,
+        "snippet": "مجموعه استوری‌های دیروز، درباره قوانین کنست به صورت فایل PDF درآمد.  @Naghal_bashi"
+      },
+      "total_posts": 20
+    }
+  ]
+}
