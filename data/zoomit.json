@@ -1,0 +1,48 @@
+{
+  "channel": {
+    "id": "zoomit",
+    "title": "Usernames • @og_names",
+    "description": "",
+    "avatar_remote_url": "https://cdn4.telesco.pe/file/BdRidhn6GW9TlI6z60CbqdAAxG4bRRlomXPsJoYnXrEMSiN5fERfidPLRmTqGk7sDCYFgV35YFJo9WLKWwGVdumstMfqFglUI-0b1zUbIANsu-NVaaM7WZ4Rj0C9USWWuy5FIEUfq-pwwtbCM6HuLHTDEfA0_zd80rsT3VWS5fm7FYI8aBBfrB7P51cTM6esLJcj_Eho7_Hh4drf6RhIb7-2Vg0WhUPW8wX2YULYrNSr__o77vnNameLDXZHC3ry_aRlcKsw38QpBlAOjHyEFHc4CdsgFbJ1v5OPb4tpONO2Xxgyn4ISST9Gi26OTbT-HUDGef2aXg-LBQU1ovGgyg.jpg",
+    "avatar": "media/zoomit/avatar.webp",
+    "subscribers": "11",
+    "verified": false,
+    "last_updated": 1794067471
+  },
+  "messages": [
+    {
+      "id": 1,
+      "date": "2025-12-24T19:28:19+00:00",
+      "timestamp": 1766604499,
+      "text_html": "Channel created",
+      "views": null,
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/zoomit/1"
+    },
+    {
+      "id": 9,
+      "date": "2025-12-27T17:51:12+00:00",
+      "timestamp": 1766857872,
+      "text_html": "<i><b>🔥</b></i>Did you like any usernames? <br><br><i><b>📲</b></i>Follow the link below and pick one you like!<br><br><a href=\"https://t.me/nftuserssell\" target=\"_blank\" rel=\"noopener noreferrer\"><b>https://t.me/nftuserssell</b></a>",
+      "views": "2.13K",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/zoomit/9"
+    }
+  ]
+}

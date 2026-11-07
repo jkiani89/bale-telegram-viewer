@@ -1,0 +1,56 @@
+{
+  "channel": {
+    "id": "varzesh3",
+    "title": "ورزش سه",
+    "avatar": "media/varzesh3/avatar.webp",
+    "description": "پوشش زنده اخبار و رویدادهای ورزشی",
+    "verified": true,
+    "subscribers": "1.1M",
+    "last_updated": 1730018400
+  },
+  "messages": [
+    {
+      "id": 104,
+      "date": "2026-10-27T07:10:00Z",
+      "timestamp": 1730013000,
+      "text_html": "🚨 <b>فوری:</b> ترکیب رسمی دو تیم برای دیدار حساس امروز بعدازظهر اعلام شد.",
+      "views": "210K",
+      "media_type": "video_link",
+      "media": {
+        "photos": [],
+        "video": {
+          "duration": "00:45",
+          "thumb_url": "media/varzesh3/104_thumb.webp",
+          "original_url": "https://t.me/varzesh3/104"
+        }
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/varzesh3/104"
+    },
+    {
+      "id": 105,
+      "date": "2026-10-27T08:25:00Z",
+      "timestamp": 1730017500,
+      "text_html": "نتیجه بازی هفته لیگ برتر: پیروزی پرگل در دقایق پایانی با گل تماشایی کاپیتان تیم.",
+      "views": "340K",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/varzesh3/105_0.webp",
+            "width": 1080,
+            "height": 720
+          }
+        ],
+        "video": null
+      },
+      "forward_from": null,
+      "reply_to": {
+        "id": 104,
+        "text_snippet": "ترکیب رسمی دو تیم..."
+      },
+      "original_url": "https://t.me/varzesh3/105"
+    }
+  ]
+}

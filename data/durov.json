@@ -1,0 +1,413 @@
+{
+  "channel": {
+    "id": "durov",
+    "title": "Pavel Durov",
+    "description": "Founder of Telegram.",
+    "avatar_remote_url": "https://cdn4.telesco.pe/file/FfOElt9T4OIStl_ulf7mRGv56zmTCu7K0aq1zYiQZnCxeIGoY7-vKcnqri4A4VYv3A6Ls9qb0_KnjZHhkrrD3lCtKNO1kmOYAIiCKH_mMU2o__t81GIiprSXD0WiWi8twFtJEFqujneLfI6kpCR5XS1JeoTj732sREzdFXaW-k4NfnINuU0GcgyQuqjKxCtp20ZW1UgCsfzcpch97y7KtnwNIe3mILEKXfogazXcDWvTaxXMrrupS4-PE0d_DiRbN-XUbpiLvs2LpEJ4yRluvDgaO_QEcDlGV9M1pjW1Yn1D7joEY97VyNfzPVSq_kIj6GKv4AOzhRVrCDpwiIULTw.jpg",
+    "avatar": "media/durov/avatar.webp",
+    "subscribers": "10.1M",
+    "verified": true,
+    "last_updated": 1794067452
+  },
+  "messages": [
+    {
+      "id": 531,
+      "date": "2026-07-16T20:45:25+00:00",
+      "timestamp": 1784234725,
+      "text_html": "<i><b>🩵</b></i> Telegram now has a <b>Rich Text Editor</b>.<br><br>It supports tables, headings, inline media, lists, AI content, formulas, and more.<br><br><i><b>😈</b></i> Messaging apps will never be the same!",
+      "views": "5.89M",
+      "media_type": "video",
+      "media": {
+        "photos": [],
+        "video": {
+          "duration": null,
+          "remote_video_url": "https://cdn4.telesco.pe/file/b231b9b161.mp4?token=TzRZdA6V2jRa2fjqZ291Zi4EQnq68iys-WjWf8xwSnQoxgjqKuZBDEpIxpNC89QKkedVWhBI5b1w7_Yhpvf62RBLKeY5W1FJN-1gP9D5dZqnRLX-IWY-cUA2Q67DPKL7kxAVcsXnxJdjv5FGy0ezGcmAS3ioDu6KOCDMZK_jgEKSlKsjFLZXWHOm8ubMqFFh4Z_D7E6aXsvWy55Lh-hOvMdnDWlFuP_K3X4Wyzs3bQAJXB-jx3CqVOzQY7tlY4FY13YDqUsO8cjH21_I5zubUFl1v8FoMcoE9VEaUC4DxeB11wlF_1W8qKnXyp1O4TuGuDi0irVoJcm7SuivFxiOtzzoLYYGMqknLXWitR9ENcuYlvuH2_duRcW1gSNrDutwJRiNb4oohoOr2QiJZhWoYyGpijaw_6z9cGAq5qraeb67jIHbQJRGf3qFSIx1nXYKlYBH2IGEFbmyeDQT784STQ5YPI-eEt4U2NpNTzs5qqOhyJVQlX8AwFaoOXyE8JMF1U5N6F2kgYRk9lSL-fG7i4rS94h3rQJ8XKuOf9GXGF6tJT-wZRWgCS1AQJnzDxJQ0sz9GR52DM9Ho7mOsVJxsH0JrprSkZ-jLGCuNWz4izHcr0djjMAgjRxHVogYUkwXcmv5R27x7EdgEMGthHOr_gJwSqXM3BRMKCcD7HrBjy0",
+          "local_video_path": "media/durov/531.mp4",
+          "remote_thumb_url": "https://cdn4.telesco.pe/file/f51rvqFlNupKACJulGy7m-EJey8E2hv51qzXbqOYJvyR2FnZdh6eAW9PB-IiCtAiyJdj7M-0rRmi1ElTGofE9sf2iX5L0sNqxJ1AZ2p4KlhLxu95JePjjvdyy-nlMKkSBYm4x9Rrl8k2jgaOPdanpdY9tGr1iyxkaLSUm39-o_J1JaE9URxSohBu5jDhR_icRMu161PtQU7lBU6wa741qM3Ld1zqDVJmOKkDM3nEZFTuoiXnnbwnVjOhqtkM5EG7kKVin4lm4MhMVcp99k7pSxmKXTbK8Ev7xbFrwQDII8tAyECcw48oJBacg10vSqTjVS3BGxGvthgnP4JogFCwIg",
+          "local_thumb_path": "media/durov/531_thumb.webp",
+          "thumb_url": "media/durov/531_thumb.webp",
+          "original_url": "https://t.me/durov/531",
+          "local_video_url": "media/durov/531.mp4"
+        },
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/531"
+    },
+    {
+      "id": 532,
+      "date": "2026-07-19T21:45:01+00:00",
+      "timestamp": 1784497501,
+      "text_html": "<i><b>🎠</b></i> Telegram now supports carousels<br><br>One small step for messaging, one giant leap toward turning cat photos into keynote presentations. <i><b>😺</b></i>",
+      "views": "6.6M",
+      "media_type": "video",
+      "media": {
+        "photos": [],
+        "video": {
+          "duration": null,
+          "remote_video_url": "https://cdn4.telesco.pe/file/181642ae31.mp4?token=u8cl2hxmcI-CnytQV8QDWet260grPrIsMSKVjiqQTilvCYtZhuFs4et_6Mu-IGO1y4qyWcbf-eTbmNt3De8-doUdms7zwecPajf6lhqjbzzffjlXY1ha4g2CdsdCgqYZ89q6-fMdkXso3xX1rFRXxk8EmjBYAFGuITiJ4MM15HKJz1A4vpgbSYUzdLZHCgediNl6PD9qXmwnB2RH6FgEtuTxm1nAUJCmu0WoOsdp0mOqr8X6rFkEBSavKdgh_EkYxv4hcPogx-a15u8tXbXNjhcp8qLciCdk28fwleK_9VDVP24QzFvVQob8OZB-Nk1QmdPkqZJKuu2Q79YaK_l-Eg",
+          "local_video_path": "media/durov/532.mp4",
+          "remote_thumb_url": "https://cdn4.telesco.pe/file/ts1ZGjzM6rg81hnCTqFuj83OTEa4_gEUe6kb-ABaRsFsWoxcGzPCu3GWtXA9EAHeUnSu0hJfOjzebVdgZjbDHJW_6dZFWa3UP6bJw6gTnBrLdh0PG8nxNh1HvYuJFtFIn1V8r0qpweKhobYYtZ6m3nU_yZS49iUVMGiZpnpKnTkw5GvzH1HpjdaTOY61X_KEv34CP3fPhyWCVWKdiDXbJvu_MJALNCuSngE0bpKiO_YI_41hwZMPwo23BTtUrcBlb1j0aS0wARUfgG3DObLWBDH6FLXGV0S5pmH8FNiFkgNoZRptWO0ksyfSvGoUC4gI3BYdWiGuMJUUk0cNSLHddA",
+          "local_thumb_path": "media/durov/532_thumb.webp",
+          "thumb_url": "media/durov/532_thumb.webp",
+          "original_url": "https://t.me/durov/532",
+          "local_video_url": "media/durov/532.mp4"
+        },
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/532"
+    },
+    {
+      "id": 533,
+      "date": "2026-07-21T14:36:55+00:00",
+      "timestamp": 1784644615,
+      "text_html": "<i><b>🌍</b></i> This summer will see <b>the largest rollout</b> of a non-custodial crypto wallet in human history.<br><br><i><b>⚡️</b></i><b>Instant zero-fee</b> crypto transactions for over <b>a billion users</b> are about to become reality.<br><br><i><b>💎</b></i> We're bringing a <b>native</b> non-custodial <b>Gram wallet</b> to <b>every Telegram app</b>! <i><b>🏳️</b></i>",
+      "views": "7.09M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/533"
+    },
+    {
+      "id": 534,
+      "date": "2026-07-23T15:15:33+00:00",
+      "timestamp": 1784819733,
+      "text_html": "<i><b>🇬🇪</b></i> Very impressed with Georgia.<br><br><i><b>🏔</b></i> The country is known for its warm people, ancient culture, local food and epic landscapes. <br><br>But it doesn’t stop there.<br><br><i><b>📈</b></i> Thanks to its government’s business-friendly policies, Georgia is becoming a <b>major business hub</b>.<br><br><i><b>❎️</b></i> The country’s economy <b>doubled</b> in <b>5 years</b> and is still growing by <b>8% a yea</b>r.<br><br><i><b>💼</b></i> International tech companies pay <b>0%</b> corporate tax and just <b>5% on dividends</b> and salaries.<br><br>Georgia is seriously underrated as a place to visit and do business.<br><br>I'll be back very soon! <i><b>✈️</b></i>",
+      "views": "6.79M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/534"
+    },
+    {
+      "id": 535,
+      "date": "2026-07-30T16:52:37+00:00",
+      "timestamp": 1785430357,
+      "text_html": "<i><b>💣</b></i> Russia has designated me as a “terrorist” for refusing its demands for mass surveillance and censorship on Telegram.<br><br>Under Russian law, I’m banned from “publishing information on the Internet” <i><b>😌</b></i><br><br>Russian officials have clearly got confused about who can ban whom from the Internet  <i><b>😉</b></i>",
+      "views": "6.09M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/535"
+    },
+    {
+      "id": 536,
+      "date": "2026-07-30T16:55:01+00:00",
+      "timestamp": 1785430501,
+      "text_html": "<i><b>🇦🇫</b></i><i><b>😈</b></i>",
+      "views": "6.31M",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/durov/536_0.webp",
+            "remote_url": "https://cdn4.telesco.pe/file/c2R23AuSVyNvaW-n9c1HV3sust5FuxOBn3rcKllmax7y1HprTSHGpcYYroC8nAyAhUyRkRASCkl_qZ8hK5XKqVEZ7F11QQ0MnlPHUzrA_eOzgDbxilNc4bPPicKlXEsydxKUy4xfWs5mxXkmCW_hwU12KKU30eUf_hZL0KVrghD1kWehZGxd16U8OKmbhb0plIop2gVoDyigUL1iCGyowqqTh8LZOkIVzxKaV0bkUQga69ksNu4e6ZbD8Rcjhawv2IXOd81m_4aiAQZlu56d9j-F65eZZmNExOtRLrZzs0fAp9-48P2tjaAd20M03CzSZ1B15KfjxRA3j7ZptwMAEw.jpg"
+          }
+        ],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/536"
+    },
+    {
+      "id": 537,
+      "date": "2026-08-03T07:19:56+00:00",
+      "timestamp": 1785741596,
+      "text_html": "<i><b>🧠</b></i> The 2026 International Olympiad in <b>Artificial Intelligence</b> starts today. <br><br>As a token of support for those who will reinvent our civilization, we'll issue <i><b>🏆</b></i> <b>240</b> exclusive <b>Intelligence Cups</b> to the winners.<br><br><i><b>💵</b></i> We guarantee minimum buyback prices ($<b>1,000</b> per <b>Gold Cup</b>, etc.), but the cups' limited supply may make them worth much more on the secondary market.<br><br>Good luck, AI coders! <i><b>🍀</b></i>",
+      "views": "4M",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/durov/537_0.webp",
+            "remote_url": "https://cdn4.telesco.pe/file/X6qg1QCkZ821jEJCBP6tnqKLTM-4LuhsVnDpIsakoxsUa0dWsHtkw_kBrVTNQ2bdG3A1NWYjfxljKH9NoT-UST6Yg2PPLiCIQpx_DQfGn2Ng7dOaRjYjAYto9mRns-L4ncY-MOKQK3sB5YrgcjcjiuMsgqVD2dl4nP80bpQQfKW5-YwiLzSt7ESV-leRA5pVictUJ2vc1xK7VkZ11TjrPaDZ21UsqnZPacK-Jxr1IPJPPT5nP8WRHaZnEEg84pwpjRvTCVSmAmEXmITVICzVS5cUXAiIbCmJ_yrXIvC4KA120v5L0ragJVCdNXgo0YNl8ydsyHAq0pHHiJ1P13Yoqw.jpg"
+          }
+        ],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/537"
+    },
+    {
+      "id": 538,
+      "date": "2026-08-04T15:20:04+00:00",
+      "timestamp": 1785856804,
+      "text_html": "Last night, Apple briefly removed Telegram from the App Store because a single user had planted illegal pornographic content in a public group chat.<br><br><i><b>⬅️</b></i> Telegram was restored within hours. But I want to explain what happened — to warn other app developers and help protect online communities from similar attacks.<br><br><i><b>🧹</b></i>Because Telegram quickly removes illegal content from public groups using <a href=\"https://telegram.org/safety\" target=\"_blank\" rel=\"noopener noreferrer\">all kinds of moderation tools</a>, the attacker had to resort to a technical trick. He inserted AI-modified illegal content by editing an old message in an active group chat. As a result, the content was effectively hidden from the group’s members, preventing them from seeing and promptly reporting it.<br><br><i><b>💰</b></i>  The attacker was a takedown extortionist: someone who demands ransom from group owners in exchange for not targeting their communities. These extortionists use automated accounts  to plant illegal content in public groups and then report it directly to Apple, attempting to trigger the removal of legitimate communities whose owners refused to pay them.<br><br><i><b>🤝</b></i> From a practical standpoint, illegal pornographic content in Telegram’s public groups is not a systemic problem. Our moderation is effective. The fact that attackers must resort to backdated, effectively invisible content and other technical tricks proves this.<br><br><i><b>⚠️</b></i> However, there are two important lessons here for app developers and online communities:<br><br>— <b>Extortionists have found a way to manipulate Apple into overreacting.</b> Apple removed Telegram from the App Store before contacting us. This creates a potential systemic risk for every mobile app that hosts user-generated content. If an app used by more than a billion people can be removed from the App Store without prior warning, any app can be.<br><br>— <b>The tactics used by takedown extortionists are evolving, putting communities across social platforms at risk.</b> Telegram has extensive experience identifying the tricks used by coordinated reporting gangs and protecting legitimate communities (even when doing so risks our own app being temporarily removed from the App Store). Other platforms may not be equally prepared.<br><br>Stay vigilant! <i><b>☝️</b></i>",
+      "views": "4.57M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/538"
+    },
+    {
+      "id": 539,
+      "date": "2026-08-08T21:11:14+00:00",
+      "timestamp": 1786223474,
+      "text_html": "<i><b>🏆</b></i> The International Olympiad in <a href=\"https://ioai-official.org/republic-of-kazakhstan/\" target=\"_blank\" rel=\"noopener noreferrer\">AI</a> finished yesterday in Astana.<br><br><i><b>🇷🇺</b></i> The Russian team took first place in the team competition, and Artem Gorokhov from my home city won the individual event. Well done! <i><b>💪</b></i><br><br><i><b>🇰🇿</b></i> I'm equally happy for the host country, Kazakhstan, whose Dauzhan Beketov took the second-highest individual score.<i><b>👏</b></i><br><br><i><b>📩</b></i>We're in touch with the <a href=\"https://Cpfed.kz/\" target=\"_blank\" rel=\"noopener noreferrer\">organizers</a> to deliver the winners' <a href=\"https://t.me/durov/537\" target=\"_blank\" rel=\"noopener noreferrer\">prizes from Telegram</a> ($106,500+) securely next week.<br><br>Congratulations to all the winners! <i><b>🏆</b></i>",
+      "views": "3.61M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/539"
+    },
+    {
+      "id": 540,
+      "date": "2026-08-10T09:29:58+00:00",
+      "timestamp": 1786354198,
+      "text_html": "<i><b>🇺🇿</b></i> The 2026 International Olympiad in Informatics starts today in Tashkent.<br><br><i><b>🏆</b></i> The <b>IOI</b> is the ultimate coding competition for high-school students. Years ago, many members of the Telegram team won medals there. <br><br><i><b>🤝</b></i> To support the best young programmers in the world, Telegram will award the <b>235</b> winners exclusive digital collectibles — <b>Algorithm Cups </b>— worth at least <b>$117,000</b> in total.<br><br><i><b>🕌</b></i> It’s fitting that IOI is hosted in Uzbekistan — the homeland of Al-Khwarizmi, the father of algebra whose name became the word “algorithm.\"<br><br>Let the best algorithm win! <i><b>💪</b></i>",
+      "views": "4.83M",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/durov/540_0.webp",
+            "remote_url": "https://cdn4.telesco.pe/file/N8cPVSvCbCtlu3tLtMBlfxU-YwZQ9JUm3dL4LLwkb8k_RN0MdbZOZmLgg3msmUnsUaKU4TKHh9b-85OU57DFYuoKla0gM0h8Tfgzu7mGJTUDIFOS1OICdkoUUOT7o_0ZKSxAyeay_o6R4D0qMZIEGkIc0xPrK_J3j3D7iJn2FSF8YJQwa9p39xngaVUjWwwVypM-v8Z1ralqF535Elm6oxXD8r8TDL9YiDeTlPlqoYDccqjS87nFwkmj3yCkyP9-jhBivllS9hskb-uTcW7nzTh4WhgHm-3Rf-I-Rufi98f37aZZEKvA9nmFTDRU_70if681c0kQ1tXEiTLTXGsmUg.jpg"
+          }
+        ],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/540"
+    },
+    {
+      "id": 541,
+      "date": "2026-08-14T13:49:28+00:00",
+      "timestamp": 1786715368,
+      "text_html": "<i><b>1️⃣</b></i><i><b>3️⃣</b></i> Telegram turns <b>13</b> today. <br><br>For over half that time — the past <b>7,5</b> years — it's been one of the <b>10 most downloaded mobile apps in the world</b>. <br><br>A whole generation has grown up with it <i><b>💪</b></i><br><br><i><b>🎂</b></i> Happy birthday, Telegram!",
+      "views": "7.44M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/541"
+    },
+    {
+      "id": 542,
+      "date": "2026-08-15T13:29:20+00:00",
+      "timestamp": 1786800560,
+      "text_html": "<i><b>🏆</b></i> The International Olympiad in Informatics (<b>IOI</b>) <a href=\"https://stats.ioinformatics.org/results/2026\" target=\"_blank\" rel=\"noopener noreferrer\">ends</a> today.<br><br><i><b>🇷🇺</b></i>Students from Moscow and St. Petersburg won 2<i><b>🥇</b></i>gold and 2<i><b>🥈</b></i>silver medals — well done, Vladislav Zhiganov (#2 overall!), Maksim Kravchenko, Sergei Mukhanov and Vladimir Zvezdin!<br><br><i><b>🇺🇦</b></i>Ukraine won 3 medals: <i><b>🥇</b></i> gold for Vladyslav Khalin, and 2<i><b>🥈</b></i> silver for Illia Shevchenko and Daria Perekopska <i><b>💪</b></i><br><br><i><b>🇧🇾</b></i> Belarus took 1<i><b>🥇</b></i>gold and 1<i><b>🥈</b></i>silver, won by Kiryl Kardash and Fiodar Sashko, plus two bronze medals from their teammates.<br><br><i><b>🇰🇿</b></i>Kazakhstan did well too, winning 1<i><b>🥇</b></i>gold and 3<i><b>🥈</b></i>silver medals to finish in the top five as a team, while Maksim Tsoy came #5 overall.<br><br><i><b>🇰🇬</b></i>Kyrgyzstan picked up 2<i><b>🥈</b></i> silver and 2<i><b>🥉</b></i> bronze medals! <i><b>🤝</b></i><br><br><i><b>🇺🇿</b></i>Uzbekistan, the host country, put on a great showing: 1<i><b>🥈</b></i> silver for Jakhonali Khaydaraliyev and 3<i><b>🥉</b></i>bronze medals.<br><br><i><b>🇨🇳</b></i>The strongest results of all, though, came from China <i><b>👏</b></i><br><br>At today's award ceremony, the IOI organizers are giving the <a href=\"https://t.me/durov/540\" target=\"_blank\" rel=\"noopener noreferrer\">188 Algorithm Cups</a> <i><b>🎁</b></i><i><b>🎁</b></i><i><b>🎁</b></i> to the winners. The organizers of the sister olympiad, IOAI, are sending the <a href=\"https://t.me/durov/537\" target=\"_blank\" rel=\"noopener noreferrer\">220 Intelligence Cups</a> <i><b>🏆</b></i><i><b>🏆</b></i><i><b>🏆</b></i> to their winners remotely.<br><br>These are the only digital collectibles Telegram has issued this year, so they could end up worth much more than the guaranteed <b>$1,000</b> for gold.<br><br>We're proud to support the brightest young programmers of our time <i><b>🧠</b></i>",
+      "views": "4.41M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/542"
+    },
+    {
+      "id": 543,
+      "date": "2026-08-18T17:37:31+00:00",
+      "timestamp": 1787074651,
+      "text_html": "<i><b>💎</b></i> Telegram has applied for the <b>.gram</b> domain zone.<br><br>If the application is approved by ICANN, a billion Telegram users could get their own second-level domains.<br><br><i><b>🖥</b></i> For example, <a href=\"https://t.me/durov\" target=\"_blank\" rel=\"noopener noreferrer\">@durov</a> would get <b>durov.gram</b>, and <a href=\"https://t.me/monk\" target=\"_blank\" rel=\"noopener noreferrer\">@monk</a> would get  <b>monk.gram</b>. <br><br>Users would be able to set up their interactive websites hosted by Telegram — just by typing one prompt <i><b>✨</b></i>",
+      "views": "4.16M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/543"
+    },
+    {
+      "id": 544,
+      "date": "2026-08-24T21:21:51+00:00",
+      "timestamp": 1787606511,
+      "text_html": "<i><b>🚨</b></i> Two years ago, I was detained in Paris by police for 3 days — the longest they can hold someone before charging them.<br><br>In an unprecedented move, French authorities accused the head of a major platform of crimes committed by its users.<br><br>That investigation is still ongoing, although it makes less sense with each passing year. <br><br>Why?<br><br>Because we now have extensive evidence that Telegram was neither worse than other popular platforms at moderation, nor the worst at cooperating with authorities.<br><br>So why was Telegram singled out?<br><br>Over the last two years, we have seen a pattern emerge in multiple countries: Telegram is quietly pressured to grant political favors — such as illegal censorship or surveillance. When we refuse, local media and “non-governmental” organizations launch orchestrated campaigns portraying Telegram as a cesspool of crime, from child pornography to terrorism.<br><br><a href=\"https://telegram.org/safety\" target=\"_blank\" rel=\"noopener noreferrer\">Our moderation</a> is no worse than that of other major platforms. Yet these campaigns instill the idea that Telegram should be persecuted or restricted.<br><br>Suddenly, officials start caring about crime and protecting children — but only on platforms that reject their secret political demands. Platforms that accept such deals get away with almost anything — including literally <a href=\"https://www.engadget.com/2231100/meta-apps-displayed-ads-that-contained-ai-generated-csam/\" target=\"_blank\" rel=\"noopener noreferrer\">selling ads promoting</a> child pornography.<br><br>Is the French investigation against me political? It certainly <a href=\"https://t.me/durov/418\" target=\"_blank\" rel=\"noopener noreferrer\">fits the pattern</a> we see elsewhere, mostly in authoritarian countries. And it definitely <a href=\"https://t.me/durov/451\" target=\"_blank\" rel=\"noopener noreferrer\">raises questions</a>.<br><br>In time, this investigation may itself be investigated — especially now that Macron’s war against free speech is facing pushback. This month, France’s Constitutional Council <a href=\"https://www.france24.com/en/france/20260814-france-s-constitutional-authority-strikes-down-social-media-ban-for-under-15s\" target=\"_blank\" rel=\"noopener noreferrer\">struck down</a> his social media ban for children under 15 on freedom-of-expression grounds.<br><br>In the end, freedom and truth will prevail <i><b>✊</b></i>",
+      "views": "3.95M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/544"
+    },
+    {
+      "id": 545,
+      "date": "2026-08-30T09:10:19+00:00",
+      "timestamp": 1788081019,
+      "text_html": "A high-school student just made <b>$20,000</b> from a <b>Telegram Gift</b>.<br><br><a href=\"https://stats.ioinformatics.org/people/9089\" target=\"_blank\" rel=\"noopener noreferrer\">Jonathan He</a>, an IOI gold medalist ranked <b>#7</b> in the world, sold his <a href=\"https://t.me/nft/algorithmcup-7\" target=\"_blank\" rel=\"noopener noreferrer\">Algorithm Cup</a> — an NFT <a href=\"https://t.me/durov/540\" target=\"_blank\" rel=\"noopener noreferrer\">we gave to the top young coders</a> this month — for <i><b>💎</b></i> <b>15,000 Grams</b>.<br><br>Happy for him. It's a meaningful sum for someone still in school, and I suspect a small fraction of what he'll go on to build.<br><br><b>20</b> years ago,<b> $20K</b> was enough for me to launch my first company. Within months, it had reached<b> 1M</b> users and raised <b>$12M</b> at a <b>$60M</b> valuation. <i><b>💸</b></i><br><br>I hope some of this year's winners put their Grams to similar use! <i><b>📈</b></i>",
+      "views": "3.26M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/545"
+    },
+    {
+      "id": 546,
+      "date": "2026-08-31T16:30:15+00:00",
+      "timestamp": 1788193815,
+      "text_html": "<i><b>🏳️</b></i> Gram Wallet in Telegram is ready and is now accessible to a select group of users.<br><br><i><b>🤩</b></i> We'll be gradually rolling it out to our billion+ users over the next couple of weeks.<br><br><i><b>⚡️</b></i> Thanks to the validators who approved the smart contract that powers it, future upgrades of the wallet won't require painful migrations.<br><br>This is just one of the innovations we've built to make non-custodial wallets usable <i><b>✨</b></i>",
+      "views": "4.32M",
+      "media_type": "video",
+      "media": {
+        "photos": [],
+        "video": {
+          "duration": "0:20",
+          "remote_video_url": "https://cdn4.telesco.pe/file/e0b2769474.mp4?token=Dhm7mWbLrzhSHql4JNOLn-0flwZDIJUciCQkl6XiVFQBCCQkR9IOyL3BrkESzjGMz4dfTGwrvScj8nLTVOKuS-a465EXcAXTGHtFSYKpgjTGlcQRNgynudQm8zlKKSwa04U4Ew4nKeXTMIlsjtSSG6MQagfK7HgK7E-zO7FdaRybtku6FQqbljVKCndVt9a-A_YWdh7r8i1ptV2egCLIhAIod0s1EAh5lQMuMhRnt9GJkb0EcmQrGmndiEgieal2RJn52Nr2QUoz6CPieI9_WC8P4nFNzTJZjl8BN8s0bAvuT4kc_3RgP2g2r1bdVx0TCBlSASheInP7xMg9MLgrsg75qbW4Bqz_JyEJJsg6aguRe8QV8SkMuyQ2bWVIxbu9wv_PiDwaD9buwj92eECRB4WZosVipHoaS8Z2B6U4F6vngPAVPiXpL6TL_UR1yXDQnV3gamobptapuaF-aab9cOqrF21woOdZIpgll5w1hWzc5QIPvXfyIoRPlskOj3R-Ds-pJvxi_CGv73_HjDdgJ2qj_pOpr1vZvvtAe1AANfW8q5IFX_6eJ3stkXTV-VdtADR8yB18vggh-1BpqH7rEVXx5Ju6KOZYxzzDdVjKKaYEVVU4i0Qg9BPG_iCQWY8kzssT09SRzBhfurM5WvKHuz_j5X5xGvoZU458zOotVRA",
+          "local_video_path": "media/durov/546.mp4",
+          "remote_thumb_url": "https://cdn4.telesco.pe/file/btL4CAOZTJMMLRsFe4fG4j81Qk3g09TlOknOunW4uIKuV2VrpAsIJlLQwJM1nPLNn7bA0mwmiGM9TxCsb2sccjZtS_BmgHbYbEihWtc_X8_9B_0NM3I8AU0sEChPMhN257Nw-STX2z6l5pCKMURnfmb9pNWSESVFt_o-RtZBd7y2aPb_f4pzl1xTn65hCTpJ3fNkzpHYh6_52RD18q4VCgRvVt0FkOzso0sYQB8p7NvHNKqHynYWUKBAoxxsUg1_KVDIZLOVrXFeOTnRpdqeKimAe-DNzsPHNTFMIXHxbry2DusHzU1q37vgBq31I2IbHh8qwW6Q3AYaK3jlmM4HaA",
+          "local_thumb_path": "media/durov/546_thumb.webp",
+          "thumb_url": "media/durov/546_thumb.webp",
+          "original_url": "https://t.me/durov/546",
+          "local_video_url": "media/durov/546.mp4"
+        },
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/546"
+    },
+    {
+      "id": 547,
+      "date": "2026-09-06T17:40:39+00:00",
+      "timestamp": 1788716439,
+      "text_html": "<i><b>💸</b></i> In just one month, Telegram has awarded over <b>$2,222,000</b> to some of the brightest minds on our planet.<br><br><i><b>🎨</b></i> This week alone we distributed <b>$222,000 </b>among the winners of our two latest competitions — the <a href=\"https://t.me/contest/460\" target=\"_blank\" rel=\"noopener noreferrer\">Design Contest</a> and the <a href=\"https://t.me/contest/462\" target=\"_blank\" rel=\"noopener noreferrer\">Digital Freedom Contest</a>.<br><br>On top of that, over the past month we awarded prizes <a href=\"https://t.me/transferintelligencecups/688\" target=\"_blank\" rel=\"noopener noreferrer\">worth more</a> than <b>$2 million</b> to the winners of the 2026 International Olympiads in <a href=\"https://t.me/durov/542\" target=\"_blank\" rel=\"noopener noreferrer\">Informatics</a> and <a href=\"https://t.me/durov/537\" target=\"_blank\" rel=\"noopener noreferrer\">AI</a>.<br><br>We're proud to support the best! <i><b>🎁</b></i>",
+      "views": "4.3M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/547"
+    },
+    {
+      "id": 548,
+      "date": "2026-09-11T16:04:02+00:00",
+      "timestamp": 1789142642,
+      "text_html": "<i><b>🤝</b></i> Telegram has become the sponsor of <a href=\"https://codeforces.com/blog/entry/156620\" target=\"_blank\" rel=\"noopener noreferrer\">Codeforces</a> — the largest competitive programming platform in the world. <br><br> <i><b>⚡</b></i>CodeForces organizes over <b>100</b> coding contests every year and has <b>4 million</b> contestants signed up.<br><br><i><b>🌱</b></i> Since 2010, I've supported Codeforces through the companies I started.<br><br><i><b>🆙</b></i> But this year will be special. Its founder Mike wants to bring Codeforces to the next level — and we'll be happy to help him do that <i><b>🤝</b></i>",
+      "views": "4.14M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/548"
+    },
+    {
+      "id": 551,
+      "date": "2026-10-10T14:22:43+00:00",
+      "timestamp": 1791642163,
+      "text_html": "<i><b>💸</b></i> If your wallet doesn’t look like this, don’t even bother sending me money for my  birthday! <i><b>🎂</b></i>",
+      "views": "2.16M",
+      "media_type": "video",
+      "media": {
+        "photos": [],
+        "video": {
+          "duration": null,
+          "remote_video_url": "https://cdn4.telesco.pe/file/f4b10a0c75.mp4?token=iQasHwJsVABIb--uQuCoYkgmhLLqqr3hNumlJnuFRx3d9HcY5qbDsMO7cxXmZW3-eojrZBuA_pTv-A56bP17jhoqcW4rEOAPqVQu5MAJQVxGzJAJuV_q5j4ryJGt3eJd8LOqGQCSfX8B--WUkE0MNLPuL5UYQWf2-cJ8D7pAXjnzV0jzvabXDiRvocYfBmMkd9Vu0DKq-gHD7RcQf6QwzOPtLxAPWF1M6e76vAUWwWRBDFduijFXrLI1lWZcwcVvobMmF5JXGsSp0mPMZ27k9oWjVsLEho0h4JBaEfhGnvQZqqPiiab8FsNfZIogOctTP-vXrUxYd317xsBP6k_qMTzoLYYGMqknLXWitR9ENcuYlvuH2_duRcW1gSNrDutwJRiNb4oohoOr2QiJZhWoYyGpijaw_6z9cGAq5qraeb67jIHbQJRGf3qFSIx1nXYKlYBH2IGEFbmyeDQT784STQ5YPI-eEt4U2NpNTzs5qqOhyJVQlX8AwFaoOXyE8JMF1U5N6F2kgYRk9lSL-fG7i4rS94h3rQJ8XKuOf9GXGF6tJT-wZRWgCS1AQJnzDxJQ0sz9GR52DM9Ho7mOsVJxsH0JrprSkZ-jLGCuNWz4izHcr0djjMAgjRxHVogYUkwXcmv5R27x7EdgEMGthHOr_gJwSqXM3BRMKCcD7HrBjy0",
+          "local_video_path": "media/durov/551.mp4",
+          "remote_thumb_url": "https://cdn4.telesco.pe/file/Srgup5RbmotUOmG0etxGKwugeovUa-lSWC2rbXGtBW-36Nnkc-9vyKoumjDjeFC8r4SNt-mXpk7H5PH5lOeq9rzBSplW0NMtmJf-82PMg8mptJIRqD48gogoKDb4vOf5z5WvrxkAo_PN3kTKSYsOP0QEYw_sXV_zI5VL3VVlQQzPxPzjhknvhGMNRD5_g2jcbnZR4oVYR2Mnfgu7VKeDQor8OEF60Zftv337zmzrLiFsSoqbAj8fRgN_63A037avzMMQuBofvWV9UbqFYe6RJ-tKOlk9TGI2Yq-dGtC1EsAqTFXm3tM0-CtYdtScCAAWfo6A1tzcZGgd-k_0MhP1kg",
+          "local_thumb_path": "media/durov/551_thumb.webp",
+          "thumb_url": "media/durov/551_thumb.webp",
+          "original_url": "https://t.me/durov/551",
+          "local_video_url": "media/durov/551.mp4"
+        },
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/551"
+    },
+    {
+      "id": 552,
+      "date": "2026-10-11T14:52:40+00:00",
+      "timestamp": 1791730360,
+      "text_html": "<i><b>✨</b></i> <b>Designers × AI<br><br></b><i><b>🆕</b></i> The mockup era is over. Today’s AI tools give <b>every</b> designer a <b>superpower</b>: you can now <b>craft</b> your ideas, not just draw them. <br><br>The gap between “what if…?” and “look, it works!” has never been smaller, and that <b>changed</b> how we build features in Telegram.<br><br><b>Message </b><a href=\"https://t.me/designers\" target=\"_blank\" rel=\"noopener noreferrer\"><b>@designers</b></a><b> to submit your concepts.</b><br><br><i><b>✔️</b></i> <b>We accept</b><br><i>– Working, ready-to-implement code<br></i> complemented by<i><br>– A demo video of your feature in action</i><br><br><i><b>🗑</b></i> <b>We no longer accept</b><br><i>– Static mockups<br>– Demo videos with no code behind them<br>– Text-only concepts</i><br><br>No coding background? Curiosity, attention to detail and a good prompt will take you far. <br><br>The future of design isn’t drawn – it’s built. <br><br><i><b>🚀</b></i> <b>Let's build it together!</b><br><br><i>(An example of what is possible by our iOS designer – this is a ready to use implementation not a motion video.) </i><i><b>👇</b></i>",
+      "views": "2.1M",
+      "media_type": "video",
+      "media": {
+        "photos": [],
+        "video": {
+          "duration": "1:15",
+          "remote_video_url": null,
+          "local_video_path": null,
+          "remote_thumb_url": "https://cdn4.telesco.pe/file/oLpJn0KfYjJy3aXeHANpo3ECZbwVPcSz6VRrV8fJExwYkDUjzifWw5relISScaX8HazPfnUR3HQN-O2vJtuFv5e9TZahZ_EqJpIfmdGhpqbeH-PiW3BwlWjK-NdqVMFudcxktxH5izJJyX7SsIeYHdiDAQCxq6f3WhliIsw_ryqZAWmJ7fwhrATwsXpXPoTg6BnE5ABMjwSITMYCDyXo980yorsDM5thEkO9UM2gUXrdQPyrWRCrkoSmO-w_YphfZK3kbjcDFkpCj0bDyzQ2jjyhWVmaAnEWaRDSr0BOKQWfDkPmU9Im0YY2_Gh5iPRil1yEKQ6moYQu2J6jMekqfQ",
+          "local_thumb_path": "media/durov/552_thumb.webp",
+          "thumb_url": "media/durov/552_thumb.webp",
+          "original_url": "https://t.me/durov/552"
+        },
+        "audio": null,
+        "document": null
+      },
+      "forward_from": "",
+      "reply_to": null,
+      "original_url": "https://t.me/durov/552"
+    }
+  ]
+}

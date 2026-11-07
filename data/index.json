@@ -1,0 +1,122 @@
+{
+  "updated_at": 1794067452,
+  "channels": [
+    {
+      "id": "durov",
+      "title": "Pavel Durov",
+      "avatar": "media/durov/avatar.webp",
+      "description": "پست‌های رسمی پاول دورف (بنیان‌گذار تلگرام)",
+      "last_post": {
+        "id": 552,
+        "date": "2026-10-11T14:52:40+00:00",
+        "timestamp": 1791730360,
+        "snippet": "✨ Designers × AI  🆕 The mockup era is over. Today’s AI tools give every designer a superpo..."
+      },
+      "total_posts": 20
+    },
+    {
+      "id": "varzesh3",
+      "title": "ورزش سه",
+      "avatar": "media/varzesh3/avatar.webp",
+      "description": "اخبار ورزشی ایران و جهان",
+      "last_post": {
+        "id": 306383,
+        "date": "2026-11-07T15:58:14+00:00",
+        "timestamp": 1794067094,
+        "snippet": "🎤مهدی هاشم‌نژاد: از هواداران انتظار بیشتری داشتم  آدرس سایت: 🌐 https://www.varzesh3.ir  🆔 ..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "isna94",
+      "title": "خبرگزاری ایسنا",
+      "avatar": "media/isna94/avatar.webp",
+      "description": "کانال رسمی خبرگزاری دانشجویان ایران (ایسنا)",
+      "last_post": {
+        "id": 412268,
+        "date": "2026-11-07T16:01:01+00:00",
+        "timestamp": 1794067261,
+        "snippet": "بازداشت سه مدیر صنعت برق به اتهام اختلاس و پولشویی  دادستان عمومی و انقلاب همدان: 🔹سه تن ا..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "zoomit",
+      "title": "زومیت",
+      "avatar": "media/zoomit/avatar.webp",
+      "description": "اخبار فناوری، موبایل، بررسی گجت‌ها و هوش مصنوعی",
+      "last_post": {
+        "id": 9,
+        "date": "2025-12-27T17:51:12+00:00",
+        "timestamp": 1766857872,
+        "snippet": "🔥Did you like any usernames?   📲Follow the link below and pick one you like!  https://t.me..."
+      },
+      "total_posts": 2
+    },
+    {
+      "id": "digiato",
+      "title": "دیجیاتو",
+      "avatar": "media/digiato/avatar.webp",
+      "description": "زندگی با تکنولوژی، اخبار فناوری و بررسی خودرو",
+      "last_post": {
+        "id": 115247,
+        "date": "2026-11-07T15:33:07+00:00",
+        "timestamp": 1794065587,
+        "snippet": "📊پیروزی دموکرات‌ها در کنگره چگونه باعث سقوط سهام غول‌های فناوری و هوش مصنوعی شد؟ ▫️ نتایج ..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "farsna",
+      "title": "خبرگزاری فارس",
+      "avatar": "media/farsna/avatar.webp",
+      "description": "اخبار سیاسی، اقتصادی، اجتماعی و بین‌المللی",
+      "last_post": {
+        "id": 473080,
+        "date": "2026-11-07T16:03:38+00:00",
+        "timestamp": 1794067418,
+        "snippet": "🎥 شوخی جالب نجم‌الدین شریعتی با پیرمرد زابلی در سفر گروه برنامه «سمت خدا» به سیستان‌وبلوچس..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "akharinkhabar",
+      "title": "آخرین خبر",
+      "avatar": "media/akharinkhabar/avatar.webp",
+      "description": "سریع‌ترین و داغ‌ترین اخبار روز ایران و جهان",
+      "last_post": {
+        "id": 643230,
+        "date": "2026-11-07T16:03:32+00:00",
+        "timestamp": 1794067412,
+        "snippet": "🎥 سیل همین اندازه خطرناک است @Akharinkhabar | akharinkhabar.ir"
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "khabar_fouri",
+      "title": "خبر فوری",
+      "avatar": "media/khabar_fouri/avatar.webp",
+      "description": "اخبار فوری و لحظه‌ای ایران و جهان",
+      "last_post": {
+        "id": 555290,
+        "date": "2026-11-07T16:01:20+00:00",
+        "timestamp": 1794067280,
+        "snippet": "رایزنی مقامات مصر و اتحادیه اروپا درباره مهار تنش‌ها در منطقه 🔹وزیر امور خارجه مصر تلفنی ب..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "naghal_bashi",
+      "title": "نقال‌باشی",
+      "avatar": "media/naghal_bashi/avatar.webp",
+      "description": "پادکست‌ها، فایل‌های صوتی و روایت‌های نقال‌باشی",
+      "last_post": {
+        "id": 458,
+        "date": "2026-11-06T16:55:33+00:00",
+        "timestamp": 1793984133,
+        "snippet": "🔴سفر گروهی به اصفهان دوره سلجوقی  با همراهی علی آردم راهنما: میثم امامی  ⚠️ظرفیت سفر: ۲۵ ن..."
+      },
+      "total_posts": 20
+    }
+  ]
+}
