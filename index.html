@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>تلگرام ریدر | بله</title>
+
+  <!-- بله مینی‌اپ رسمی SDK -->
+  <script src="https://tapi.bale.ai/miniapp.js"></script>
+
+  <link rel="stylesheet" href="style.css?v=20261027_1900">
+</head>
+<body>
+  <div id="app">
+    <!-- هدر عمومی مینی‌اپ -->
+    <header class="app-header" id="appHeader">
+      <!-- دکمه برگشت در نمای کانال -->
+      <button class="icon-btn back-btn" id="backBtn" aria-label="بازگشت" style="display: none;">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="header-titles">
+        <h1 class="header-title" id="headerTitle">کانال‌های تلگرام</h1>
+        <p class="header-subtitle" id="headerSubtitle">بدون فیلترشکن</p>
+      </div>
+
+      <div class="header-actions">
+        <!-- دکمه افزودن کانال -->
+        <button class="icon-btn" id="addChannelBtn" aria-label="افزودن کانال">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+        <!-- دکمه جستجو -->
+        <button class="icon-btn" id="searchToggleBtn" aria-label="جستجو">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <!-- دکمه تازه‌سازی -->
+        <button class="icon-btn" id="refreshBtn" aria-label="تازه‌سازی">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- نوار جستجوی کشویی -->
+    <div class="search-bar-wrap" id="searchBarWrap" style="display: none;">
+      <div class="search-input-box">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" placeholder="جستجو در نام و متن پیام‌ها..." autocomplete="off">
+        <button class="clear-search-btn" id="clearSearchBtn" style="display: none;">&times;</button>
+      </div>
+    </div>
+
+    <!-- نمای ۱: لیست کانال‌ها (صفحه اصلی) -->
+    <main class="view-container active" id="channelsView">
+      <div class="channels-list" id="channelsList">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>در حال بارگذاری کانال‌ها...</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- نمای ۲: فید پست‌های کانال انتخابی -->
+    <main class="view-container" id="feedView" style="display: none;">
+      <div class="feed-content" id="feedContent">
+        <div class="feed-messages" id="messagesList">
+          <!-- پیام‌ها -->
+        </div>
+      </div>
+    </main>
+
+    <!-- مودال افزودن کانال تلگرام -->
+    <div class="modal-backdrop" id="addChannelModal" style="display: none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>➕ افزودن کانال تلگرام</h3>
+          <button class="modal-close-btn" id="closeAddChannelModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-desc">
+            شناسه کانال عمومی تلگرام را وارد کنید. می‌توانید چند کانال را نیز با کاما (مانند isna94, zoomit) به صورت گروهی اضافه کنید.
+          </p>
+          <p class="modal-mode-hint" id="addChannelModeHint"></p>
+          <div class="modal-input-wrap">
+            <span class="input-prefix">@</span>
+            <input type="text" id="newChannelInput" placeholder="مثال: isna94 یا varzesh3, zoomit" autocomplete="off" autocorrect="off" autocapitalize="none">
+          </div>
+          <!-- کادر پیش‌نمایش زنده لوگو و نام کانال -->
+          <div id="channelPreviewBox" class="channel-preview-box" style="display: none;">
+            <img id="previewAvatarImg" class="preview-avatar" src="" alt="لوگوی کانال">
+            <div class="preview-info">
+              <span id="previewTitle" class="preview-title">@channel</span>
+              <span class="preview-hint">کانال تلگرام</span>
+            </div>
+          </div>
+          <div id="addChannelFeedback" class="modal-feedback" style="display: none;"></div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="submitAddChannelBtn">تایید و افزودن کانال</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- مودال تایید حذف کانال (با لمس طولانی) -->
+    <div class="modal-backdrop" id="deleteChannelModal" style="display: none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>🗑️ حذف کانال</h3>
+          <button class="modal-close-btn" id="closeDeleteModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p id="deleteModalText">آیا از حذف این کانال از لیست مینی‌اپ خود اطمینان دارید؟</p>
+        </div>
+        <div class="modal-footer modal-footer-row">
+          <button class="btn btn-danger" id="confirmDeleteBtn">بله، حذف شود</button>
+          <button class="btn btn-secondary" id="cancelDeleteBtn">انصراف</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- لایت‌باکس نمایش تمام‌صفحه عکس -->
+    <div class="lightbox-modal" id="lightboxModal" style="display: none;">
+      <div class="lightbox-overlay" id="lightboxOverlay"></div>
+      <button class="lightbox-close" id="lightboxClose">&times;</button>
+      <div class="lightbox-image-wrap">
+        <img id="lightboxImg" src="" alt="تصویر تمام‌صفحه">
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=20261027_1900"></script>
+</body>
+</html>

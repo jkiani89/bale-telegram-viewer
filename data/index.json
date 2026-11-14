@@ -1,0 +1,122 @@
+{
+  "updated_at": 1794683803,
+  "channels": [
+    {
+      "id": "durov",
+      "title": "Pavel Durov",
+      "avatar": "media/durov/avatar.webp",
+      "description": "پست‌های رسمی پاول دورف (بنیان‌گذار تلگرام)",
+      "last_post": {
+        "id": 561,
+        "date": "2026-11-14T09:29:21+00:00",
+        "timestamp": 1794648561,
+        "snippet": "Nvidia’s board was right to fire Jensen.  He was married.  Meaning he signed an exclusive ..."
+      },
+      "total_posts": 20
+    },
+    {
+      "id": "varzesh3",
+      "title": "ورزش سه",
+      "avatar": "media/varzesh3/avatar.webp",
+      "description": "اخبار ورزشی ایران و جهان",
+      "last_post": {
+        "id": 306893,
+        "date": "2026-11-14T18:59:14+00:00",
+        "timestamp": 1794682754,
+        "snippet": "وایکینگ‌ها رو فرم بودند! بازگشت امید صعود با بچه غول  🔈 پایان مسابقه - پیروزی نروژ برابر و..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "isna94",
+      "title": "خبرگزاری ایسنا",
+      "avatar": "media/isna94/avatar.webp",
+      "description": "کانال رسمی خبرگزاری دانشجویان ایران (ایسنا)",
+      "last_post": {
+        "id": 413449,
+        "date": "2026-11-14T19:16:01+00:00",
+        "timestamp": 1794683761,
+        "snippet": "ایران در جمع پرمصرف‌ترین کشورها از نظر آنتی‌بیوتیک   روند کاهشی میزان ابتلا به کرونا  رئیس..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "zoomit",
+      "title": "زومیت",
+      "avatar": "media/zoomit/avatar.webp",
+      "description": "اخبار فناوری، موبایل، بررسی گجت‌ها و هوش مصنوعی",
+      "last_post": {
+        "id": 9,
+        "date": "2025-12-27T17:51:12+00:00",
+        "timestamp": 1766857872,
+        "snippet": "🔥Did you like any usernames?   📲Follow the link below and pick one you like!  https://t.me..."
+      },
+      "total_posts": 2
+    },
+    {
+      "id": "digiato",
+      "title": "دیجیاتو",
+      "avatar": "media/digiato/avatar.webp",
+      "description": "زندگی با تکنولوژی، اخبار فناوری و بررسی خودرو",
+      "last_post": {
+        "id": 115577,
+        "date": "2026-11-14T18:33:09+00:00",
+        "timestamp": 1794681189,
+        "snippet": "💻چرا هوش مصنوعی هنوز نمی‌تواند یک فنجان چای دستمان بدهد؟ 🔹 چند سالی است هوش مصنوعی یاد گرف..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "farsna",
+      "title": "خبرگزاری فارس",
+      "avatar": "media/farsna/avatar.webp",
+      "description": "اخبار سیاسی، اقتصادی، اجتماعی و بین‌المللی",
+      "last_post": {
+        "id": 474548,
+        "date": "2026-11-14T19:16:01+00:00",
+        "timestamp": 1794683761,
+        "snippet": "آیزنکوت: نتانیاهو با ترفندهای رسانه‌ای به‌دنبال جلوگیری از تشکیل دولت جدید است  🔹نتانیاهو ..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "akharinkhabar",
+      "title": "آخرین خبر",
+      "avatar": "media/akharinkhabar/avatar.webp",
+      "description": "سریع‌ترین و داغ‌ترین اخبار روز ایران و جهان",
+      "last_post": {
+        "id": 644687,
+        "date": "2026-11-14T19:09:39+00:00",
+        "timestamp": 1794683379,
+        "snippet": "🎥 مخمصه بزرگ برای معاون ترامپ؛ ونس قربانی حمله ترامپ به ایران می‌شود؟   🔹️جی دی ونس، معاون..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "khabar_fouri",
+      "title": "خبر فوری",
+      "avatar": "media/khabar_fouri/avatar.webp",
+      "description": "اخبار فوری و لحظه‌ای ایران و جهان",
+      "last_post": {
+        "id": 556460,
+        "date": "2026-11-14T18:58:10+00:00",
+        "timestamp": 1794682690,
+        "snippet": "بلومبرگ: آمریکا احتمالاً حضور نظامی خود را در اروپا کمتر از حدّ انتظار کاهش خواهد داد 💡💡 @..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "naghal_bashi",
+      "title": "نقال‌باشی",
+      "avatar": "media/naghal_bashi/avatar.webp",
+      "description": "پادکست‌ها، فایل‌های صوتی و روایت‌های نقال‌باشی",
+      "last_post": {
+        "id": 459,
+        "date": "2026-11-09T08:18:35+00:00",
+        "timestamp": 1794212315,
+        "snippet": "🔴بازدید گروهی اصفهان دوره سلجوقی ویژه عزیزان ساکن اصفهان  با همراهی علی آردم راهنما: میثم ..."
+      },
+      "total_posts": 20
+    }
+  ]
+}
