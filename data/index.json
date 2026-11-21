@@ -1,0 +1,122 @@
+{
+  "updated_at": 1795251151,
+  "channels": [
+    {
+      "id": "durov",
+      "title": "Pavel Durov",
+      "avatar": "media/durov/avatar.webp",
+      "description": "پست‌های رسمی پاول دورف (بنیان‌گذار تلگرام)",
+      "last_post": {
+        "id": 567,
+        "date": "2026-11-20T20:47:30+00:00",
+        "timestamp": 1795207650,
+        "snippet": "I was offered $256,000 for the @pride username on Telegram.  I don’t need the username.  B..."
+      },
+      "total_posts": 20
+    },
+    {
+      "id": "varzesh3",
+      "title": "ورزش سه",
+      "avatar": "media/varzesh3/avatar.webp",
+      "description": "اخبار ورزشی ایران و جهان",
+      "last_post": {
+        "id": 307367,
+        "date": "2026-11-21T08:49:58+00:00",
+        "timestamp": 1795250998,
+        "snippet": "👀 عجیب‌ترین گل به خودی ممکن! ‼️ مورا، با یک بغل پای دقیق دروازه پورتو را باز کرد 🌐 آدرس سا..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "isna94",
+      "title": "خبرگزاری ایسنا",
+      "avatar": "media/isna94/avatar.webp",
+      "description": "کانال رسمی خبرگزاری دانشجویان ایران (ایسنا)",
+      "last_post": {
+        "id": 414478,
+        "date": "2026-11-21T08:45:01+00:00",
+        "timestamp": 1795250701,
+        "snippet": "۵۳۵ هزار بلیت؛ سهم ۱ هفته سینماهای کشور 🔹️دو فیلم جدید سینماها در سه روز ابتدایی اکران خود..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "zoomit",
+      "title": "زومیت",
+      "avatar": "media/zoomit/avatar.webp",
+      "description": "اخبار فناوری، موبایل، بررسی گجت‌ها و هوش مصنوعی",
+      "last_post": {
+        "id": 9,
+        "date": "2025-12-27T17:51:12+00:00",
+        "timestamp": 1766857872,
+        "snippet": "🔥Did you like any usernames?   📲Follow the link below and pick one you like!  https://t.me..."
+      },
+      "total_posts": 2
+    },
+    {
+      "id": "digiato",
+      "title": "دیجیاتو",
+      "avatar": "media/digiato/avatar.webp",
+      "description": "زندگی با تکنولوژی، اخبار فناوری و بررسی خودرو",
+      "last_post": {
+        "id": 115840,
+        "date": "2026-11-21T08:44:21+00:00",
+        "timestamp": 1795250661,
+        "snippet": "🔵 اولین گوشی زیربرند جدید هواوی معرفی شد: OSTA O1 Pro  🔵گوشی جدید هواوی OSTA O1 Pro عریض و..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "farsna",
+      "title": "خبرگزاری فارس",
+      "avatar": "media/farsna/avatar.webp",
+      "description": "اخبار سیاسی، اقتصادی، اجتماعی و بین‌المللی",
+      "last_post": {
+        "id": 475824,
+        "date": "2026-11-21T08:44:44+00:00",
+        "timestamp": 1795250684,
+        "snippet": "ظرفیت پزشکی و دندان‌پزشکی کنکور ۱۴۰۶ تصویب شد  🔹مصوبهٔ تعیین ظرفیت پذیرش پزشکی و دندان‌پزش..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "akharinkhabar",
+      "title": "آخرین خبر",
+      "avatar": "media/akharinkhabar/avatar.webp",
+      "description": "سریع‌ترین و داغ‌ترین اخبار روز ایران و جهان",
+      "last_post": {
+        "id": 645899,
+        "date": "2026-11-21T08:51:49+00:00",
+        "timestamp": 1795251109,
+        "snippet": "🔺🔻وزارت بهداشت: ۳۰ درصد قبولی‌های امسال پزشکی از سال بعد وارد دانشگاه می‌شوند  جعفریان، جا..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "khabar_fouri",
+      "title": "خبر فوری",
+      "avatar": "media/khabar_fouri/avatar.webp",
+      "description": "اخبار فوری و لحظه‌ای ایران و جهان",
+      "last_post": {
+        "id": 557430,
+        "date": "2026-11-21T08:43:17+00:00",
+        "timestamp": 1795250597,
+        "snippet": "جمع‌آوری کارت‌های آزاد جایگاه‌ها مصرف بنزین را ۱۰ درصد کاهش داد مدیرعامل شرکت ملی پالایش و..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "naghal_bashi",
+      "title": "نقال‌باشی",
+      "avatar": "media/naghal_bashi/avatar.webp",
+      "description": "پادکست‌ها، فایل‌های صوتی و روایت‌های نقال‌باشی",
+      "last_post": {
+        "id": 459,
+        "date": "2026-11-09T08:18:35+00:00",
+        "timestamp": 1794212315,
+        "snippet": "🔴بازدید گروهی اصفهان دوره سلجوقی ویژه عزیزان ساکن اصفهان  با همراهی علی آردم راهنما: میثم ..."
+      },
+      "total_posts": 20
+    }
+  ]
+}
