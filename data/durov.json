@@ -1,0 +1,403 @@
+{
+  "channel": {
+    "id": "durov",
+    "title": "Pavel Durov",
+    "description": "Founder/CEO/Owner of Telegram.Founder of TON/Gram.Half-part troll.",
+    "avatar_remote_url": "https://cdn4.telesco.pe/file/W46-gekaU28l8Ss0QXl0rJ56iEci59GbWVgLp3H4YcQL7g-L8989ny1R95iP6y0sbrQ4qb-Jmohxw0B3uuDhxWSXeZlFYStrC--ZXpepobwj_dAqWbUtIRoPTJcbFM5u66xKGj2HmEABlgmA52CKBWGDv8GgxGHohqghyMvG5qTLJL2WyKDibOgNXQad6PwMbQZ7Vbsrq2-eh6kOPMu0iuPKfa8ymnXsNhYwkaolpktFpSHxTD3SZfCZXGC8u-r5Q3GupbeebKjibSlA9lhBwnOdHfz2cWrn0X3Y2_9dJhqpI59Ngg7c8pGeE_PL2FL9i1trxhuGeclrvpXfgYXriQ.jpg",
+    "avatar": "media/durov/avatar.webp",
+    "subscribers": "9.85M",
+    "verified": true,
+    "last_updated": 1795873052
+  },
+  "messages": [
+    {
+      "id": 555,
+      "date": "2026-11-10T20:43:28+00:00",
+      "timestamp": 1794343408,
+      "text_html": "<i><b>🔴</b></i> Crypto’s a sea of red.<br><br><i><b>🟢</b></i> Only Gram is up: <b>+12%</b>. <br><br><i><b>🌐</b></i> I'm not surprised. It’s the only coin built into a real social ecosystem.<br><br><i><b>💎</b></i> Still ridiculously undervalued — it belongs in CMC’s <b>top 3</b>. <br><br>One day it’ll get there.",
+      "views": "2.36M",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/durov/555_0.webp",
+            "remote_url": "https://cdn4.telesco.pe/file/j53Gi5h0U0y7LGHFdxB2rFS3iZOpQvjLUZM8De1lsMpU7chgfxQZAeQVmEA5_VFGYsKHhBlWOg8JIXuFpzaSFPJLhdlLWutnfr4ZAFx7VoBaKN6t-z22A4xgYtnh1B69Sif3bfRDGZ2vAr5ynaHgHs6I4DM5Z_Lb6xHdWKezHesH76jv1KqRTnVK2T_UL0iB8AxiUGrHokLWzpxkAEdwSZ_o-RjWEXLaqr9NwBQSDy02Za5i65laBekduXvvbqFsI1K32W208Ddgr2qmLdTqAXkW4SzZxOgLYHJeO5FJB95zF4sfDasGBYGOY4UnEhaDPkK1BVwuKPlTMHawnPBdcg.jpg"
+          }
+        ],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/555"
+    },
+    {
+      "id": 556,
+      "date": "2026-11-11T12:27:06+00:00",
+      "timestamp": 1794400026,
+      "text_html": "<i><b>👛</b></i> Over <b>1</b> <b>million</b> self-custodial Gram wallets activated on Telegram in the <b>last</b> <b>48 hours alone</b>.<br><br><i><b>🥇</b></i> <b>Gram</b> is today’s <b>#1 gainer</b> among the top <b>100 coins</b> by market cap, +<b>14%</b> in <b>24 hours</b>.",
+      "views": "2.18M",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/durov/556_0.webp",
+            "remote_url": "https://cdn4.telesco.pe/file/RmGxkWJBm4-PAqry98_0bNaeUgsuZiFEZzJb6AeUHi1XR60ZI5Ws8k45xSPE3qJKo1hV1vGGScJV5jH8N6PitGaGqBDCARqc_WrvV7oJR_UQRYggZFcWeWsLqr58M8aTGKtfZu7VeiG_BA2OOMsbThK3znI7l5ffTDIflElvJ-Hf8QpowAdTysyVrscJwqbn1kgMNAa7j3B95dQOhiebFm-OcdIYstb2xUcd5_MoWTlq6CCE7txkVjwnXVZ6hfTqh_OqIEztsk1WT1IEkq9ocakf48L0Ji24wSh_gmEGg82bKifkTlelfrPXtefj069H05IBDi63O8v5zwb7VnjQDQ.jpg"
+          }
+        ],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/556"
+    },
+    {
+      "id": 557,
+      "date": "2026-11-11T20:27:00+00:00",
+      "timestamp": 1794428820,
+      "text_html": "<i><b>😐</b></i> Unfair that CEOs who aren’t into <a href=\"https://t.me/cointelegraph/73166\" target=\"_blank\" rel=\"noopener noreferrer\">Asian girls</a> get fewer dating options from spy agencies. <br><br><i><b>👀</b></i> Where are the French/Russian/Iranian honeypots? Not one spy girl sent my way. Are they even trying? <i><b>🤷‍♀️</b></i><br><br><i><b>🌈</b></i> France is excused — their decision-makers aren’t into girls. Everyone else: try harder! <i><b>🤨</b></i>",
+      "views": "2.31M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/557"
+    },
+    {
+      "id": 558,
+      "date": "2026-11-12T13:24:25+00:00",
+      "timestamp": 1794489865,
+      "text_html": "<i><b>😐</b></i> Unfair that CEOs who aren’t into Asian girls get fewer dating options from spy agencies.   <i><b>👀</b></i> Where are the French/Russian/Iranian honeypots? Not one spy girl sent my way. Are they even trying? <i><b>🤷‍♀️</b></i> <i><b>🌈</b></i> France is excused — their decision-makers aren’t into…",
+      "views": "2.34M",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/durov/558_0.webp",
+            "remote_url": "https://cdn4.telesco.pe/file/PCFFS5uJ2G9QNQqsg_2kMIP4q3SCiTQRa4n_ug751Q3Bsui-j_7vEg2guvt6lCKenEBq8Qup7t26ocafhz0iw3euJU-qpe39pUKEtKm5mtfBPnVA5LQ7GtQyXQrr13hH5h6Cy9W81oahDP8I-YMpWPN3KDA-WViJaTGcaOmbpiamcdyjemyEAVpxrJV2-zYtxwJpzZ0V2t5jkmJBpr0rCoYNFgEVirIf4y5zjBL1SzkLeXy9RMY99hKhi3f_0Y_uUubQLNGveDoQZw5nC-TtR_nk4dYtIhDoxjE29JE_34IszH9hWnRhF7-7F3EHGvRtZnJI5hO-nkt1XRwGF3jHMA.jpg"
+          }
+        ],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": {
+        "id": 557,
+        "text_snippet": "😐Unfair that CEOs who aren’t into Asian girls get fewer dating options from spy agencies.👀Where are "
+      },
+      "original_url": "https://t.me/durov/558"
+    },
+    {
+      "id": 559,
+      "date": "2026-11-13T09:29:23+00:00",
+      "timestamp": 1794562163,
+      "text_html": "<i><b>🤦‍♀️</b></i> <a href=\"https://t.me/walt_news/921\" target=\"_blank\" rel=\"noopener noreferrer\">Jensen</a> made a rookie mistake. He had a board.<br><br>In 2014, my board <a href=\"https://www.themoscowtimes.com/2014/04/22/vkontakte-founder-pavel-durov-learns-hes-been-fired-through-media-a34425\" target=\"_blank\" rel=\"noopener noreferrer\">kicked me out</a> for saying no to spies.<br><br>In 2026, Jensen’s board kicked him out for saying yes to one.<br><br><i><b>🤨</b></i> So the board gets you either way.<br><br>Founders — don’t have a board. Be the board <i><b>😏</b></i>",
+      "views": "2.37M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/559"
+    },
+    {
+      "id": 560,
+      "date": "2026-11-13T16:02:27+00:00",
+      "timestamp": 1794585747,
+      "text_html": "Re alleged RCE in new TG Android/Windows <a href=\"https://t.me/durov/554\" target=\"_blank\" rel=\"noopener noreferrer\">widgets</a>:<br><br>The issue doesn’t exist.<br><br>No one could be hacked just by receiving a message.<br><br>You had to actively start a third-party service first.<br><br><i><b>✅</b></i> Even that is fully patched server-side.<br><br>Think otherwise? Go hack my account: <a href=\"http://t.me/monk\" target=\"_blank\" rel=\"noopener noreferrer\">t.me/monk</a> <i><b>🍿</b></i>",
+      "views": "2.38M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/560"
+    },
+    {
+      "id": 561,
+      "date": "2026-11-14T09:29:21+00:00",
+      "timestamp": 1794648561,
+      "text_html": "Nvidia’s board was right to fire Jensen.<br><br>He was married.<br><br>Meaning he signed an exclusive contract with a 50% exit penalty for a service with no uptime guarantee. <br><br>How can you trust a guy who’d sign a deal like that to run a company? <i><b>👉</b></i> <br><br>They should have fired him at the altar.",
+      "views": "2.36M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/561"
+    },
+    {
+      "id": 562,
+      "date": "2026-11-15T22:48:26+00:00",
+      "timestamp": 1794782906,
+      "text_html": "Noticed in the banya today: I’m getting skinnier. <br><br>This despite a strict diet of lobster linguini and crab pelmeni. <i><b>🦞</b></i><br><br>Only one explanation: crypto winter. <br><br>So we stayed in the steam room until November’s launches on TON were planned.<br><br>We can’t lose more valuable fat. <i><b>👳‍♂</b></i>",
+      "views": "2.39M",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/durov/562_0.webp",
+            "remote_url": "https://cdn4.telesco.pe/file/ZqrAeSZTUoN6S-Fy2kfywQJ28HzohypEnvIA-oW0VLfnM_QE74uCVG6Q5QnQsypKssuSphLGWnDESBoljILWGttXDPWncOOqaU1IaUmbZbP-5nd3xaM0THM-nizcdmEQqSRGkWIdDV_s25jawGJuIHlJBo4Vqwa4LaYYtP6Cl2hAywWQaYUAQmI22wLJ-SWtezPH2IVPZV7RH3wp83Od-M_R7uIpDqtXzJ1prkKV-aQkx3gD_mXI6sVDUBqS__h29DwyFctGWvRV_TUqKD53O145AL7Ii2DGMHcsBTVySXllG08sb2mk-yXTTk2YKR8JtswIngmdmpyeqXVKbUZykQ.jpg"
+          }
+        ],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/562"
+    },
+    {
+      "id": 563,
+      "date": "2026-11-16T17:06:39+00:00",
+      "timestamp": 1794848799,
+      "text_html": "Patent trolls are running rampant, empowered by AI. <br><br>Their ridiculous attacks are now cheaper than ever. <br><br>The industry needs a new way to fight back — AI-powered and symmetrical. <i><b>💪</b></i><br><br>If you're a US-licensed lawyer (esp. in Texas <i><b>🤠</b></i>) open to new ideas, hit us up at <a href=\"https://t.me/humanbot\" target=\"_blank\" rel=\"noopener noreferrer\">@humanbot</a>",
+      "views": "2.29M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/563"
+    },
+    {
+      "id": 564,
+      "date": "2026-11-17T19:12:44+00:00",
+      "timestamp": 1794942764,
+      "text_html": "<i><b>⭐️</b></i> Telegram bots and mini apps can accept only <b>Stars</b> (*Grams) for digital services.<br><br>Why? Apple and Google rules require <b>Stars</b>.<br><br><i><b>💎</b></i> But users can buy <b>Stars</b> with <b>Grams</b> on <a href=\"https://fragment.com/stars/buy\" target=\"_blank\" rel=\"noopener noreferrer\">Fragment</a>.<br><br><i><b>🔓</b></i> VPN bots in authoritarian countries are exempt.<br><br>They do God’s work and can take any payment <i><b>🤩</b></i>",
+      "views": "2.54M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/564"
+    },
+    {
+      "id": 565,
+      "date": "2026-11-18T17:42:19+00:00",
+      "timestamp": 1795023739,
+      "text_html": "<i><b>🇮🇶</b></i> Iraq blocked Telegram (2nd time this year).<br><br>We feel sorry for the Iraqi people.<br><br>But we won’t censor free political speech.<br><br>Regardless of how we are asked. <i><b>✊</b></i>",
+      "views": "2.38M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/565"
+    },
+    {
+      "id": 566,
+      "date": "2026-11-19T22:12:20+00:00",
+      "timestamp": 1795126340,
+      "text_html": "Apple finally made a phone that’s both too big and too small.<br><br>It folds in half. Just like your enthusiasm.<br><br>We still made Telegram look incredible at both wrong sizes.<br><br>We do a lot of charity work.",
+      "views": "2.2M",
+      "media_type": "video",
+      "media": {
+        "photos": [],
+        "video": {
+          "duration": null,
+          "remote_video_url": "https://cdn4.telesco.pe/file/d9d6cc9bd0.mp4?token=aCX4kA6xbzjFg3vzLIo9b370jgRtqhX-nfJWXwPAi07j2coSe_IhSlZuFPbksacXvK3owF7Gka_09DYOboaErLonlyfewVzaOb2h40RMpvz7UM55fi82y_L7E8xFl6UQCoMQEglvgZ5Zgy13Dln3g45w_3RhxrsDZbcEn5f86b_inDlZDZOFr3t7ndU5R-rJupYSvussNGVlnee7sG0vl8o2U0cKAwBB6utggf5mcaARYXtrnfe3acF-RnSnkK24YTagB6awN3NHnn7Ug63Ncu-Mh0Sg98fEYASgw8iV-1pKHLgQibvSdHjWNgJvEAt058Yq_CkakcSLDGXhegUbKQ",
+          "local_video_path": "media/durov/566.mp4",
+          "remote_thumb_url": "https://cdn4.telesco.pe/file/tEzkpdSSTMbVSRbiILUHjU9scS1IWN3AcLI-wQLTHyY-Eq6_4GIsH0ZSlyktwxYynZoSrdv1clyFjxRurnAkap4psY8gmU2bc1dhGqqIS86upms0RtCi5SRKJBRuTIAup31Kzb4JlmovCxK2bMML9u-i8JCVuDU8K1vkJt3v0VIqhjBxX2CvZzs0LcdO_rRqXoZeTLbDcOS_sWtlBKZnbiSFpBeY3NETiBmD9hGvBSmEeN5o0Ft8uqB4oiC0iRZ4avNUbUOAtt-pOnTfWLi5WbmNnWDz9MXiMnK49iO0pXuKRDLHpmxOgc8yr17vtKjn5MsTTUlTM1-G3-S0fL_oWQ",
+          "local_thumb_path": "media/durov/566_thumb.webp",
+          "thumb_url": "media/durov/566_thumb.webp",
+          "original_url": "https://t.me/durov/566",
+          "local_video_url": "media/durov/566.mp4"
+        },
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/566"
+    },
+    {
+      "id": 567,
+      "date": "2026-11-20T20:47:30+00:00",
+      "timestamp": 1795207650,
+      "text_html": "I was offered $256,000 for the <a href=\"https://t.me/pride\" target=\"_blank\" rel=\"noopener noreferrer\">@pride</a> username on Telegram.<br><br>I don’t need the username.<br><br>But if I sell, does that mean I sold my pride? <i><b>🤔</b></i>",
+      "views": "2.08M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/567"
+    },
+    {
+      "id": 568,
+      "date": "2026-11-21T22:48:52+00:00",
+      "timestamp": 1795301332,
+      "text_html": "You won't look professional in 2027 if your QR is unpimped.",
+      "views": "1.91M",
+      "media_type": "video",
+      "media": {
+        "photos": [],
+        "video": {
+          "duration": "0:24",
+          "remote_video_url": "https://cdn4.telesco.pe/file/e865fee2c6.mp4?token=qVpuFvQ_XoZXms5Hp701CIWA8QdZcJxm6oCkkRIu8oQe6BxuMTVj6FzPo765i8_b2iDUZWVX2Zp8wrdB-0BRf_bAsgdMeZYk3YcOi7qumLzI_A6ETZ7zdVO3AUdXKFn3TjShNAXbcplF2GKdz384kWVnO-3RX40c9hbxWJiTBHBHeX3vjmgc3njAQKZEffZi7Y49JG0myk8BrRxqvNQlQ5ymxEPNlcU8piCOPPHj-oWVKQ-hh9OBOXLxDX5Pv0yA7CBQeerV1fzKjUweXPRZTJcZp5XgAV9bFFTxwzCpIFAHb_5L73Fo3ti-EHrVykIgdgXbcrCbudF9RI9qDvbKwIwyRo8S6cfGOGEWgeQNua63KItNdpXVdmKsGztbzb0SxnHXZkvX74LJ33I9MYh6ueLlLV14KMR3D-XHWRGmxxRh6hmxBmDjaRgLRPT72_IqTOKhwFrKMMvuItxINzWOB8fEqGrMQakCRx0HCYpMaen4kU3NCdMGfiqbtneaszWskNDkZN_pozS4w_QDpwJanCAg0um0kJQuMI64K3xupdKDqDtW1zljj8p2Q-BzqdlyjxeN1gu0AhEmxB0gMDvhTZRl1E1g1zZxQS7vK2aZQU5R5iNfwWnNYBaWvLcQFQx1lOCRkS7_xhSqJegR9EaHkQstSbhwba-bD6iLXTsSCdg",
+          "local_video_path": "media/durov/568.mp4",
+          "remote_thumb_url": "https://cdn4.telesco.pe/file/AGFuS2sSiBXMpujz87bAsBq0wEVLJZdZRd0YLjfSeDvkVpDpfS1MCCQOONV9ysRt9GL1-Qw5b3KKbJksKy0Adxbs5tMKgR3H7JUyKTmIK6WakG_ce5A9oOlXVSXdYSsqooE-UnA5ASSNLunXelVbTejhBUoJDPbfW0dzkmtNG_3yu9byNXGyXXlyIl7BDpNN-UmbaIwCj55P1FIlCzzjsz06DZjxgBYeY1NpYFFmKF7jEI-pEYLECueCNauasKI85utNdcmNy5PvFbE4Pb4hXp9i3ii7e1o7g4kKlF_lzeTSxvx05uXIqan25qhsL0o9G-TAihPC5wtucVvxlhE_tw",
+          "local_thumb_path": "media/durov/568_thumb.webp",
+          "thumb_url": "media/durov/568_thumb.webp",
+          "original_url": "https://t.me/durov/568",
+          "local_video_url": "media/durov/568.mp4"
+        },
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/568"
+    },
+    {
+      "id": 569,
+      "date": "2026-11-22T22:17:13+00:00",
+      "timestamp": 1795385833,
+      "text_html": "The least realistic thing about GTA VI is that Jason and Lucia run a whole criminal operation without a single Telegram group.",
+      "views": "2.18M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/569"
+    },
+    {
+      "id": 570,
+      "date": "2026-11-23T21:00:12+00:00",
+      "timestamp": 1795467612,
+      "text_html": "<i><b>🎉</b></i> Jensen's back. <br><br>Nvidia's board finally understood that a CEO has to evaluate Chinese models personally. <br><br>You can't delegate that.",
+      "views": "1.62M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/570"
+    },
+    {
+      "id": 572,
+      "date": "2026-11-24T21:48:27+00:00",
+      "timestamp": 1795556907,
+      "text_html": "Someone offered me $1M for the <a href=\"https://t.me/liar\" target=\"_blank\" rel=\"noopener noreferrer\">@liar</a> username on Telegram.<br><br>I want to believe the money is real.<br><br>But it's hard to trust a man who wants to be known as <a href=\"https://t.me/liar\" target=\"_blank\" rel=\"noopener noreferrer\">@liar</a> <i><b>🤔</b></i>",
+      "views": "1.39M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/572"
+    },
+    {
+      "id": 573,
+      "date": "2026-11-25T12:56:51+00:00",
+      "timestamp": 1795611411,
+      "text_html": "Someone offered me $1M for the @liar username on Telegram.  I want to believe the money is real.  But it's hard to trust a man who wants to be known as @liar <i><b>🤔</b></i>",
+      "views": "1.18M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": {
+        "id": 572,
+        "text_snippet": "Someone offered me $1M for the @liar username on Telegram.  I want to believe the money is real.  Bu"
+      },
+      "original_url": "https://t.me/durov/573"
+    },
+    {
+      "id": 574,
+      "date": "2026-11-26T15:26:13+00:00",
+      "timestamp": 1795706773,
+      "text_html": "Telegram gifts are the only NFTs still alive.<br><br><i><b>📈</b></i> They are up <b>2.5x</b> since issuance <b>1–2</b> years ago, despite crypto winter.<br><br>This week, P2P gift trading on Telegram moved on-chain:<br><br>— Sales &amp; offers run on smart contracts.<br><br>— Grams go instantly to sellers' wallets.<br><br>— Fees cut from <b>10%</b> to <b>2%</b> <i><b>🎉</b></i>",
+      "views": "1.06M",
+      "media_type": "none",
+      "media": {
+        "photos": [],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/574"
+    },
+    {
+      "id": 575,
+      "date": "2026-11-27T23:00:04+00:00",
+      "timestamp": 1795820404,
+      "text_html": "<i><b>🚨</b></i> iPhone users are being hacked on a massive scale.<br><br>If your iOS is even slightly outdated, all your data is at risk.<br><br>Just opening a website can be enough to get you hacked.<br><br>We're sending this warning to all our users on older iOS versions:",
+      "views": "1.02M",
+      "media_type": "photo",
+      "media": {
+        "photos": [
+          {
+            "url": "media/durov/575_0.webp",
+            "remote_url": "https://cdn4.telesco.pe/file/tfsAVOQCC2sZ8isqR7oLjqTIFcjIlMdNztG0JDHRcLK1Tzsqmb-Gwb0C5obc0xU7eiRJp3NZvhd6nQ2-L-4ucAoctlTv85PBXpGgDa1n-jG_XEH-N_zSOFvNuEn6htWhl9JRHGkdCohr0i3I28fzhopOUY22dm13KoacKrZlomKBGlWJvA3el4LTbuDGVt5a7YFR9JvME8vvwgeSdk7Hzd-VDfGKi4udO2gsyi3YgKeDBiyYiOs4U1SzuhAK1T1pq0BKnRC54LQh0LoVRn8gIkfECUfj7Qpz5NdwNp_NPQZnkyup8iZlSunMbR8nwbw1a3u7S8WtBmmJPS2GeAcsyA.jpg"
+          }
+        ],
+        "video": null,
+        "audio": null,
+        "document": null
+      },
+      "forward_from": null,
+      "reply_to": null,
+      "original_url": "https://t.me/durov/575"
+    }
+  ]
+}

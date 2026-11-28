@@ -1,0 +1,122 @@
+{
+  "updated_at": 1795873052,
+  "channels": [
+    {
+      "id": "durov",
+      "title": "Pavel Durov",
+      "avatar": "media/durov/avatar.webp",
+      "description": "پست‌های رسمی پاول دورف (بنیان‌گذار تلگرام)",
+      "last_post": {
+        "id": 575,
+        "date": "2026-11-27T23:00:04+00:00",
+        "timestamp": 1795820404,
+        "snippet": "🚨 iPhone users are being hacked on a massive scale.  If your iOS is even slightly outdated..."
+      },
+      "total_posts": 20
+    },
+    {
+      "id": "varzesh3",
+      "title": "ورزش سه",
+      "avatar": "media/varzesh3/avatar.webp",
+      "description": "اخبار ورزشی ایران و جهان",
+      "last_post": {
+        "id": 308002,
+        "date": "2026-11-28T13:34:53+00:00",
+        "timestamp": 1795872893,
+        "snippet": "🇩🇪🇩🇪 ترکیب بایرن مونیخ برابر هامبورگ 🇩🇪 | هفته 11 🏟 ولکس پارک استادیوم ⏰ ساعت 18:00  🆔 @va..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "isna94",
+      "title": "خبرگزاری ایسنا",
+      "avatar": "media/isna94/avatar.webp",
+      "description": "کانال رسمی خبرگزاری دانشجویان ایران (ایسنا)",
+      "last_post": {
+        "id": 415628,
+        "date": "2026-11-28T13:34:57+00:00",
+        "timestamp": 1795872897,
+        "snippet": "علیرضا قربانی ساسی مانکن نیست!  ضرغامی در واکنش به برگزار نشدن کنسرت علیرضا قربانی در شاند..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "zoomit",
+      "title": "زومیت",
+      "avatar": "media/zoomit/avatar.webp",
+      "description": "اخبار فناوری، موبایل، بررسی گجت‌ها و هوش مصنوعی",
+      "last_post": {
+        "id": 9,
+        "date": "2025-12-27T17:51:12+00:00",
+        "timestamp": 1766857872,
+        "snippet": "🔥Did you like any usernames?   📲Follow the link below and pick one you like!  https://t.me..."
+      },
+      "total_posts": 2
+    },
+    {
+      "id": "digiato",
+      "title": "دیجیاتو",
+      "avatar": "media/digiato/avatar.webp",
+      "description": "زندگی با تکنولوژی، اخبار فناوری و بررسی خودرو",
+      "last_post": {
+        "id": 116165,
+        "date": "2026-11-28T13:16:27+00:00",
+        "timestamp": 1795871787,
+        "snippet": "🟢 معاملات تتر در صرافی‌های رمزارزی تا اطلاع ثانوی متوقف شد  ⏺صرافی‌های رمزارزی با انتشار ا..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "farsna",
+      "title": "خبرگزاری فارس",
+      "avatar": "media/farsna/avatar.webp",
+      "description": "اخبار سیاسی، اقتصادی، اجتماعی و بین‌المللی",
+      "last_post": {
+        "id": 477230,
+        "date": "2026-11-28T13:33:15+00:00",
+        "timestamp": 1795872795,
+        "snippet": "سوء‌قصد به یک مولوی اهل‌سنت در سیستان‌وبلوچستان 🔹یک منبع آگاه در گفت‌وگو با خبرنگار فارس: ..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "akharinkhabar",
+      "title": "آخرین خبر",
+      "avatar": "media/akharinkhabar/avatar.webp",
+      "description": "سریع‌ترین و داغ‌ترین اخبار روز ایران و جهان",
+      "last_post": {
+        "id": 647304,
+        "date": "2026-11-28T13:33:00+00:00",
+        "timestamp": 1795872780,
+        "snippet": "🎥 حضور هنرمندان در مراسم رضا نیکخواه @Akharinkhabar | akharinkhabar.ir"
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "khabar_fouri",
+      "title": "خبر فوری",
+      "avatar": "media/khabar_fouri/avatar.webp",
+      "description": "اخبار فوری و لحظه‌ای ایران و جهان",
+      "last_post": {
+        "id": 558444,
+        "date": "2026-11-28T13:30:01+00:00",
+        "timestamp": 1795872601,
+        "snippet": "⬅️«کارت گردشگری» بانک شهر؛ تسهیل پرداخت برای گردشگران خارجی 👈بانک شهر در راستای توسعه خدما..."
+      },
+      "total_posts": 40
+    },
+    {
+      "id": "naghal_bashi",
+      "title": "نقال‌باشی",
+      "avatar": "media/naghal_bashi/avatar.webp",
+      "description": "پادکست‌ها، فایل‌های صوتی و روایت‌های نقال‌باشی",
+      "last_post": {
+        "id": 459,
+        "date": "2026-11-09T08:18:35+00:00",
+        "timestamp": 1794212315,
+        "snippet": "🔴بازدید گروهی اصفهان دوره سلجوقی ویژه عزیزان ساکن اصفهان  با همراهی علی آردم راهنما: میثم ..."
+      },
+      "total_posts": 20
+    }
+  ]
+}
